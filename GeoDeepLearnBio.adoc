@@ -121,14 +121,43 @@ estimated,since it is the composition of the individual stem:[varphi(sigma_(kl))
 functions, through the overall connectivity of the network. Following an initial
 estimated guess for initilizing the weights,the algorithms "feed-forward" the
 stem:[x_i] training data to the network (REF), and when the complete dataset has
-been processed by the network the mathcal "E"error is calculated based on the
+been processed by the network the stem:[mathcal "E"] error is calculated based on the
 difference between stem:[y_(pred_i)] and stem:[y_i]. Furthermore, multiple
-training cycles take place ("epochs") during each the complete dataset is
+training cycles take place (called "epochs"), during each the complete dataset is
 processed by the network, and at the end of each cycle "backpropagation" is
-performed. The backpropagation involves an optimization algorithm process..   
+performed. The backpropagation involves an optimization algorithm, which adjusts the
+weights of individual neuron functions stem:[sigma_(kl)=sum_(k=1)^n w_(kl)**x_(kl) + b],
+in order to minimize the error between stem:[y_(pred_i)] and stem:[y_i]. The algorithm
+utilizes gradient descent (REF) to guide the weight values through the space of all 
+possible values, towards a combination that although it never results in zero error
+stem:[mathcal "E"] since it is a heuristic algorithm, it is very close to the optimal.
+Once the artificial neural network training has completed by finding the most optimal 
+set of weights (including the use of testing and validation datasets), it is now ready
+to be used for label prediction with new, unknown stem:[x_i] data.
 
-== ARTIFICIAL INTELLIGENCE AND SYMMETRY
+== ARTIFICIAL INTELLIGENCE, GROUP THEORY, SYMMETRY AND INVARIANCE
 
-Returning to Geometric Deep Learning, and how the group theoretic principles 
+For the remaining of this manuscript, we will discuss the principles of symmetry and
+invariance through the lens of group theory, and how these related to the discerning
+power of the trained neural network in relation to variance in the input data. We will
+again follow the terminology of Bronstein et al. (REF), where we define the input data
+stem:[x_i] to be from a domain stem:[Omega], which is defined accordingly based on the
+type of data. For example, with image data being 2-dimensional grids of _n x n _ pixels 
+(each pixel having an integer value for each intensity), we would then define 
+stem:[Omega: ZZ_n xx ZZ_n] as integer grid of images. More specifically, if the input
+data are for 3-layer color images (green, blue red) stem:[x_i:Omega to ZZ^3] of cancer tissue,
+we would then define a signal as stem:[X(Omega)] and the overall neural network estimator function
+operating on this signal as stem:[mathcal "F"("X"(Omega))]. Having defined these essential
+terms, we will proceed towards discussing the concepts of symmetry and invariance through
+the lens of group theory, in order to examine the classifying power of ANNs in relation
+to variance in the data.
 
+In a broader definition, symmetry is the study of space and structure, whether this refers
+to geometrical figures and algebraic structures in mathematics, particle configurations in
+physics, or organism structures in biology. Invariance of an object under transformation, is
+the property of changing the position of the object in space, such as rotating a drug molecule
+or shifting a cancer histology image, leaving the properties of the object unchanged (i.e. the
+drug remains potent and the tissue is recognized as cancerous from the image). When artificial 
+neural networks act as function estimators stem:[mathcal "F"("X"(Omega) to "Y")] to predict output 
+labels (i.e stem:[mathcal "Y" = potent drug / not potent])
 
