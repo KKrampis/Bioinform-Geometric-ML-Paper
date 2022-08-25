@@ -1,7 +1,7 @@
-= Mathematical Principles of Graph Neural Networks and Geometric Deep Learning
-for Bioinformatics
+= Mathematical Principles of Graph Neural Networks and Geometric Deep Learning for Bioinformatics
  Konstantinos Krampis
 :stem:
+:bibtex-file: GDL-proto.bib
 
 == ABSTRACT
  Following the exponential growth of the machine and deep learning
@@ -32,7 +32,7 @@ Symmetry and invariance is a central concept in physical, mathematical and
 biological systems, in addition to other areas of human endeavor such as social
 structures.. It has been established since the early 20th century that
 fundamental laws of nature originate in symmetry, for example through the work
-of Noether and Wigner [REF,REF].In the last decade, technologies such as genomic
+of Noether and Wigner cite:[noether1918invariante] [REF,REF].In the last decade, technologies such as genomic
 sequencing have enabled an exponential increase [REF] of the data that describe
 the fundamental elements, structure and function of biological systems. Other
 endeavors from fields as diverse as physics [REF collider], and the rise of
@@ -159,5 +159,8 @@ the property of changing the position of the object in space, such as rotating a
 or shifting a cancer histology image, leaving the properties of the object unchanged (i.e. the
 drug remains potent and the tissue is recognized as cancerous from the image). When artificial 
 neural networks act as function estimators stem:[mathcal "F"("X"(Omega) to "Y")] to predict output 
-labels (i.e stem:[mathcal "Y" = potent drug / not potent])
+labels (i.e stem:[mathcal "Y"] = potent drug / not potent, 
+
+
+bibliography::[]
 
