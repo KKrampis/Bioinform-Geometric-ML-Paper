@@ -1,5 +1,5 @@
 = Mathematical Principles of Graph Neural Networks and Geometric Deep Learning for Bioinformatics
- Konstantinos Krampis
+Konstantinos Krampis, Eric Ross, Olorunseun O. Ogunwobi, Grace Ma, Raja Mazumder, Claudia Wultsch
 :stem:
 :bibtex-file: GDL-proto.bib
 
@@ -9,7 +9,7 @@ field in recent years, artificial neural network models have found significant
 applications towards bioinformatics data analysis. The various omics datasets
 are commonly represented in a graph format, such as for example protein or gene
 interaction networks, molecular structures and cellular signalling pathways.
-Unlike structured images, video and text that are a staple for training
+Unlike structured images, video and text that are commonly used for training
 artificial neural networks, graph data are in the non-euclidean domain and
 require significantly different algorithmic approaches. The machine learning
 research community, has developed a range of new algorithms for training
@@ -30,9 +30,9 @@ bioinformatics applications.
 
 Symmetry and invariance is a central concept in physical, mathematical and
 biological systems, in addition to other areas of human endeavor such as social
-structures.. It has been established since the early 20th century that
+networks. It has been established since the early 20th century that
 fundamental laws of nature originate in symmetry, for example through the work
-of Noether and Wigner cite:[noether1918invariante] [REF,REF].In the last decade, technologies such as genomic
+of Noether and Wigner cite:[noether1918invariante].In the last decade, technologies such as genomic
 sequencing have enabled an exponential increase [REF] of the data that describe
 the fundamental elements, structure and function of biological systems. Other
 endeavors from fields as diverse as physics [REF collider], and the rise of
@@ -46,8 +46,8 @@ intuition.
 As in any field (including bioinformatics) that develops rapidly whithin the
 span of a few years,deep learning and artificial intelligence researchers have
 developed hundreds of successful algorithms, however with a few unifying
-principles (Bronstein et al., [ref]). In the seminal `proto-book` by Bronstein
-et al., a range of systematization principles for the different artificial
+principles . In a seminal `proto-book` by Bronstein et al. cite:[bronstein2021geometric], 
+a range of systematization principles for the different artificial
 neural network architectures from the deep learning field was presented, based
 on the concepts of symmetry that is formalized within the mathematical field of
 group theory. The authors also introduced the concept of Geometric Deep
@@ -59,39 +59,38 @@ in composing and describing various deep learning algorithms.
 
 Before proceeding towards introducing these concepts further, we will describe
 the structure and function of deep learning and artificial neural networks that
-are the center of artificial intelligence,through a simple mathematical
-description. Assume a dataset consisting of _n_ pairs of stem:[{x_i,y_i}_i^n]
+are the foundation of artificial intelligence,through a simple mathematical
+description. Assume a dataset consisting of _n_ pairs of stem:[{x_i,y_i}_j^n]
 ,with the stem:[x_i] being the data points and stem:[y_i] their labels. Each
-data point can be for example be a set of numbers, vectors, images (that can be
-decomposed to vectors), graphs structures with nodes and edges, and molecules
-(that can be represented with a graph structure). Whether the data points
-originate from scientific experiments,clinical researh, databases or other
-records, a stem:[x_i] molecule for example represented as a graph, could have a
-binary label of stem:[y_i=1] "inhibits cancer growth", or stem:[y_i=0] "does not
+data point can be for example be a set of numbers, vectors (arrays of numbers), 
+storing the data for image pixels, or graph data structures 
+composed by nodes and edges representing drugs or other chemical molecules. 
+Whether the data originate from lab experiments, clinical researh, or public databases,
+as a graph vector stem:[x_i] for example representing a molecule, could have a
+binary (two-option) label of stem:[y_i=1] "inhibits cancer growth", or stem:[y_i=0] "does not
 inhibit cancer". The labels can also be continuous numbers such as for example
 stem:[y_i=0.3] meaning 30% inhibition, while also each stem:[y_i] could be a set
-such as stem:[y_i = {0,1,0}] corresponding does not inhibit,has toxicity,is not
-metabolized, for each zero and one respectively.
+such as stem:[y_i = {0,1,0}] representing terms for a molecule such as 'no inhibition',
+'yes for toxicity', 'not metabolized', with 'not' for 0 and 'yes' 1.
 
-Similar to a brain neural network,the computational abstractions used to model
-neurons in machine learning and artificial intelligence,represent them as signal
-aggregators and thresholding units. Specifically, each artificial neuron
-performs summation of incoming signals from connected neurons, and "fires" when
-the aggregated signals are above a certain threshold. This can be described with
-the summation stem:[sigma_(kl)=sum_(k=1)^n w_(kl)**x_(kl) + b]. By following the
-biological analogy the stem:[w_(kl)] is the connection weight (similar to the
-brain learning through strengthening connections among neurons, REF)  with
-dendrite _l_ from neuron _k_, and similarly stem:[x_(kl)], while _b_ is the
-threshold that needs to be met with stem:[w_(kl)**x_(kl)>0] in order to the neuron
-to activate.In the simplest version of "fully connected" artificial neural
-networks, each neuron _k_ receives a copy of the input _i_, resulting im _k*i_
-incoming and outgoing connections per neuron.  The activation threshold also
-affects the "logit" or otherwise activation function stem:[varphi(sigma_(kl))],
-which is usually non-linear (REF), and its output value is transmitted to its
-connected neurons through the outgoing "axons" (using the biological
-analogy,REF).Multiple layers of such computational models of neurons connected
-together, along with multiple connections per layer each having each own weight
-stem:[w_(kl)], forms an Artificial Neural Network (ANN).
+Similar to a brain neural network, the computational abstractions used in machine learning 
+and artificial intelligence, model neurons as signal aggregators and thresholding units. 
+Specifically, each artificial neuron performs a summation of incoming signals from its connected 
+neurons, and "fires" when the aggregated signals reach a certain threshold. This can be described with
+the summation stem:[sigma_(kl)=sum_(k=1)^n w_(kl)**x_(kl) - b], where by following the
+biological analogy the stem:[w_(kl)] represents the connection weight, as learning takes place in the
+biological brain by strengthening connections among neurons. The subscripts represent respectively
+a connection from dendrite _l_ of neighboring neuron _k_ (REF), and similarly stem:[x_(kl)]
+is the incoming signal. The term _b_ represents a threshold that needs to be surpassed with 
+stem:[w_(kl)**x_(kl)>b] in order for the neuron to activate and "fire" a signal. In the simplest 
+version of "fully connected" artificial neural networks, each neuron _k_ in the network receives the 
+input _i_, resulting in _k*i_ incoming and outgoing connections per neuron.  The activation of the neuron 
+is also determined by an additional thresholding or otherwise "logit" represented as stem:[varphi(sigma_(kl))].
+which is usually non-linear (REF). Following the summation of incoming signals, passing of the threshold
+and computation of the activation function, the final value which is the output of the firing neuron,
+is transmitted to its connected neurons through the outgoing connections or "axons" in the biological analogy. 
+Multiple layers of such computational models of neurons connected together, along with multiple connections 
+per layer each having each own weight stem:[w_(kl)], forms an Artificial Neural Network (ANN).
 
 Mathematically, a trained ANN is an estimator of the function
 stem:[y_(pred_i)=mathcal "F"(x_i)], correlating output labels stem:[y_i] to the
