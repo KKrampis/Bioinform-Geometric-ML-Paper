@@ -92,46 +92,43 @@ is transmitted to its connected neurons through the outgoing connections or "axo
 Multiple layers of such computational models of neurons connected together, along with multiple connections 
 per layer each having each own weight stem:[w_(kl)], forms an Artificial Neural Network (ANN).
 
-Mathematically, a trained ANN is an estimator of the function
-stem:[y_(pred_i)=mathcal "F"(x_i)], correlating output labels stem:[y_i] to the
-input stem:[x_i].Furthermore, the function stem:[mathcal "F"] is a composition
-of the stem:[varphi(sigma_(kl))] functions of the all the neurons interconnected in
-the artificial network graph (REF).This is the most powerful aspect of the ANNs,
-since the accumulated non-linearities of each stem:[varphi(sigma_(kl))], enable the
-network to learn on multi-dimensional input data with complex distributions, and
-achieve higher clasification power compared to traditional statistical methods
-(REF). With hundreds of papers and monographs that have been written on the
+Mathematically, a trained ANN is a function stem:[f] that predicts the labels stem:[y_pred_i] for the input 
+data stem:[x_i], such as for example 'no inhibition', 'yes for toxicity' etc. for graph data representing  
+drug molecules.  The function stem:[f] is non-linear and is estimated by fitting a training dataset, which 
+correlates labels stem:[y_i] to data points stem:[x_i]. Most important, stem:[f] is a composition
+of the stem:[varphi(sigma_(kl))] thresholding functions of the each neuron interconnected in
+the artificial network graph cite:[bronstein2021geometric]. This is key aspect of the ANNs,
+since the non-linearities present in each individual logit neuron function stem:[sigma_(kl)], 
+are aggregated across the neural network and on the function stem:[f], which enables fitting complex 
+multi-dimensional input data with non-linear distributions. This is the key fact that enables ANNs 
+to achieve higher clasification power compared to traditional statistical 
+methods (REF). With hundreds of papers and monographs that have been written on the
 technical details of training ANNs,and since the focus of the present review
 manuscript are networks designed with graph and other non-euclidean datasets, we
-will attempt to summarize the training in few sentences and refer the reader to
+will next attempt to summarize the training in few sentences and refer the reader to
 REF for further details. 
 
-Essentially, ANN training involves estimating the overall function
-stem:[y_(pred_i)=mathcal "F"(x_i)] by estimating the set of weights w_kl for
-minimizing an error function mathcal "E", which quantifies the difference
-between the predicted stem:[y_(pred_i)] and actual labels stem:[y_i]. The weight
-estimation by the algorithms (explained below) takes place by fitting the
-network on a large training dataset of stem:[{x_i,y_i}_i^n], followed by
-evaluation of the training using smaller testing and validation data subsets. By
-identifying a set of weights which best fit the data model, the ANN settles on
-the optimal parameters that estimate the stem:[varphi(sigma_(kl))] function of each
-interconnected neuron. Consequently, the overall stem:[mathcal "F"(x_i)] is also
-estimated,since it is the composition of the individual stem:[varphi(sigma_(kl))] 
-functions, through the overall connectivity of the network. Following an initial
-estimated guess for initilizing the weights,the algorithms "feed-forward" the
-stem:[x_i] training data to the network (REF), and when the complete dataset has
-been processed by the network the stem:[mathcal "E"] error is calculated based on the
-difference between stem:[y_(pred_i)] and stem:[y_i]. Furthermore, multiple
-training cycles take place (called "epochs"), during each the complete dataset is
-processed by the network, and at the end of each cycle "backpropagation" is
-performed. The backpropagation involves an optimization algorithm, which adjusts the
-weights of individual neuron functions stem:[sigma_(kl)=sum_(k=1)^n w_(kl)**x_(kl) + b],
-in order to minimize the error between stem:[y_(pred_i)] and stem:[y_i]. The algorithm
-utilizes gradient descent (REF) to guide the weight values through the space of all 
-possible values, towards a combination that although it never results in zero error
-stem:[mathcal "E"] since it is a heuristic algorithm, it is very close to the optimal.
-Once the artificial neural network training has completed by finding the most optimal 
-set of weights (including the use of testing and validation datasets), it is now ready
+In summary, the ANN algorithm is using the training data to identify a function stem:[f] that
+predicts labels from the data such as stem:[y_(pred_i)=f(x_i)]. As mentioned previously,
+stem:[f] is a composition of the stem:[varphi(sigma_(kl))] functions of the each neuron in the ANN,
+and as such the training is the estimatiion of the weights stem:[w_kl] of the neuron connections, 
+while minimizing the error stem:[E] based on the difference between stem:[y_(pred_i)] and stem:[y_i].
+This error quantifies the neural network precision by comparing 
+predicted stem:[y_(pred_i)] and actual labels stem:[y_i]. The neuron connection weight stem:[w_kl] 
+estimation by the algorithm takes place through fitting the network function stem:[f] on a large 
+training dataset of stem:[{x_i,y_i}_i^n], pairs of input data and labels, while it evaluates the error 
+stem:[E] using smaller testing and validation data subsets. The training algorithm works by making 
+an initial estimated guess for initializing the weights, and then performing multiple cycles (called "epochs")
+of fitting stem:[x_i] the training data to the network (REF). At the end of each cycle "backpropagation" is
+performed [REF], which involves gradient descent optimization, in order to fine tune the weights of the 
+individual neurons in stem:[sigma_(kl)=sum_(k=1)^n w_(kl)**x_(kl) + b]. 
+The gradient descent (REF) searches the possible combinations of weight values, and since it is a heuristic
+algorithm it minimizes but cannot reach zero error stem:[E]. At the completion of multiple training cycles 
+the training algorithm identifies a set of weights which best fit the data model, and the ANN settles on 
+the optimal parameters that estimate the stem:[varphi(sigma_(kl))] function for each interconnected neuron. 
+Consequently, the overall stem:[f(x_i)] is also estimated,since it is the composition 
+of the individual stem:[varphi(sigma_(kl))] neuron functions.  Once the artificial neural network training 
+has ben completed by finding the most optimal set of weights, it is now ready
 to be used for label prediction with new, unknown stem:[x_i] data.
 
 == ARTIFICIAL INTELLIGENCE, GROUP THEORY, SYMMETRY AND INVARIANCE
@@ -146,7 +143,7 @@ type of data. For example, with image data being 2-dimensional grids of _n x n _
 stem:[Omega: ZZ_n xx ZZ_n] as integer grid of images. More specifically, if the input
 data are for 3-layer color images (green, blue red) stem:[x_i:Omega to ZZ^3] of cancer tissue,
 we would then define a signal as stem:[X(Omega)] and the overall neural network estimator function
-operating on this signal as stem:[mathcal "F"("X"(Omega))]. Having defined these essential
+operating on this signal as stem:[f("X"(Omega))]. Having defined these essential
 terms, we will proceed towards discussing the concepts of symmetry and invariance through
 the lens of group theory, in order to examine the classifying power of ANNs in relation
 to variance in the data.
@@ -157,7 +154,7 @@ physics, or organism structures in biology. Invariance of an object under transf
 the property of changing the position of the object in space, such as rotating a drug molecule
 or shifting a cancer histology image, leaving the properties of the object unchanged (i.e. the
 drug remains potent and the tissue is recognized as cancerous from the image). When artificial 
-neural networks act as function estimators stem:[mathcal "F"("X"(Omega) to "Y")] to predict output 
+neural networks act as function estimators stem:[f("X"(Omega) to "Y")] to predict output 
 labels (i.e stem:[mathcal "Y"] = potent drug / not potent, 
 
 
