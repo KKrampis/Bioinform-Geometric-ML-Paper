@@ -1,10 +1,20 @@
-= Mathematical Principles of Graph Neural Networks and Geometric Deep Learning for Bioinformatics
-Konstantinos Krampis, Eric Ross, Olorunseun O. Ogunwobi, Grace Ma, Raja Mazumder, Claudia Wultsch
+= Mathematical Principles of Artificial Neural Networks and Machine Learning for Bioinformatics
+
+Konstantinos Krampis*^1^, Eric Ross^2^, Olorunseun O. Ogunwobi^1^, Grace Ma,^3^ Raja Mazumder,^4^ Claudia Wultsch^1^
+
+
 :stem:
 :bibtex-file: GDL-proto.bib
 
+^1^Belfer Research Facility, Biological Sciences, Hunter College, City University of New York
+^2^Fox Chase Cancel Center 
+^3^Temple University
+^4^George Washington University
+
+^*^Corresponding Author, _agbiotec@gmail.com_
+
 == ABSTRACT
- Following the exponential growth of the machine and deep learning
+Following the exponential growth of the machine and deep learning
 field in recent years, artificial neural network models have found significant
 applications towards bioinformatics data analysis. The various omics datasets
 are commonly represented in a graph format, such as for example protein or gene
@@ -33,10 +43,10 @@ biological systems, in addition to other areas of human endeavor such as social
 networks. It has been established since the early 20th century that
 fundamental laws of nature originate in symmetry, for example through the work
 of Noether and Wigner cite:[noether1918invariante].In the last decade, technologies such as genomic
-sequencing have enabled an exponential increase [REF] of the data that describe
+sequencing have enabled an exponential increase cite:[katz2022sequence] of the data that describe
 the fundamental elements, structure and function of biological systems. Other
-endeavors from fields as diverse as physics [REF collider], and the rise of
-social media platforms [ref], have resulted in datasets of scale not previously
+endeavors from fields as diverse as physics, and the rise of social media platforms 
+cite:[clissa2022survey], have resulted in datasets of scale not previously
 available to scientists. This data explosion, has also been fundamental for the
 ever accelerating advancements in the field of machine learning, deep learning
 and artificial intelligence, where we now  have algorithms that can be trained
@@ -55,13 +65,13 @@ Learning, and demonstrated how the group theoretic principles of iso- and
 auto-morphism, along with invariance and equivariance of functions, can be used
 in composing and describing various deep learning algorithms. 
 
-== THE STRUCTURE AND FUNCTION OF ARTIFICIAL INTELLIGENCE
+== THE STRUCTURE OF ARTIFICIAL INTELLIGENCE AND NEURAL NETWORKS
 
 Before proceeding towards introducing these concepts further, we will describe
 the structure and function of deep learning and artificial neural networks that
-are the foundation of artificial intelligence,through a simple mathematical
-description. Assume a dataset consisting of _n_ pairs of stem:[{x_i,y_i}_j^n]
-,with the stem:[x_i] being the data points and stem:[y_i] their labels. Each
+are the foundation of artificial intelligence cite:[li2019deep],through a simple mathematical
+description. Assume a dataset consisting of _n_ pairs of stem:[(x_i,y_i)_n]
+,with the stem:[x_i] being _n_ data points and stem:[y_i] their labels. Each
 data point can be for example be a set of numbers, vectors (arrays of numbers), 
 storing the data for image pixels, or graph data structures 
 composed by nodes and edges representing drugs or other chemical molecules. 
@@ -69,24 +79,26 @@ Whether the data originate from lab experiments, clinical researh, or public dat
 as a graph vector stem:[x_i] for example representing a molecule, could have a
 binary (two-option) label of stem:[y_i=1] "inhibits cancer growth", or stem:[y_i=0] "does not
 inhibit cancer". The labels can also be continuous numbers such as for example
-stem:[y_i=0.3] meaning 30% inhibition, while also each stem:[y_i] could be a set
-such as stem:[y_i = {0,1,0}] representing terms for a molecule such as 'no inhibition',
+stem:[y_i=0.3] meaning 30% inhibition, while also each stem:[y_i] could be a composite label
+such as stem:[y_i = [0,1,0]] representing terms for a molecule such as 'no inhibition',
 'yes for toxicity', 'not metabolized', with 'not' for 0 and 'yes' 1.
 
 Similar to a brain neural network, the computational abstractions used in machine learning 
 and artificial intelligence, model neurons as signal aggregators and thresholding units. 
 Specifically, each artificial neuron performs a summation of incoming signals from its connected 
 neurons, and "fires" when the aggregated signals reach a certain threshold. This can be described with
-the summation stem:[sigma_(kl)=sum_(k=1)^n w_(kl)**x_(kl) - b], where by following the
+the summation stem:[sigma_(kl)=sum_1^k w_(kl)**x_(kl) - b], where by following the
 biological analogy the stem:[w_(kl)] represents the connection weight, as learning takes place in the
-biological brain by strengthening connections among neurons. The subscripts represent respectively
-a connection from dendrite _l_ of neighboring neuron _k_ (REF), and similarly stem:[x_(kl)]
-is the incoming signal. The term _b_ represents a threshold that needs to be surpassed with 
-stem:[w_(kl)**x_(kl)>b] in order for the neuron to activate and "fire" a signal. In the simplest 
-version of "fully connected" artificial neural networks, each neuron _k_ in the network receives the 
-input _i_, resulting in _k*i_ incoming and outgoing connections per neuron.  The activation of the neuron 
-is also determined by an additional thresholding or otherwise "logit" represented as stem:[varphi(sigma_(kl))].
-which is usually non-linear (REF). Following the summation of incoming signals, passing of the threshold
+biological brain by strengthening connections among neurons. The subscripts represent a connection from 
+dendrite _l_ of neighboring neuron _k_ in a layer of the artificial neural network. 
+The term stem:[x_(kl)] is the incoming signal from the neigbooring neuron inside the neural network, 
+whereas the stem:[x_i] is specifically from the first (input) neuron layer. The term _b_ 
+represents a threshold that needs to be surpassed with stem:[w_(kl)**x_(kl)>b] in order for the neuron 
+to activate and "fire" a signal. In the simplest version of "fully connected" artificial neural networks, 
+each neuron _k_ in the network receives the input _i_ (or _l_ if on an inside neural network layer), 
+resulting in _k*i_ (_k*l_) incoming and outgoing connections per neuron. Finally, the activation output value of the 
+neuron is determined by an additional thresholding or otherwise "logit" represented as stem:[varphi(sigma_(kl))].
+which is usually non-linear cite:[li2019deep]. Following the summation of incoming signals, passing of the threshold
 and computation of the activation function, the final value which is the output of the firing neuron,
 is transmitted to its connected neurons through the outgoing connections or "axons" in the biological analogy. 
 Multiple layers of such computational models of neurons connected together, along with multiple connections 
@@ -94,19 +106,19 @@ per layer each having each own weight stem:[w_(kl)], forms an Artificial Neural 
 
 Mathematically, a trained ANN is a function stem:[f] that predicts the labels stem:[y_pred_i] for the input 
 data stem:[x_i], such as for example 'no inhibition', 'yes for toxicity' etc. for graph data representing  
-drug molecules.  The function stem:[f] is non-linear and is estimated by fitting a training dataset, which 
+F)drug molecules.  The function stem:[f] is non-linear and is estimated by fitting a training dataset, which 
 correlates labels stem:[y_i] to data points stem:[x_i]. Most important, stem:[f] is a composition
 of the stem:[varphi(sigma_(kl))] thresholding functions of the each neuron interconnected in
-the artificial network graph cite:[bronstein2021geometric]. This is key aspect of the ANNs,
+the artificial network graph cite:[li2019deep]. This is key aspect of the ANNs,
 since the non-linearities present in each individual logit neuron function stem:[sigma_(kl)], 
 are aggregated across the neural network and on the function stem:[f], which enables fitting complex 
 multi-dimensional input data with non-linear distributions. This is the key fact that enables ANNs 
 to achieve higher clasification power compared to traditional statistical 
-methods (REF). With hundreds of papers and monographs that have been written on the
+methods cite:[tang2019recent]. With hundreds of papers and monographs that have been written on the
 technical details of training ANNs,and since the focus of the present review
 manuscript are networks designed with graph and other non-euclidean datasets, we
 will next attempt to summarize the training in few sentences and refer the reader to
-REF for further details. 
+the citations for further details. 
 
 In summary, the ANN algorithm is using the training data to identify a function stem:[f] that
 predicts labels from the data such as stem:[y_(pred_i)=f(x_i)]. As mentioned previously,
@@ -120,7 +132,7 @@ training dataset of stem:[{x_i,y_i}_i^n], pairs of input data and labels, while 
 stem:[E] using smaller testing and validation data subsets. The training algorithm works by making 
 an initial estimated guess for initializing the weights, and then performing multiple cycles (called "epochs")
 of fitting stem:[x_i] the training data to the network (REF). At the end of each cycle "backpropagation" is
-performed [REF], which involves gradient descent optimization, in order to fine tune the weights of the 
+performed cite:[tang2019recent], which involves gradient descent optimization, in order to fine tune the weights of the 
 individual neurons in stem:[sigma_(kl)=sum_(k=1)^n w_(kl)**x_(kl) + b]. 
 The gradient descent (REF) searches the possible combinations of weight values, and since it is a heuristic
 algorithm it minimizes but cannot reach zero error stem:[E]. At the completion of multiple training cycles 
@@ -133,28 +145,28 @@ to be used for label prediction with new, unknown stem:[x_i] data.
 
 == ARTIFICIAL INTELLIGENCE, GROUP THEORY, SYMMETRY AND INVARIANCE
 
-For the remaining of this manuscript, we will discuss the principles of symmetry and
-invariance through the lens of group theory, and how these related to the discerning
-power of the trained neural network in relation to variance in the input data. We will
-again follow the terminology of Bronstein et al. (REF), where we define the input data
-stem:[x_i] to be from a domain stem:[Omega], which is defined accordingly based on the
-type of data. For example, with image data being 2-dimensional grids of _n x n _ pixels 
-(each pixel having an integer value for each intensity), we would then define 
-stem:[Omega: ZZ_n xx ZZ_n] as integer grid of images. More specifically, if the input
-data are for 3-layer color images (green, blue red) stem:[x_i:Omega to ZZ^3] of cancer tissue,
-we would then define a signal as stem:[X(Omega)] and the overall neural network estimator function
-operating on this signal as stem:[f("X"(Omega))]. Having defined these essential
-terms, we will proceed towards discussing the concepts of symmetry and invariance through
-the lens of group theory, in order to examine the classifying power of ANNs in relation
-to variance in the data.
+We conclude, by briefly reviewing how the principles of group theory, symmetry and invariance, have been
+recently utilized as a foundational framework to explain learning algorithms for ANNs cite:[bronstein2021geometric]. 
 
-In a broader definition, symmetry is the study of space and structure, whether this refers
-to geometrical figures and algebraic structures in mathematics, particle configurations in
-physics, or organism structures in biology. Invariance of an object under transformation, is
-the property of changing the position of the object in space, such as rotating a drug molecule
-or shifting a cancer histology image, leaving the properties of the object unchanged (i.e. the
-drug remains potent and the tissue is recognized as cancerous from the image). When artificial 
-neural networks act as function estimators stem:[f("X"(Omega) to "Y")] to predict output 
+Following the terminology of Bronstein et al., we consider the input stem:[x_i] from a data domain stem:[Omega], 
+which has a specific structure corresponding to the data type used for training the ANN. For example, microscopy images
+are essentially 2-dimensional numerical grids (matrices) of _n x n_ pixels, with each pixel having a value for light intensity.  In this case, the data domain is as an integer grid stem:[Omega: ZZ_n xx ZZ_n], which can have all possible 
+combinations of pixel intensities. Similarly, for color images the data domain is stem:[x_i:Omega to ZZ_n^3 xx ZZ_n^3], 
+with 3 integer grids each representing the green, blue and red layers composing the color image. The ANN data fitting 
+and label prediction function stem:[y_(pred_i)=f(x_i)] is applied on a "signal" stem:["X"(Omega)] from the domain, 
+which is a subset of all possible pixel combinations forming the specific images in the dataset used for training the 
+neural network. 
+
+Concluding this review, we will briefly discuss the concepts of symmetry and invariance through
+the lens of group theory, in order to examine the classifying power of ANNs in relation to statistical 
+variance in the data. In summary, symmetry is the study of space and structure, with examples referring to
+to geometrical and algebraic constructs in mathematics, matter configurations in physics and molecular 
+biology structures. Invariance of an object under transformation, is the property of changing the position 
+of the object in space, such as rotating a drug molecule or shifting a cancer histology image, while leaving 
+the properties of the object unchanged cite:[bronstein2021geometric]. In these examples, the drug remains potent 
+following rotation of the molecule, and the tissue is still recognized as cancerous based on the histology image. 
+
+When artificial neural networks act as function estimators stem:[f("X"(Omega) to "Y")] to predict output 
 labels (i.e stem:[mathcal "Y"] = potent drug / not potent, 
 
 
