@@ -1,0 +1,101 @@
+digraph G {
+
+    // ===============================
+    // rankdir: directed graph drawn from left to right 
+    // details: http://www.graphviz.org/doc/info/attrs.html
+    // ===============================
+    rankdir=LR;  
+    edge[style=solid, tailport=e];
+    nodesep=0.1;
+    
+    // ===============================
+    // splines=line:  draw straight lines to connect nodes
+    // ===============================
+    splines=line;
+    node [label=""];
+    subgraph cluster_0 {
+        label="Input layer";
+        node [color=chartreuse, 
+              style=filled, 
+              shape=circle];
+        x0 [fillcolor=chartreuse, 
+            label=<X<sub>1</sub>>];
+        x1 [fillcolor=chartreuse, 
+            label=<X<sub>2</sub>>];
+ 
+    }
+
+    subgraph cluster_1 {
+        color=white;
+        label="First Layer (1)";
+        node [color=dodgerblue, 
+              style=filled, 
+              shape=circle];
+        a02 [fillcolor=dodgerblue, 
+             label=<k<sub>1</sub><sup>(1)</sup>>];
+        a12 [fillcolor=dodgerblue, 
+             label=<k<sub>2</sub><sup>(1)</sup>>];
+        a22 [fillcolor=dodgerblue, 
+             label=<k<sub>3</sub><sup>(1)</sup>>];
+    }
+
+    subgraph cluster_2 {
+        color=white;
+        label="Second Layer (2)";
+        node [color=dodgerblue, 
+              style=filled, 
+              shape=circle];
+        a03 [fillcolor=dodgerblue, 
+             label=<k<sub>3</sub><sup>(2)</sup>>];
+        a13 [fillcolor=dodgerblue, 
+             label=<k<sub>2</sub><sup>(2)</sup>>];
+        a23 [fillcolor=dodgerblue, 
+             label=<k<sub>1</sub><sup>(2)</sup>>];
+
+    }
+
+    subgraph cluster_3 {
+ 
+        label="Output Layer";
+        node [color=coral1, 
+              style=filled, 
+              shape=circle];
+        O1 [fillcolor=coral1, 
+            label=<Y<sub> </sub>>];
+      
+
+    }
+
+   // ===============================
+   // This is the trick to enforce the bias node stays at the top of 
+   // vertical array of nodes in each layer
+   // style=invisible: makes the edge connection invisible
+   // dir=none: hide the arrow 
+   // ===============================
+    x0 -> a02 [penwidth=0.5];
+    x0 -> a12 [penwidth=0.5];
+    x0 -> a22 [penwidth=0.5];
+    
+    x1 -> a02 [penwidth=0.5];
+    x1 -> a12 [penwidth=0.5];
+    x1 -> a22 [penwidth=0.5];
+
+    a02 -> a03 [penwidth=0.5];
+    a02 -> a13 [label=<W<SUB>k1</SUB> * X<SUB>k1</SUB>>, fontcolor=blue, color=red, fontsize=10, penwidth=2.5];
+    a02 -> a23 [penwidth=0.5];
+ 
+    a12 -> a03 [penwidth=0.5];
+    a12 -> a13 [label=<W<SUB>k2</SUB> * X<SUB>k2</SUB>>,fontcolor=blue, color=red, fontsize=10, penwidth=2.5 ];
+    a12 -> a23 [penwidth=0.5];
+
+    a22 -> a03 [penwidth=0.5];
+    a22 -> a13 [label=<W<SUB>k3</SUB> * X<SUB>k3</SUB>>,fontcolor=blue, color=red, fontsize=10, penwidth=2.5];
+    a22 -> a23 [penwidth=0.5];
+ 
+    a03 -> O1 [penwidth=0.5];
+    a13 -> O1 [penwidth=0.5];
+    a23 -> O1 [penwidth=0.5];
+
+  
+    
+}
