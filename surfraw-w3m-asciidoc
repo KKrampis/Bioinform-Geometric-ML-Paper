@@ -1,0 +1,8 @@
+surfraw scholar -p The imbedding problem for Riemannian manifolds | xargs w3m -o accept_encoding='indentity;q=0' -dump_source
+
+surfraw scholar -p The imbedding problem for Riemannian manifolds | xargs w3m -dump_source | gunzip > scholar.html
+
+surfraw scholar -p The imbedding problem for Riemannian manifolds | xargs w3m -o accept_encoding='indentity;q=0' -dump
+xargs w3m -o accept_encoding='indentity;q=0' -dump_source
+
+w3m -o accept_encoding='indentity;q=0' https://robotwealth.com/how-to-connect-google-colab-to-a-local-jupyter-runtime/ -dump_source | pandoc -f html -t asciidoc > local-jupyter.adoc
