@@ -212,7 +212,7 @@ from the domain, which is a subset of the domain stem:[Omega] with the
 specific images used for training the neural network. 
 
 Another important data structure for bioinformatics is a _graph_
-latexmath:[$\gG = (\gV, \gE)$] that is composed of _nodes_ latexmath:[$\gV$]
+latexmath:[$G = (V, E)$] that is composed of _nodes_ latexmath:[$V$]
 representing biological entities, and _edges_  which are connections between
 pairs of nodes (**Fig.2**).  In a specific instance of a graph, the present
 edges are a subset of all possible edges between nodes.An example graph data
@@ -244,115 +244,98 @@ through the principles of group theory, symmetry and invariance. These are
 the foundational mathematical and algorithmic principles that model the
 performance and output of machine learning algorithms ANNs in relation to the
 variability in the dataset. Consecutively, these principles can then be
-extrapolated to for other types of data beyond graphs and images, 
+extrapolated for other types of data beyond graphs and images, 
 for which ANNs are trained for prediction and classification.
 
-A _symmetry group_ latexmath:[$\fG$] can be defined between the the input
-dataset used for training the ANN, which is a subset "signal" stem:["X"(Omega)]
-of all possible images and graphs from a data domain stem:[Omega] that can be
-formed for example on a  grid (**Fig.2**). The members of the symmetry group
-latexmath:[$\fg \in \fG$] are the associations of two or more points on the
-grid latexmath:[$u,v\in \Omega$] between which an image or graph can be
-rotated, shifted etc. without distortion of the data.  during .  which are of
-the perform the group operations graph and image objects. Therefore, the key
-aspect of the formal mathematical definition of the group, is that the data
-attributes are preserved so that an image for example is not distorted when
-moved on the plane, or similarly not changing the connnections between the
-graph edges and nodes representing molecule elements, when the molecule is
-rotated. something that is common in noisy, real-world data. .  Essentially,
-the symmetry group ensures through the association of that the This is an
-important aspect of modeling data classification and training of ANNs through
-group theory and symmetry, so we can formalize machine learning perfomance.
-Here we presented the group notion with a more data-centric definition which
-nonetheless follows the mathematical formalism, where we do not specify what
-the group operations but only how they can transform the input data. Therefore,
-different types of data can have the same symmetry group, where transformations
-of different types of data are performed by the same group operation. For
-example, an image with a triangle (or a graph with three nodes), can have the
-same rotational symmetry group as a graph of three nodes or a numerical
-sequence of three elements.  While in this example we use a simple image or
-graph, as 
+A _symmetry group_ latexmath:[$G$] can be defined between the the input dataset
+used for training the ANN, which is a subset "signal" stem:["X"(Omega)] of all
+possible images and graphs from a data domain stem:[Omega] that can be formed
+for example on a  grid (**Fig.2**). The members of the symmetry group
+latexmath:[$g \in G$] are the associations of two or more points on the grid
+latexmath:[$u,v\in \Omega$] between which an image or graph can be rotated,
+shifted etc. without distortion of the data.  Therefore, the key aspect of the
+formal mathematical definition of the group, is that the data attributes are
+preserved so that an image for example is not distorted when moved on the
+plane, or similarly not changing the connnections between the graph edges and
+nodes representing molecule elements, when the molecule is rotated. something
+that is common in noisy, real-world data. Essentially, the symmetry group
+ensures through these associations of points on the plane for the present
+example, that the data integrity is preserved for a set of changes that belong
+within the symmetry group. 
+
+This is an important aspect of modeling data classification and training of
+ANNs through group theory and symmetry, so we can formalize the resilience of
+machine learning algorithms and their perfomance, in relation to the
+variability in the data.  Here we presented the group notion with a more
+data-centric definition which nonetheless follows the mathematical formalism,
+where we do not specify what the group operations but only how they can
+transform the input data. Therefore, different types of data can have the same
+symmetry group, where transformations of different types of data are performed
+by the same group operation. For example, an image with a triangle which
+essentially is a graph with three nodes, can have the same rotational symmetry
+group as a graph of three nodes or a numerical sequence of three elements.
+
+As with real chemical or biological molecules measured in an experiment, graphs
+which represent them as described earlier have the property that the nodes in
+set latexmath:[$V$] are usually provided in any order. This does not change the
+meaning of the data, and as long as the edges **E** representing the
+connections between the molecules stay the same we have the same molecular
+entity indepentently of the ordering of **V**, and is this case two graphs for
+the same molecule are _isomorphic_. Furthermore, any machine learning
+algorithms performing operations on graphs, should not depend on the ordering
+of nodes so that classification and pattern recognition with ANNs and
+artificial intelligence is not affected by shifts and rotations in real-world.
+This is something that is taken for granted with human intelligence, for
+example where for example we can recognize an object even when a photograph is
+rotated or at an angle. Returning to our formal definitions, in order for ANNs
+algorithms to equivalently recognize _isomorphic_ graphs the functions
+stem:[varphi(sigma_(k))]acting on graphs should be _permutation invariant,
+meaning that for any two  graphs the outcomes of these functions are identical
+independently of the ordering of the nodes **V**. This concept can be exactly
+applied to images, which as mentined previously are special cases of fully
+connected graphs and similarly for other data types.
+
+Since both examples of the image and graphs are similarly points on a grids on
+a two dimemensional plane, we can use linear algebra and specifically a matrix,
+to represent the data transformations. Furthermore, the use of matrices enables
+us to connect the group symmetries with the actual data, through assigning
+matrix multiplications that represent the data transformations through
+modification of the coordinates of the objext on the plane as a result of the
+multiplication (**Fig. 2b**). The dimensions of the matrix latexmath:[$n \times
+n$] is usually similar to these of the signal space stem:["X"(Omega)] for the
+data (for example, stem:[nxn] images), and does not depend on the size of the
+group i.e. the number of possible symmetries, or the dimensionality of
+underlying data domain latexmath:[$\Omega$]. With this definition in place, the
+symmetries between modified data objects are a result of of _linear_ group
+actions - transformations. 
+
+Having used matrix and linear transformations as basis for formalizing the 
+data variability on we will now conclude by establishing also
+the formalisms for the resilience of the ANNs algorithms  
+While our framework is on a two-dimensional,tgrid data domain, it can be extrapolated to
+any number of dimensions with same generality
+Following the notation by cite:[bronstein2021geometric] we will connect matrices to group actions
 
 NEED EDITING FROM HERE ON
 
-latexmath:[$\fg, \fh \in \fG$] and latexmath:[$u
-\in \Omega$]. We shall see numerous instances of group actions in the following
-sections. For example, in the plane the _Euclidean group_
-latexmath:[$\mathrm{E}(2)$] is the group of transformations of
-latexmath:[$\R^2$] that preserves Euclidean distances, and consists of
-translations, rotations, and reflections. this is SYMMETRY More precisely, if
-we have a group latexmath:[$\fG$] acting on latexmath:[$\Omega$], we
-automatically obtain an action of latexmath:[$\fG$] on the space
-latexmath:[$\mathcal{X}(\Omega)$]:
-
-latexmath:[$\mathbf{x}_u$] for all latexmath:[$u \in \gV$].  The key structural
-property of graphs is that the nodes in latexmath:[$\gV$] are usually not
-assumed to be provided in any particular order, and thus any operations
-performed on graphs should not depend on the ordering of nodes. The desirable
-property that functions acting on graphs should satisfy is thus _permutation
-invariance_, and it implies that for any two _isomorphic_ graphs, the outcomes
-of these functions are identical.  
-
-Since both examples of the image and graphs are similarly grids on a two
-dimemnsional plane, we could use a linear representation of group and represent
-the group transformations in a matrix algebra format that is multiplied 
-
-
-[latexmath] ++++ \[(\fg . x)(u) = x(\fg^{-1} u).  \label{eq:group_action}\]
-++++ Due to the inverse on latexmath:[$\fg$], this is indeed a valid group
-action, in that we have latexmath:[$(\fg . (\fh . x))(u) = ((\fg \fh) .
-x)(u)$].
-
-The most important kind of group actions, which we will encounter repeatedly
-throughout this text, are _linear_ group actions, also known as _group
-representations_. The action on signals in
-equation (#eq:group_action[[eq:group_action]]) is indeed linear, in the sense
-that
-
-[latexmath] ++++ \[\fg . (\alpha x + \beta x') = \alpha (\fg . x) + \beta (\fg
+[latexmath] ++++ \[g . (\alpha x + \beta x') = \alpha (g . x) + \beta (g
 . x')\] ++++ for any scalars latexmath:[$\alpha, \beta$] and signals
-latexmath:[$x, x' \in \mathcal{X}(\Omega)$]. We can describe linear actions
-either as maps latexmath:[$(\fg, x) \mapsto \fg.x$] that are linear in
-latexmath:[$x$], or equivalently, by currying, as a map latexmath:[$\rho : \fG
-\rightarrow \R^{n \times n}$] that assigns to each group element
-latexmath:[$\fg$] an (invertible) matrix latexmath:[$\rho(\fg)$]. The dimension
-latexmath:[$n$] of the matrix is in general arbitrary and not necessarily
-related to the dimensionality of the group or the dimensionality of
-latexmath:[$\Omega$], but in applications to deep learning latexmath:[$n$] will
-usually be the dimensionality of the feature space on which the group acts. For
-instance, we may have the group of 2D translations acting on a space of images
-with latexmath:[$n$] pixels.
-
-As with a general group action, the assignment of matrices to group elements
-should be compatible with the group action. More specifically, the matrix
-representing a composite group element latexmath:[$\fg \fh$] should equal the
-matrix product of the representation of latexmath:[$\fg$] and
-latexmath:[$\fh$]:
+latexmath:[$x, x' \in \mathcal{X}(\Omega)$]. 
 
 A latexmath:[$n$]-dimensional real _representation_ of a group
-latexmath:[$\fG$] is a map latexmath:[$\rho : \fG \rightarrow \R^{n \times
-n}$], assigning to each latexmath:[$\fg \in \fG$] an _invertible_ matrix
-latexmath:[$\rho(\fg)$], and satisfying the condition latexmath:[$\rho(\fg \fh)
-= \rho(\fg) \rho(\fh)$] for all latexmath:[$\fg, \fh \in \fG$]. A
+latexmath:[$G$] is a map latexmath:[$\rho : G \rightarrow \R^{n \times
+n}$], assigning to each latexmath:[$g \in G$] an _invertible_ matrix
+latexmath:[$\rho(g)$], and satisfying the condition latexmath:[$\rho(g h)
+= \rho(g) \rho(h)$] for all latexmath:[$g, h \in G$]. A
 representation is called _unitary_ or _orthogonal_ if the matrix
-latexmath:[$\rho(\fg)$] is unitary or orthogonal for all latexmath:[$\fg \in
-\fG$].
+latexmath:[$\rho(g)$] is unitary or orthogonal for all latexmath:[$g \in
+G$].
 
 Written in the language of group representations, the action of
-latexmath:[$\fG$] on signals latexmath:[$x \in \mathcal{X}(\Omega)$] is defined
-as latexmath:[$\rho(\fg) x(u) = x(\fg^{-1} u)$]. We again verify that
+latexmath:[$G$] on signals latexmath:[$x \in \mathcal{X}(\Omega)$] is defined
+as latexmath:[$\rho(g) x(u) = x(g^{-1} u)$]. We again verify that
 
-[latexmath] ++++ \[(\rho(\fg) (\rho(\fh) x))(u) = (\rho(\fg \fh) x)(u).\] ++++
-
-image:figures/geom_prior.png[ Three spaces of interest in Geometric Deep
-Learning: the (physical) _domain_ latexmath:[$\Omega$], the space of
-_signals_ latexmath:[$\mathcal{X}(\Omega)$], and the _hypothesis_ class
-latexmath:[$\mathcal{F}(\mathcal{X}(\Omega))$]. Symmetries of the domain
-latexmath:[$\Omega$] (captured by the group latexmath:[$\fG$]) act on
-signals latexmath:[$x\in \mathcal{X}(\Omega)$] through group
-representations latexmath:[$\rho(\fg)$], imposing structure on the
-functions latexmath:[$f\in \mathcal{F}(\mathcal{X}(\Omega))$] acting on
-such signals. ]
+[latexmath] ++++ \[(\rho(g) (\rho(h) x))(u) = (\rho(g h) x)(u).\] ++++
 
 When artificial neural networks act as function estimators stem:[f("X"(Omega)
 to "Y")] to predict output labels (i.e stem:[y_i] = potent drug / not potent, 
