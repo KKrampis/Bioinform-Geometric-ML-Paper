@@ -131,7 +131,7 @@ layer each having each own weight stem:[w_(k)], forms an Artificial Neural
 Network (ANN).
 
 [#img-fig1] .stem:[sigma_(123)=sum_1^3 w_1**x_1 + w_2**x_2 + w_3**x_3 - b]
-image::graphviz.svg[Fig,659,361]
+image::graphviz.svg[Fig]
 
 Mathematically, a trained ANN is a function stem:[f] that predicts the labels
 stem:[y_(pred_i)] for the input data stem:[x_i], such as for example 'no
@@ -250,10 +250,14 @@ for which ANNs are trained for prediction and classification.
 A _symmetry group_ latexmath:[$G$] can be defined between the the input dataset
 used for training the ANN, which is a subset "signal" stem:["X"(Omega)] of all
 possible images and graphs from a data domain stem:[Omega] that can be formed
-for example on a  grid (**Fig.2**). The members of the symmetry group
+for example on a  grid (**Fig.2**). Therefore, a symmetry latexmath:[$g$]
+otherwise called a group action, is a transformation that preserves the
+properties of the data (for example the objects in the image and edge
+connections on the graph), and the set latexmath:[$G$] of all possible
+transformations is the symmetry group. The members of the symmetry group
 latexmath:[$g \in G$] are the associations of two or more points on the grid
 latexmath:[$u,v\in \Omega$] between which an image or graph can be rotated,
-shifted etc. without distortion of the data.  Therefore, the key aspect of the
+shifted etc. without distortion of the data.  Therefore, The key aspect of the
 formal mathematical definition of the group, is that the data attributes are
 preserved so that an image for example is not distorted when moved on the
 plane, or similarly not changing the connnections between the graph edges and
@@ -328,208 +332,48 @@ amount correponsing to the group action within the symmetry group.
 With these definitions in place, we can establish the resilience and
 performance of the ANNs with noisy, real-world data, as estimators of the
 overall function stem:[y_(pred_i)=f(x_i)] that fits the training data in order
-to recognise future patterns with new, unknown data. We define that the estimator 
-function of the ANN to be _invariant_ if the condition for the input data
-holds such as latexmath:[$f(\mathbf(M) x_i) = f(x_i)$] for all matrices representing
-actions latexmath:[$\fg \in \fG$] within the symmetry group. The condition required
-therefore for the function to be invariant, is for the function output value to be
-equal with both the original input stem:[x_i] and the one multiplied by the transformation
-matrix latexmath:[$f(\mathbf(M) x_i] representing the group action. Therefore, the 
-output values stem:[y_(pred_i)=f(x_i)] by the ANN - artificial neural networks 
-which are essentially predicted output labels (i.e stem:[y_i] = potent drug / not potent etc.)
-based on the input data, are resilient to noisy and deformed real-world data.
-Write the equivariant definition.
+to recognise future patterns with new, unknown data. We define that the
+estimator function of the ANN to be _invariant_ if the condition for the input
+data holds such as latexmath:[$f(\mathbf(M) x_i) = f(x_i)$] for all matrices
+representing actions latexmath:[$\fg \in \fG$] within the symmetry group. The
+condition required therefore for the function to be invariant, is for the
+function output value to be equal with both the original input stem:[x_i] and
+the one multiplied by the transformation matrix latexmath:[$f(\mathbf(M) x_i]
+representing the group action. Therefore, the output values
+stem:[y_(pred_i)=f(x_i)] by the ANN - artificial neural networks which are
+essentially predicted output labels (i.e stem:[y_i] = potent drug / not potent
+etc.) based on the input data, are resilient to noisy and deformed real-world
+data.  In other cases, the estimator function approximated by the ANN can be
+equivariant defined as latexmath:[$f(\mathbf(M) x_i) = \mathbf(M)f(x_i)$],
+which means that the label prediction result of the ANN is shifted equally to
+the shift in the input data.
 
-Such transformations may be either smooth, continuous, or discrete. Here we
-have discussed only discrete tranformations in linear algebra terms with matrix
-multiplications where we have rigid transformation of coordinates, but we can
-have continuous,  Write here about homeomorphisms, homorphisms etc.
-
-
-
-
-NEED EDITING FROM HERE ON
-==== Invariant and Equivariant functions
-
-The symmetry of the domain latexmath:[$\Omega$] underlying the signals
-latexmath:[$\mathcal{X}(\Omega)$] imposes structure on the function
-latexmath:[$f$] defined on such signals. It turns out to be a powerful
-inductive bias, improving learning efficiency by reducing the space of
-possible interpolants, latexmath:[$\mathcal{F}(\mathcal{X}(\Omega))$],
-to those which satisfy the symmetry priors. Two important cases we will
-be exploring in this text are _invariant_ and _equivariant_ functions.
-
-The function latexmath:[$f: \mathcal{X}(\Omega) \rightarrow \mathcal{Y}$]
-is latexmath:[$\fG$]-_invariant_ if latexmath:[$f(\mathbf(M) x_i) = f(x_i)$]
-for all latexmath:[$\fg \in \fG$] and
-latexmath:[$x \in \mathcal{X}(\Omega)$], i.e., its output is unaffected
-by the group action on the input.
-
-A classical example of invariance is _shift-invariance_, arising in
-computer vision and pattern recognition applications such as image
-classification. The function latexmath:[$f$] in this case (typically
-implemented as a Convolutional Neural Network) inputs an image and
-outputs the probability of the image to contain an object from a certain
-class (e.g. cat or dog). It is often reasonably assumed that the
-classification result should not be affected by the position of the
-object in the image, i.e., the function latexmath:[$f$] must be
-shift-invariant. Multi-layer Perceptrons, which can approximate any
-smooth function, do not have this property – one of the reasons why
-early attempts to apply these architectures to problems of pattern
-recognition in the 1970s failed. The development of neural network
-architectures with local weight sharing, as epitomised by Convolutional
-Neural Networks, was, among other reasons, motivated by the need for
-shift-invariant object classification.
-
-If we however take a closer look at the convolutional layers of CNNs, we
-will find that they are not shift-invariant but _shift-equivariant_: in
-other words, a shift of the input to a convolutional layer produces a
-shift in the output feature maps by the same amount.
-
-A function
-latexmath:[$f: \mathcal{X}(\Omega) \rightarrow \mathcal{X}(\Omega)$] is
-latexmath:[$\fG$]-_equivariant_ if
-latexmath:[$f(\rho(\fg)x) = \rho(\fg) f(x)$] for all
-latexmath:[$\fg \in \fG$], i.e., group action on the input affects the
-output in the same way.
-
-Resorting again to computer vision, a prototypical application requiring
-shift-equivariance is image segmentation, where the output of
-latexmath:[$f$] is a pixel-wise image mask. Obviously, the segmentation
-mask must follow shifts in the input image. In this example, the domains
-of the input and output are the same, but since the input has three
-color channels while the output has one channel per class, the
-representations latexmath:[$(\rho, \mathcal{X}(\Omega, \mathcal{C}))$]
-and latexmath:[$(\rho', \mathcal{X}(\Omega, \mathcal{C}'))$] are
-somewhat different.
-
-However, even the previous use case of image classification is usually
-implemented as a sequence of convolutional (shift-equivariant) layers,
-followed by global pooling (which is shift-invariant). As we will see in
-Section #sec:gdl_blueprint[1.5], this is a general blueprint of a
-majority of deep learning architectures, including CNNs and Graph Neural
-Networks (GNNs).
-
-[[sec:isomorphism]]
-=== Isomorphisms and Automorphisms
-
-==== Subgroups and Levels of structure
-
-As mentioned before, a symmetry is a transformation that preserves some
-property or structure, and the set of all such transformations for a
-given structure forms a symmetry group. It happens often that there is
-not one but multiple structures of interest, and so we can consider
-several _levels of structure_ on our domain latexmath:[$\Omega$]. Hence,
-what counts as a symmetry depends on the structure under consideration,
-but in all cases a symmetry is an invertible map that respects this
-structure.
-
-On the most basic level, the domain latexmath:[$\Omega$] is a _set_,
-which has a minimal amount of structure: all we can say is that the set
-has some _cardinality_. Self-maps that preserve this structure are
-_bijections_ (invertible maps), which we may consider as set-level
-symmetries. One can easily verify that this is a group by checking the
-axioms: a compositions of two bijections is also a bijection (closure),
-the associativity stems from the associativity of the function
-composition, the map latexmath:[$\tau(u)=u$] is the identity element,
-and for every latexmath:[$\tau$] the inverse exists by definition,
-satisfying
-latexmath:[$(\tau \circ \tau^{-1})(u) = (\tau^{-1} \circ \tau)(u) =u$].
-
-Depending on the application, there may be further levels of structure.
-For instance, if latexmath:[$\Omega$] is a topological space, we can
-consider maps that preserve _continuity_: such maps are called
-_homeomorphisms_ and in addition to simple bijections between sets, are
-also continuous and have continuous inverse. Intuitively, continuous
-functions are well-behaved and map points in a neighbourhood (open set)
-around a point latexmath:[$u$] to a neighbourhood around
-latexmath:[$\tau(u)$].
-
-One can further demand that the map and its inverse are (continuously)
-_differentiable_, i.e., the map and its inverse have a derivative at
-every point (and the derivative is also continuous). This requires
-further differentiable structure that comes with differentiable
-manifolds, where such maps are called _diffeomorphisms_ and denoted by
-latexmath:[$\mathrm{Diff}(\Omega)$]. Additional examples of structures
-we will encounter include _distances_ or _metrics_ (maps preserving them
-are called _isometries_) or _orientation_ (to the best of our knowledge,
-orientation-preserving maps do not have a common Greek name).
-
-A _metric_ or _distance_ is a function
-latexmath:[$d:\Omega\times\Omega \rightarrow [0,\infty)$] satisfying for
-all latexmath:[$u,v,w \in \Omega$]: +
-latexmath:[$d(u,v) =0$] iff latexmath:[$u=v$]. +
-latexmath:[$d(u,v) = d(v,u)$]. +
-latexmath:[$d(u,v) \leq  d(u,w) + d(w,v)$]. +
-A space equipped with a metric latexmath:[$(\Omega,d)$] is called a
-_metric space_.
-
-The right level of structure to consider depends on the problem. For
-example, when segmenting histopathology slide images, we may wish to
-consider flipped versions of an image as equivalent (as the sample can
-be flipped when put under the microscope), but if we are trying to
-classify road signs, we would only want to consider
-orientation-preserving transformations as symmetries (since reflections
-could change the meaning of the sign).
-
-As we add levels of structure to be preserved, the symmetry group will
-get smaller. Indeed, adding structure is equivalent to selecting a
-_subgroup_, which is a subset of the larger group that satisfies the
-axioms of a group by itself:
-
-Let latexmath:[$(\fG,\circ)$] be a group and
-latexmath:[$\mathfrak{H} \subseteq \fG$] a subset.
-latexmath:[$\mathfrak{H}$] is said to be a _subgroup_ of
-latexmath:[$\fG$] if latexmath:[$(\mathfrak{H},\circ)$] constitutes a
-group with the same operation.
-
-For instance, the group of Euclidean isometries latexmath:[$\E{2}$] is a
-subgroup of the group of planar diffeomorphisms latexmath:[$\diff{2}$],
-and in turn the group of orientation-preserving isometries
-latexmath:[$\SE{2}$] is a subgroup of latexmath:[$\E{2}$]. This
-hierarchy of structure follows the Erlangen Programme philosophy
-outlined in the Preface: in Klein’s construction, the Projective,
-Affine, and Euclidean geometries have increasingly more invariants and
-correspond to progressively smaller groups.
-
-[[isomorphisms-and-automorphisms]]
-==== Isomorphisms and Automorphisms
-
-We have described symmetries as structure preserving and invertible maps
-_from an object to itself_. Such maps are also known as _automorphisms_,
-and describe a way in which an object is equivalent it itself. However,
-an equally important class of maps are the so-called _isomorphisms_,
-which exhibit an equivalence between two non-identical objects. These
-concepts are often conflated, but distinguishing them is necessary to
-create clarity for our following discussion.
-
-To understand the difference, consider a set
-latexmath:[$\Omega = \{0,1,2\}$]. An automorphism of the set
-latexmath:[$\Omega$] is a bijection
-latexmath:[$\tau : \Omega \rightarrow \Omega$] such as a cyclic shift
-latexmath:[$\tau(u) = u + 1 \mod 3$]. Such a map preserves the
-cardinality property, and maps latexmath:[$\Omega$] onto itself. If we
-have another set latexmath:[$\Omega' = \{a, b, c\}$] with the same
-number of elements, then a bijection
-latexmath:[$\eta : \Omega \rightarrow \Omega'$] such as
-latexmath:[$\eta(0) = a$], latexmath:[$\eta(1) = b$],
-latexmath:[$\eta(2) = c$] is a _set isomorphism_.
-
-As we will see in Section #sec:proto-graphs[[sec:proto-graphs]] for
-graphs, the notion of structure includes not just the number of nodes,
-but also the connectivity. An isomorphism
-latexmath:[$\eta: \mathcal{V} \rightarrow \mathcal{V}'$] between two
-graphs latexmath:[$\mathcal{G}=(\mathcal{V},\mathcal{E})$] and
-latexmath:[$\mathcal{G}'=(\mathcal{V}',\mathcal{E}')$] is thus a
-bijection between the nodes that maps pairs of connected nodes to pairs
-of connected nodes, and likewise for pairs of non-connected nodes. Two
-isomorphic graphs are thus structurally identical, and differ only in
-the way their nodes are ordered. On the other hand, a graph automorphism
-or symmetry is a map
-latexmath:[$\tau : \mathcal{V} \rightarrow \mathcal{V}$] maps the nodes
-of the graph back to itself, while preserving the connectivity. A graph
-with a non-trivial automorphism (i.e.,
-latexmath:[$\tau \neq \mathrm{id}$]) presents symmetries.
+Up to this point, we have discussed only discrete tranformations in linear
+algebra terms, with matrix multiplications that result in a shift of
+coordinates and rigid transformations of the data, such as a rotation of the
+image or the graph by a specific angle on the grid stem:[Omega]. However, we
+can have also also have continuous, more fine grained shifts which is rather
+common that the exception with real-world data. The ANNs algorithms should be
+able to recognize patterns, classify and label the data without any loss of
+performance also in this case, and mathematically continuous transformation
+follow equally with the invariant and equivariant functions described earlier.
+If for example the domain latexmath:[$\Omega$] contains data that have smooth
+transformations and shifts, such as for example moving images (video) or shifts
+of molecules and graphs that preserve _continuity_ in a topological definition
+[REF] in this case we have _homeomorphisms_ between members of the symmetry
+group. Furthermore, if the rate if continuous transformation of the data is
+quantifiable, meaning that the function latexmath:[$\theta] that maps the group
+to a matrix is _differentiable_, then the members of the symmetry groups will
+be part of a _diffeomorphism_. As it follows from the principles of calculus,
+in this case infinitely multiple matrices latexmath:[$f(\mathbf(M)] will be
+generated accordingly by latexmath:[$\theta] for the continuous change of the
+data coordinates at every point. These differentiable data structures are
+common with manifolds, which for example could be used to represent proteins in
+fine detail, as a molecule cloud with all atomic forces around the structure,
+instead of just the discrete, abstract representation of nodes and edges of a
+graph. Finally, if the manifold structure includes includes also a metric of
+_distance_ between its points to further quantify the data transformations, in
+this case we will have an _isometry_.
 
 bibliography::[]
 
