@@ -208,59 +208,54 @@ new, unknown stem:[x_i] data.
 
 == ARTIFICIAL INTELLIGENCE, GROUP THEORY, SYMMETRY AND INVARIANCE
 
-We conclude, by briefly reviewing how the principles of group theory,
-symmetry and invariance, are a foundational framework to understand the
-function of machine learning algorithms, and examine the classifying power of
-ANNs in relation to statistical variance and non-homogeneity in the data. In
-summary, symmetry is the study of space and structure, with examples
-referring to to geometric and algebraic constructs in mathematics, material
-elements in physics and molecular biology structures. Invariance of an object
-under transformation, is the property of changing the position of the object
-in space, such as shifting a drug molecule or rotating a cancer histology
-image, while leaving the properties of the object unchanged
-cite:[bronstein2021geometric]. In these examples, the drug remains potent
-following rotation of the molecule, and the tissue is still recognized as
-cancerous based on the histology image. 
+We conclude, by briefly reviewing how the principles of group theory, symmetry
+and invariance, are a foundational framework to understand the function of
+machine learning algorithms, and the classifying power of ANNs in relation to
+statistical variance and non-homogeneity in the data. In summary, symmetry is
+the analysis of geometric and algebraic mathematical objects with applications
+to physics, molecular biology and machine learning as data following the
+structure of such objects are found in these fields. A core concept in symmetry
+is invariance, which in our context is changing data coordinates , such as
+shifting a drug molecule in space or a cancer histology tissue sample, while
+leaving the shape of the object unchanged cite:[bronstein2021geometric].
+Following such a change which as will be formally defined later in the text as
+invariant transformation, the machine learning algorithms and ANNs must be able
+to recognize for example the drug molecule following rotation, and a tissue to
+be recognized as cancerous based on a histology image. 
 
-Following the terminology of Bronstein et al., we consider the input
-stem:[x_i] from a data domain stem:[Omega], which has a specific structure
-corresponding to the data type used for training the ANN. For example,
+In order to link the abstract symmetry concepts with data classification in
+machine learning, following the terminology of Bronstein et al., we consider
+the input data stem:[x_i] from a symmetry domain stem:[Omega]. The stem:[Omega]
+has a structure on which the input data are based upon, and within this domain
+range we train the machine learning algorithms and fit the classification and
+label prediction function of artificial neural networks. For example,
 microscopy images are essentially 2-dimensional numerical grids (matrices) of
-_n x n_ pixels, with each pixel having a value for light intensity.  In this
-case the data domain is composed of integers (stem:[ZZ]) as grid stem:[Omega:
-ZZ_n xx ZZ_n], which can have all possible combinations of pixel intensities.
-Similarly, for color images the data domain is stem:[x_i:Omega to ZZ_n^3 xx
-ZZ_n^3], with 3 integer grids each representing the green, blue and red
-layers composing the color image. The ANN data fitting and label prediction
-function stem:[y_(pred_i)=f(x_i)] is applied on a "signal" stem:["X"(Omega)]
-from the domain, which is a subset of the domain stem:[Omega] with the
-specific images used for training the neural network. 
+_n x n_ pixels (*Fig.2a*), with each pixel having a value for light intensity.
+In this case the data domain is composed of integers (stem:[ZZ]) on a grid
+stem:[Omega: ZZ_n xx ZZ_n], which can have all possible combinations of pixel
+intensities.  Similarly, for color images the data domain is stem:[x_i:Omega to
+ZZ_n^3 xx ZZ_n^3], with three overlayed integer grids each representing the
+green, blue and red layers composing the color image. The ANN data
+classification and label prediction function stem:[y_(pred_i)=f(x_i)] is
+applied on the input data stem:[x_i], which are a "signal" stem:["X"(Omega)]
+from the domain. The signal is essentially a subset of the domain, containing
+the specific pixel combinations representing the images in the dataset used for
+training the neural network, out of all possible combinations that can be
+formed on the grid stem:[Omega] (*Fig.2a*). 
 
-[.left]
-[graphviz, target=Fig2a, format=svg]
-....
-digraph directedgraph {
-  node [shape=circle, style=filled, color=lightblue, fontname=Arial, fontsize=12];
-  edge [color=gray, penwidth=1.5];
-
-  A [label="Node A", color=green];
-  B [label="Node B", color=blue];
-  C [label="Node C", color=red];
-  D [label="Node D", color=yellow];
-  E [label="Node E", color=orange];
-  F [label="Node F", color=purple];
-
-  A -> B;
-  A -> C;
-  B -> C;
-  B -> D;
-  C -> D;
-  C -> E;
-  D -> E;
-  D -> F;
-}
-....
-
+A _symmetry group_ latexmath:[$G$] contains all possible transformations of the
+input - "signal" stem:["X"(Omega)] called symmetries latexmath:[$g$] or
+otherwise group actions. A symmetry transformation latexmath:[$g$] preserves
+the properties of the data, such as for example not distorting the objects in
+the image during rotation. The members of the symmetry group latexmath:[$g \in
+G$] are the associations of two or more coordinate points on the grid
+latexmath:[$u,v\in \Omega$] between which for example an image can be rotated,
+shifted or otherwise transformed without distortion. Therefore, the key aspect
+of the formal mathematical definition of the group, is that the data attributes
+are preserved during object distortions that are common during the experimental
+acquisition of bioinformatics data. The concept of symmetry groups is
+important towards modeling the performance of machine learning algorithms, for
+classifying the data patterns correctly despite the variability found in the input data.
 
 [.left]
 [graphviz, target=Fig2b, format=svg]
@@ -287,61 +282,64 @@ digraph grid_layout {
 }
 ....
 
-Another important data structure for bioinformatics is a _graph_
-latexmath:[$G = (V, E)$] that is composed of _nodes_ latexmath:[$V$]
-representing biological entities, and _edges_  which are connections between
-pairs of nodes (*Fig.2*).  In a specific instance of a graph, the present
-edges are a subset of all possible edges between nodes.An example graph data
+[.left]
+[graphviz, target=Fig2a, format=svg]
+....
+digraph directedgraph {
+  node [shape=circle, style=filled, color=lightblue, fontname=Arial, fontsize=12];
+  edge [color=gray, penwidth=1.5];
+
+  A [label="Node A", color=green];
+  B [label="Node B", color=blue];
+  C [label="Node C", color=red];
+  D [label="Node D", color=yellow];
+  E [label="Node E", color=orange];
+  F [label="Node F", color=purple];
+
+  A -> B;
+  A -> C;
+  B -> C;
+  B -> D;
+  C -> D;
+  C -> E;
+  D -> E;
+  D -> F;
+}
+....
+
+Another important data structure for bioinformatics is a _graph_ latexmath:[$G
+= (V, E)$] that is composed of _nodes_ latexmath:[$V$] representing biological
+entities, and _edges_  which are the connections between pairs of nodes
+(*Fig.2b*).  In a specific instance of a graph for a real-world object,  the
+edges are a subset of all possible links between nodes. An example graph data
 structure for a biological molecule such a protein or a drug, would represent
-respectively the amino acids or atoms as node entities, and the chemical
-bonds between each of these entities as edges. Noted that the nodes and their
-edge connections are simply an abstraction of the real-world object, and the
-edges can correspond to either the carbonyl-amino (C-N) peptide bonds between
-amino acids, molecular interactions across the peptide chain leading to three
-dimensional protein structure, or the bonds in the chemical structure of a
-small molecule in the preceding examples. Next, attributes in the source data
-such as for example polarity and amino acid weight , or drug binding
-properties of the chemical molecule can be represented as node attributes
-latexmath:[$s$]-dimensional , where _s_ are the number of attributes in the
-data for each object represented as a node. Similarly the edges or entire
-graphs, can have attributes, for data on the molecular interactions
-represented by the edges or the whole molecular entity (ex.  protein or
-drug).
+the amino acids or atoms as node entities, and the chemical bonds between each
+of these entities as edges. The edges can correspond to either the
+carbonyl-amino (C-N) peptide bonds between amino acids and molecular
+interactions across the peptide chain on the protein structure, or the chemical
+bonds between atoms in a drug molecule in the preceding example. Furthermore,
+attributes in the molecular data such as for example polarity and amino acid
+weight, or drug binding properties can be represented as latexmath:[$s$] -
+dimensional node attributes, where _s_ are the attributes for each object
+represented as a node.  Similarly the edges or even entire graphs can have
+attributes, respectively for experimental data measured on the molecular
+interactions as edges, or measurements for the complete protein or drug.
+Finally, from a , images are a special case of graphs where the nodes are the
+pixels, and connect with edges in a structured pattern that form of a grid
+(*Fig.2a*) representing the adjacent position of the pixels.  
 
-From a mathematical and algorithmic perspective, images are a special case of
-graphs where the nodes have a set of connection with edges in a structured
-pattern that form of a grid. Under this perspective, the graph nodes are the
-pixels of the images, and the edges the connections specifying the adjacency
-of the pixels (*Fig.2*).  With this realization in place, we can now
-examine the analytical and classification power of ANNs given variance in the
-data, for both data types in cases where we have in the dataset shifted or
-rotated input images or molecules represented as graphs.  We establish this
-through the principles of group theory, symmetry and invariance. These are
-the foundational mathematical and algorithmic principles that model the
-performance and output of machine learning algorithms ANNs in relation to the
-variability in the dataset. Consecutively, these principles can then be
-extrapolated for other types of data beyond graphs and images, 
-for which ANNs are trained for prediction and classification.
-
-A _symmetry group_ latexmath:[$G$] can be defined between the the input dataset
-used for training the ANN, which is a subset "signal" stem:["X"(Omega)] of all
-possible images and graphs from a data domain stem:[Omega] that can be formed
-for example on a  grid (*Fig.2*). Therefore, a symmetry latexmath:[$g$]
-otherwise called a group action, is a transformation that preserves the
-properties of the data (for example the objects in the image and edge
-connections on the graph), and the set latexmath:[$G$] of all possible
-transformations is the symmetry group. The members of the symmetry group
-latexmath:[$g \in G$] are the associations of two or more points on the grid
-latexmath:[$u,v\in \Omega$] between which an image or graph can be rotated,
-shifted etc. without distortion of the data.  Therefore, The key aspect of the
-formal mathematical definition of the group, is that the data attributes are
-preserved so that an image for example is not distorted when moved on the
-plane, or similarly not changing the connnections between the graph edges and
-nodes representing molecule elements, when the molecule is rotated. something
-that is common in noisy, real-world data. Essentially, the symmetry group
-represented as latexmath:[$G$] ensures through these associations of points on
-the plane for the present example, that the data integrity is preserved for a
-set of changes that belong within the symmetry group. 
+Having established the mathematical and algorithmic parallels between
+graphs and images, we can now examine the analytical and classification power
+of machine learning ANNs in relation to variability and transformations in the data 
+based on the principles of the _symmetry group_ latexmath:[$G$] discussed earlier. for
+both data types in cases where we have in the dataset shifted or rotated input
+images or molecules represented as graphs.  We establish this through the
+principles of group theory, symmetry and invariance. These are the foundational
+mathematical and algorithmic principles that model the performance and output
+of machine learning algorithms ANNs in relation to the variability in the
+dataset. Consecutively, these principles can then be extrapolated for other
+types of data beyond graphs and images, for which ANNs are trained for
+prediction and classification.
 
 This is an important aspect of modeling data classification and training of
 ANNs through group theory and symmetry, so we can formalize the resilience of
@@ -355,39 +353,42 @@ by the same group operation. For example, an image with a triangle which
 essentially is a graph with three nodes, can have the same rotational symmetry
 group as a graph of three nodes or a numerical sequence of three elements.
 
-As with real chemical or biological molecules measured in an experiment, graphs
-which represent them as described earlier have the property that the nodes in
-set latexmath:[$V$] are usually provided in any order. This does not change the
-meaning of the data, and as long as the edges **E** representing the
-connections between the molecules stay the same we have the same molecular
-entity indepentently of the ordering of **V**, and is this case two graphs for
-the same molecule are _isomorphic_. Furthermore, any machine learning
-algorithms performing operations on graphs, should not depend on the ordering
-of nodes so that classification and pattern recognition with ANNs and
-artificial intelligence is not affected by shifts and rotations in real-world.
-This is something that is taken for granted with human intelligence, for
-example where for example we can recognize an object even when a photograph is
-rotated or at an angle. Returning to our formal definitions, in order for ANNs
-algorithms to equivalently recognize _isomorphic_ graphs the functions
-stem:[varphi(sigma_(k))]acting on graphs should be _permutation invariant,
-meaning that for any two  graphs the outcomes of these functions are identical
-independently of the ordering of the nodes **V**. This concept can be exactly
-applied to images, which as mentined previously are special cases of fully
-connected graphs and similarly for other data types.
+When chemical and biological molecules are represented as graphs as described
+earlier, the nodes latexmath:[$V$] can be in any order depending on how the
+data were measured during the experiment.   This does not change the meaning of
+the data, and as long as the edges **E** representing the connections between
+the molecules are correct we have a proper representation of the molecular
+entity indepentently of the ordering of **V**. In this case, where two graphs
+for the same molecule have the same edges but different ordering of nodes, they
+are _isomorphic_. Furthermore, any machine learning algorithm performing
+operations on graphs, should not depend on the ordering of nodes so that
+classification and pattern recognition with ANNs and artificial intelligence is
+not affected by experiment measurement variations in real-world data.  This is
+something that is taken for granted with human intelligence, for where for
+example we can recognize an object even when a photograph is rotated at an
+angle. Returning to our formal definitions, in order for ANNs algorithms to
+equivalently recognize _isomorphic_ graphs, the functions
+stem:[varphi(sigma_(k))] of the ANN acting on graph data should be _permutation
+invariant_, meaning that for any two graphs the outcomes of these functions are
+identical independently of the ordering of the nodes **V**. This concept can be
+similarly applied to images, which as mentioned previously are special cases of
+fully connected graphs, and furthermore thes concepts apply similarly for other
+data types.
 
 Since both examples of the image and graphs are similarly points on a grids on
 a two dimemensional plane, we can use linear algebra and specifically a matrix,
-to represent the data transformations. Furthermore, the use of matrices enables
-us to connect the group symmetries with the actual data, through assigning
-matrix multiplications that represent the data transformations through
-modification of the coordinates of the objext on the plane as a result of the
-multiplication (*Fig. 2b*). The dimensions of the matrix latexmath:[$n \times
-n$] is usually similar to these of the signal space stem:["X"(Omega)] for the
-data (for example, stem:[nxn] images), and does not depend on the size of the
-group i.e. the number of possible symmetries, or the dimensionality of
-underlying data domain latexmath:[$\Omega$]. With this definition in place, the
-symmetries between modified data objects are a result of of _linear_ group
-actions - transformations. 
+to represent the data transformations as group actions latexmath:[$g$] within
+the symmetry group latexmath:[$G$]. The use of matrices enables us to connect
+the group symmetries with the actual data, through matrix multiplications that
+modify the coordinates of the object and consecutively represent the data
+transformations through the multiplication (*Fig. 2b*). The dimensions of the
+matrix latexmath:[$n \times n$] is usually similar to these of the signal space
+stem:["X"(Omega)] for the data (for example, stem:[nxn] images), and does not
+depend on the size of the group i.e.  the number of possible symmetries, or the
+dimensionality of underlying data domain latexmath:[$\Omega$]. With this
+definition in place, we can add to the definition of symmetries and group
+actions for modifying data objects, are a result of _linear_ - matrix
+transformations. 
 
 Having used matrix and linear transformations as basis for formalizing
 variability in the data, we will now conclude by establishing also the
@@ -397,13 +398,13 @@ two-dimensional, grid data domain latexmath:[$\Omega$], formalisms developed
 here can be extrapolated without loss of generality to any number of dimensions
 or data formats. We will first connect matrices to group actions
 latexmath:[$g$] (rotations, shifts etc.) in the symmetry group latexmath:[$g
-\in G$], by defining a function latexmath:[$\theta] that maps the group to a matrix as
-latexmath:[$\theta : G \rightarrow \mathbf{M}]. As mentioned previously and
-demonstrated on *(Fig. 2b)* this is a matrix  latexmath:[$\mathbf{M} in \R^{n
-\times n}$] of numerical values (integers, fractions, positive and negative),
-which when multiplied to the coordinates values of the object on the plane
-latexmath:[$\Omega$], it rotates or shifts the object coordinates for the exact
-amount correponsing to the group action within the symmetry group.
+\in G$], by defining a function latexmath:[$\theta] that maps the group to a
+matrix as latexmath:[$\theta : G \rightarrow \mathbf{M}]. As mentioned
+previously and a matrix  latexmath:[$\mathbf{M} in \R^{n \times n}$] of
+numerical values (integers, fractions, positive and negative), when multiplied
+to the coordinate values of an object on the plane latexmath:[$\Omega$], it
+rotates or shifts the object coordinates for the exact amount correponsing to
+the group action within the symmetry group.
 
 With these definitions in place, we can establish the resilience and
 performance of the ANNs with noisy, real-world data, as estimators of the
@@ -417,10 +418,10 @@ function output value to be equal with both the original input stem:[x_i] and
 the one multiplied by the transformation matrix latexmath:[$f(\mathbf(M) x_i]
 representing the group action. Therefore, the output values
 stem:[y_(pred_i)=f(x_i)] by the ANN - artificial neural networks which are
-essentially predicted output labels (i.e stem:[y_i] = potent drug / not potent
+essentially predicted output labels (i.e stem:[y_(pred_i)] = potent drug / not potent
 etc.) based on the input data, are resilient to noisy and deformed real-world
 data.  In other cases, the estimator function approximated by the ANN can be
-equivariant defined as latexmath:[$f(\mathbf(M) x_i) = \mathbf(M)f(x_i)$],
+equivariant and defined as latexmath:[$f(\mathbf(M) x_i) = \mathbf(M)f(x_i)$],
 which means that the label prediction result of the ANN is shifted equally to
 the shift in the input data.
 
@@ -428,16 +429,16 @@ Up to this point, we have discussed only discrete tranformations in linear
 algebra terms, with matrix multiplications that result in a shift of
 coordinates and rigid transformations of the data, such as a rotation of the
 image or the graph by a specific angle on the grid stem:[Omega]. However, we
-can have also also have continuous, more fine grained shifts which is rather
-common that the exception with real-world data. The ANNs algorithms should be
+can have also also have continuous, more fine grained shifts which is 
+common with real-world data. In this case, the ANNs algorithms should be
 able to recognize patterns, classify and label the data without any loss of
-performance also in this case, and mathematically continuous transformation
+performance, and mathematically the continuous transformations
 follow equally with the invariant and equivariant functions described earlier.
 If for example the domain latexmath:[$\Omega$] contains data that have smooth
 transformations and shifts, such as for example moving images (video) or shifts
 of molecules and graphs that preserve _continuity_ in a topological definition
-[REF] in this case we have _homeomorphisms_ between members of the symmetry
-group. Furthermore, if the rate if continuous transformation of the data is
+cite:[sutherland2009introduction] in this case we have _homeomorphisms_ between members of the symmetry
+group. Furthermore, if the rate of continuous transformation of the data is
 quantifiable, meaning that the function latexmath:[$\theta] that maps the group
 to a matrix is _differentiable_, then the members of the symmetry groups will
 be part of a _diffeomorphism_. As it follows from the principles of calculus,
@@ -446,10 +447,11 @@ generated accordingly by latexmath:[$\theta] for the continuous change of the
 data coordinates at every point. These differentiable data structures are
 common with manifolds, which for example could be used to represent proteins in
 fine detail, as a molecule cloud with all atomic forces around the structure,
-instead of just the discrete, abstract representation of nodes and edges of a
-graph. Finally, if the manifold structure includes includes also a metric of
+instead of the discrete, abstract representation of nodes and edges of a
+graph. Finally, if the manifold structure includes also a metric of
 _distance_ between its points to further quantify the data transformations, in
-this case we will have an _isometry_.
+this case we will have an _isometry_ during the transformation due to a group
+action within the symmetry group.
 
 bibliography::[]
 
