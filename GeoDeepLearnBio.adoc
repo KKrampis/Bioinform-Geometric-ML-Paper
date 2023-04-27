@@ -1,4 +1,4 @@
-= Mathematical Principles of Artificial Neural Networks and Machine Learning for Bioinformatics
+= Principles of Artificial Neural Networks and Machine Learning for Bioinformatics Applications
 
 Konstantinos Krampis*^1^, Eric Ross^2^, Olorunseun O. Ogunwobi^1^, Grace Ma,^3^ Raja Mazumder,^4^ Claudia Wultsch^1^
 
@@ -6,35 +6,34 @@ Konstantinos Krampis*^1^, Eric Ross^2^, Olorunseun O. Ogunwobi^1^, Grace Ma,^3^ 
 :stem:
 :bibtex-file: ./GDL-bibliography/references.bib
 
-^1^Belfer Research Facility, Biological Sciences, Hunter College, City University of New York
-^2^Fox Chase Cancel Center 
-^3^Temple University
-^4^George Washington University
+^1^Belfer Research Facility, Biological Sciences, Hunter College, City University of New York, NY, USA
+^2^Fox Chase Cancer Center, Philadephia, PA, USA
+^3^Center for Asian Health, Lewis Katz School of Medicine, Temple University, Philadelphia, PA, USA
+^4^Biochemistry and Molecular Biology, George Washington University, Washington D.C., USA
 
 ^*^Corresponding Author, _agbiotec@gmail.com_
 
 == ABSTRACT 
-Following the exponential growth of deep learning methodology
-within the machine field in recent years, the use of Artificial Neural Network
-(ANNs) models has also had significant applications towards bioinformatics data
-analysis. Various types of datasets have been used for machine learning by
-training ANNs for inference and classification, including for example protein
-or gene interaction networks, molecular structures and cellular signalling
-pathways. However, unlike images, video and text that are commonly used in the
-computer science and engineering fields and which contain regular data
-structures, bioinformatics datasets present unique challenges and require
-different algorithmic approaches.  The recent development of the geometric deep
-learning approach within the machine learning field, is promising towards
-accelerating scientific discovery also in bioinformatics by enabling new
-approaches to understand complex datasets.  This novel methodology and its
-importance for bioinformatics machine learning is demonstrated herein, through
-presentation of the undelying mathematical foundations from group theory, graph
-data structures and linear algebra.  Furthermore, the structure and functions
-of ANNs algorithm that form the core principles if artificial intelligence are
-explained, in relation to the bioinformatics data domain.  Overall, the
-manuscript provides guidance for researchers to understand the mathematical
-principles required for practicing machine learning and artificial
-intelligence, in addition to the special considerations towards bioinformatics
+With the exponential growth of machine learning and development of Artificial
+Neural Network (ANNs) in recent years, there is great opportunity to leverage
+this approach and accelarate biological discoveries through applications on the
+analysis of bioinformatics data.  Various types of datasets including for
+example protein or gene interaction networks, molecular structures and cellular
+signalling pathways, have already been used for machine learning by training
+ANNs for inference and pattern classification.  However, unlike regular data
+structures that are commonly used in the computer science and engineering
+fields, bioinformatics datasets present challenges that require unique
+algorithmic approaches.  The recent development of the geometric and deep
+learning approach within the machine learning field, is very promising towards
+accelerating analysis complex bioinformatics datasets.  The principles of ANNs
+and their importance for bioinformatics machine learning is demonstrated
+herein, through presentation of the undelying mathematical and statistical
+foundations from group theory, symmetry, linear algebra.  Furthermore, the
+structure and functions of ANN algorithms that form the core principles of
+artificial intelligence are explained, in relation to the bioinformatics data
+domain.  Overall, the manuscript provides guidance for researchers to
+understand the principles required for practicing machine learning and
+artificial intelligence, with the special considerations towards bioinformatics
 applications.
 
 
@@ -42,74 +41,75 @@ applications.
 
 Symmetry and invariance is a central concept in physics, mathematical and
 biological systems, and has been established since the early 20th century that
-fundamental physics and chemistry principles are based on symmetry
-cite:[noether1918invariante].  In the last decade, technologies such as genomic
+fundamental principles of nature are based on symmetry cite:[noether1918invariante].
+In the last decade, technologies such as genomic
 sequencing have enabled an exponential increase cite:[katz2022sequence] of the
 data that describe the molecular elements, structure and function of biological
 systems. Furthermore, data generation in fields as diverse as physics, software
 development and social media cite:[clissa2022survey], have resulted in datasets
-of scale not previously available to scientists. This data explosion, has been
+of scale not previously available to scientists. This data abundance, has been
 fundamental for the ever accelerating advancements in the field of machine
 learning, deep learning and artificial intelligence, where we now  have
-algorithms that can be trained to make discoveries from the data at a level
-that matches closely human intuition.
+algorithms that can be trained to make discoveries from the data, at a level
+that closely matches human intuition.
 
-As in any field, including bioinformatics, that develops rapidly whithin the
-span of a few years, deep learning and artificial intelligence researchers have
-developed hundreds of successful algorithms, however with a few unifying
-principles . In a seminal `proto-book` by Bronstein et al.
-cite:[bronstein2021geometric], a range of systematization principles for the
-different artificial neural network architectures from the deep learning field
-was presented, based on the concepts of symmetry that is formalized within the
-mathematical field of group theory. The authors also introduced the concept of
-geometric deep learning, and demonstrated how the group theory, function invariance 
-and equivariance principles, can be used as basis towards composing and describing 
-the various deep learning algorithms. Using these principles as basis, in the
-present manuscript we review the structure of ANNs, and the function of machine
-learning algorithms with bioinformatics data, alogin with a review of mathematical
-structures that support development of artificial intelligence applications in 
-this field.
+The field of deep learning and artificial intelligence, has developed rapidly
+within the span of a few years, and while researchers have developed hundreds
+of successful algorithms, there currently few unifying principles to organize
+systematically the machine learning algorithms. In a seminal `proto-book` by
+Bronstein et al.  cite:[bronstein2021geometric], a range of systematization
+principles for the different Artificial Neural Network (ANN) architectures and
+deep learning algorithms were presented, based on the concepts of symmetry and
+mathematical group theory.  The authors also introduced the concept of
+geometric deep learning, and demonstrated how the group theory, function
+invariance and equivariance principles, can be used as basis towards composing
+and describing the various deep learning algorithms. Along these lines, in the
+present manuscript we explain the structure of ANNs and the principles of machine
+learning algorithms, while providing a review of mathematical and statistical
+foundations related to the  development of artificial intelligence applications
+with bioinformatics data.
 
 == THE STRUCTURE OF ARTIFICIAL INTELLIGENCE AND NEURAL NETWORKS
 
 We will first describe the structures and function of deep learning and
-Artificial Neural Networks (ANNs) that are the foundation of artificial
-intelligence cite:[li2019deep]. Assume a dataset consisting of _n_ pairs of
+Artificial Neural Networks (ANNs) that are the basis of artificial intelligence
+cite:[li2019deep]. Assume a dataset consisting of _n_ pairs of
 stem:[(x_i,y_i)_n], with the stem:[x_i] being _n_ data points and stem:[y_i]
 their labels. Each stem:[x_i] data point can be for example be a number, a
-vector (array of numbers), a matrix (grid of numbers) storing bioinformatics
-data.  The data and labels can be of various formats, such as binary
-(two-option) as for example stem:[y_i=1] "inhibits cancer growth", or
+vector (array of numbers), or a matrix (grid of numbers) storing diffent types
+of bioinformatics data.  The data and labels can be of various formats, such as
+binary (two-option) as for example stem:[y_i=1] "inhibits cancer growth", or
 stem:[y_i=0] "does not inhibit cancer". The labels can also be continuous
-numbers such as for example stem:[y_i=0.3] meaning 30% inhibition, while also
-each stem:[y_i] could be a composite label such as stem:[y_i = (0,1,0)]
-representing respectively drug attributes such as '0 - no inhibition', '1 - yes
-for toxicity', '0 - not metabolized'. Similarly the data points can also be
-composite such as for example stem:[x_i = (50,100)] representing two measuments
-for a single biological entity. Independently of the label structure, the deep
-learning algorithms and overall the goal of artificial intelligence for bioinformatics,
-is to perform classification by predicting labels for newly generated data,
-following pre-training with existing data for which the labels are known. 
+numbers such as for example stem:[y_i=0.3] meaning 30% inhibition, or a
+composite label such as stem:[y_i = (0,1,0)] representing respectively drug
+attributes such as '0 - no inhibition', '1 - yes for toxicity', '0 - not
+metabolized'. Similarly, the input data points can also be composite such as
+for example stem:[x_i = (50,100)] representing two measuments for a single
+biological entity. Independently of the label structure, the deep learning
+algorithms and the overall goal of artificial intelligence applications for
+bioinformatics, is to first train the ANN with data for which the labels are
+known, and then perform classification of newly generated data, by predicting
+their labels. 
 
 The simplest structure of an artificial neural network as shown on *Fig.1* is
 "fully connected", with each neuron _k_ in the ANN having a number of incoming
 and outgoing connections corresponding to the number of neurons in previous and
 next layer in the neural network. For example the neuron stem:[k_0^(1)] of the
-_First Layer 1_ on *Fig.1*, has stem:[n = 2] incoming and stem:[n = 3] outgoing
+_First Layer (1)_ on *Fig.1*, has stem:[n = 2] incoming and stem:[n = 3] outgoing
 connections, corresponding respectively to the "input layer" with two neurons,
-and three connections with the neurons of the internal - "hidden layer" named
-_Second Layer 2_ on the same figure. The internal layers are called "hidden"
+and three connections with the neurons of the internal ("hidden layer") labeled
+_Second Layer (2)_ on the figure. The internal layers are called "hidden"
 since they do not receive input data directly, similarly to the neurons performing
-cognition in animal brains as opposed to sensory neurons. While the hidden
-layers can have an arbitrary number of neurons each, based on the complexity of
+cognition in animal brains, as opposed to sensory neurons. While the hidden
+layers can have an arbitrary number of neurons based on the complexity of
 the label classification problem we need the ANN to resolve cite:[uzair2020effects], the input
-layer has the numbers of neurons corresponding to the input data structure. On
+layer has the exact number of neurons corresponding to the input data structure. On
 *Fig. 1* for example we have two input neurons, and the data can be of the
 form stem:[x_i = (50,100)]. Finally, the output layer has a number of neurons 
-corresponding to the number of labels stem:[y_i] in the training data, per input 
-data point, and in the example of *Fig. 1* there is a single label.
+corresponding to the number of labels stem:[y_i] per input data point in the data, 
+and on *Fig. 1* there is a single label.
 
-.The signal aggregation taking place on the second neuron stem:[sigma_(k_1^((2)))] of the second hidden layer, can be expressed with the formula stem:[sigma_(k_1^((2)))=sum_(k_(0,1,2))^((1)) w_(k0)**x_(k0) + w_(k1)**x_(k1) + w_(k2)**x_(k2) - b], which is the aggregation of neuron signals from the first layer, shown as red arrows on the figure. The _b_ is the threshold that needs to be overcome by the aggregation in order for the neuron to fire, and following the neuron will transmit a signal along the line shown towards the output neuron on the final layer on the figure. The reader should refer to the text for more details.
+.An example *Artificial Neural Network (ANN)*. The signal aggregation taking place on the second neuron stem:[sigma_(k_1^((2)))] of the second hidden layer, can be expressed with the formula stem:[sigma_(k_1^((2)))=sum_(k_(0,1,2))^((1)) w_(k0)**x_(k0) + w_(k1)**x_(k1) + w_(k2)**x_(k2) - b], which is the aggregation of neuron signals from the first layer, shown as red arrows on the figure. The _b_ is the threshold that needs to be overcome by the aggregation sum in order for the neuron to fire, and then the neuron will transmit a signal along the line shown towards the output on the final layer on the figure. The reader should refer to the text for more details.
 [#img-fig1] 
 image::graphviz.svg[Fig1]
 
@@ -118,60 +118,63 @@ used in machine learning and artificial intelligence, model neurons as
 computational units performing signal summation and threshold activation.
 Specifically, each artificial neuron performs a summation of incoming signals
 from its connected neighbooring neurons in the preceeding layer on the network,
-shown for example as red arrows on *Fig.1* for stem:[k1].  The signals across
-the Artificial Neural Network (ANN) transition from input data stem:[x_i] on
-the leftmost layer (*Fig.1*), to output of data labels stem:[y_i] on the right
-end. Within each neuron, when the aggregated input reaches a certain threshold,
-the neuron "fires" and transmits a signal to the next layer. The signals coming
+shown for example as red arrows on *Fig.1* for stem:[sigma_(k_1^((2)))]. The
+signal processing across the ANN transitions from input data stem:[x_i] on the
+leftmost layer (*Fig.1*), to output of data labels stem:[y_i] on the right end.
+Within each neuron, when the aggregated input reaches a certain threshold, the
+neuron "fires" and transmits a signal to the next layer. The signals coming
 into the neuron can be either the data directly from the input layer, or
-signals generated by activation of the neurons of the intermediate layers. The
-summation and thresholding computation within each neuron is represented with
-the function stem:[sigma_(k)=sum_1^k w_(k)**x_(k) - b], where the stem:[w_(k)]
-is the connection weight with the preceding neuron. Each connection arrow on
-*Fig.1* has a different weight, such as for example stem:[x_(k0)] which is the
-incoming signal from the neuron stem:[k0] to neuron stem:[k1], multiplied by
-the weight stem:[w_(k0)], which represents the strength of the connection
-between the neurons.
+signals generated by activation of the neurons in the intermediate - "hidden"
+layers. The summation and thresholding computation within each neuron is
+represented with the function stem:[sigma_(k)=sum_1^k w_(k)**x_(k) - b], where
+the stem:[w_(k)] is the connection weights of the preceding neurons. Each
+connection arrow on *Fig.1* has a different weight, such as for example
+stem:[x_(k0)] which is the incoming signal from the neuron
+stem:[sigma_(k_0^((1)))] to neuron stem:[sigma_(k_1^((2)))], multiplied by the
+weight stem:[w_(k0)], which represents the strength of the connection between
+these two artificial neurons.
 
-The weight value stem:[w_(k)] is the only element in the ANNs that is variable,
-and is adjusted by the algorithms during training with the input data,
-similarly to the biological brain where learning takes place by strengthening
-connections among neurons cite:[wainberg2018deep].  Unlike the biological
-brain, the ANNs used in practice for data analysis have fixed connections
-between the neurons and the structure of the neural network does not change
-during learning to recognize new patterns. The last term _b_ in the summation,
-represents a threshold that needs to be surpassed such as stem:[sum_1^k
-w_(k)**x_(k) > b], in order for the neuron to activate.  One final step before
-the output value of the neuron is tranmitted, is the application of a "logit"
-function to the summation value that is represented as
-stem:[varphi(sigma_(k))]. The stem:[varphi()] can be selected from a range of
+
+For the majority of applications, the weight values stem:[w_(k)] are the only
+elements in the ANN structure that are variable, and are adjusted by the
+algorithms during training with the input data. This is similar to the
+biological brain, where learning takes place by strengthening connections among
+neurons cite:[wainberg2018deep]. However, unlike the biological brain the ANNs
+used in practice for data analysis have fixed connections between the neurons
+and the structure of the neural network does not change during training and
+learning to recognize and classify new data. The last term _b_ in the
+summation, represents a threshold that needs to be surpassed such as
+stem:[sum_1^k w_(k)**x_(k) > b], in order for the neuron to activate.  One
+final step before the output value of the neuron is tranmitted, is the
+application of a "logit" function to the summation value, that is represented
+as stem:[varphi(sigma_(k))]. The stem:[varphi] can be selected from a range of
 non-linear functions depending on the the type of input data, and the specific
 analysis and data classification domain for which the ANN will be used
 cite:[li2019deep]. The value of the logit function is the output of the neuron,
-and is transmitted to its connected neurons in the next layer through the
-outgoing connections,shown as an arrows on *Fig.1* and these would be the brain
-cell axons in the biological analogy. Multiple layers of such computational
-models of neurons connected together in layers (*Fig.1*), along with multiple
-connections per layer each having each own weight stem:[w_(k)], forms the
-Artificial Neural Network (ANN).
+which is transmitted to its connected neurons in the next layer through the
+outgoing connections, shown as an arrows on *Fig.1* and corresponding to the
+brain cell axons in the biological analogy. Multiple layers of neurons
+connected together in layers (*Fig.1*), along with multiple connections per
+layer each having each own weight stem:[w_(k)], forms the Artificial Neural
+Network (ANN).
 
 From a mathematical formalism perspective, a trained ANN is a function stem:[f]
 that predicts labels stem:[y_(pred_i)] such as for example 'no inhibition',
-'yes for toxicity' etc., for input data stem:[x_i] of all types whether
-histology images or drug molecules represented as graph data structures.
+'yes for toxicity' etc., for different types of input data stem:[x_i] ranging
+from histology images to drug molecules represented as graph data structures.
 Therefore, the ANN performs data classification as a mapping function
-stem:[f(x_i)=y_(pred_i)], while additionally stem:[f(x_i)] is non-linear since
-it is an aggregate composition of the non-linear functions
-stem:[varphi(sigma_(k))] of the individual interconnected neurons in the
-network cite:[li2019deep].  As a result the stem:[f(x_i)] can classify labels
-for data inputs that originate from complex data distributions, and this fact
-enables ANNs to achieve higher analytical power compared to traditional machine
-learning and statistical algorithms cite:[tang2019recent]. The stem:[f(x_i] is
-estimated by fitting a training dataset, which correlates labels stem:[y_i] to
-data points stem:[x_i].  With hundreds of papers and monographs that have been
-written on the technical details of training ANNs, we will next attempt to
-summarize the training in few sentences and refer the reader to the citations
-for further details. 
+stem:[f(x_i)=y_(pred_i)], from the input data to the labels. Furthermore, the
+stem:[f(x_i)] is a non-linear function, since it is an aggregate composition of
+the non-linear functions stem:[varphi(sigma_(k))] of the individual
+interconnected neurons in the network cite:[li2019deep].  As a result, the
+stem:[f(x_i)] can classify labels for data inputs that originate from complex
+data distributions, and this fact enables ANNs to achieve higher analytical
+power compared to typical statistical learning algorithms
+cite:[tang2019recent]. The stem:[f(x_i] is estimated by fitting a training
+dataset, which correlates labels stem:[y_i] to data points stem:[x_i].  With
+hundreds of papers and monographs that have been written on the technical
+details of training ANNs, we will next attempt to briefly summarize the process
+and refer the reader to the citations for further details. 
 
 As mentioned previously, the only variable element in the ANN structure are the
 weights stem:[w_k] of the neuron connections, and therefore training an ANN to
@@ -197,9 +200,9 @@ cite:[ruder2016overview] searches the possible combinations of weight values,
 and since it is a heuristic algorithm it minimizes stem:[E], but cannot reach
 zero error. At the completion of multiple training cycles the training
 algorithm identifies a set of weights which best fit the data, and the ANN
-settles on the optimal that estimate the stem:[varphi(sigma_(k))] function for
+settles on the optimal values that estimate the stem:[varphi(sigma_(k))] function for
 stem:[sigma_(k)=sum_1^k w_(k)**x_(k) - b], where stem:[w_(k)] is the weight in
-each interconnected neuron.  Consequently, the overall stem:[f] represented by
+each interconnected neuron. Consequently, the overall stem:[f] represented by
 the network is also estimated,since as it was mentioned previously is the
 composition of the individual stem:[varphi(sigma_(k))] neuron functions.  Once
 the artificial neural network training has been completed by finding the most
@@ -208,57 +211,57 @@ new, unknown stem:[x_i] data.
 
 == ARTIFICIAL INTELLIGENCE, GROUP THEORY, SYMMETRY AND INVARIANCE
 
-We conclude, by briefly reviewing how the principles of group theory, symmetry
-and invariance, are a foundational framework to understand the function of
+We conclude, by reviewing how the principles of group theory, symmetry and
+invariance, provide a foundational framework to understand the function of
 machine learning algorithms, and the classifying power of ANNs in relation to
-statistical variance and non-homogeneity in the data. In summary, symmetry is
-the analysis of geometric and algebraic mathematical objects with applications
-to physics, molecular biology and machine learning as data following the
-structure of such objects are found in these fields. A core concept in symmetry
-is invariance, which in our context is changing data coordinates , such as
-shifting a drug molecule in space or a cancer histology tissue sample, while
-leaving the shape of the object unchanged cite:[bronstein2021geometric].
+statistical variance, transformations, and non-homogeneity in the input data.
+In broad terms, symmetry is the analysis of geometric and algebraic
+mathematical structures, and can have applications with data found in the
+fields of physics, molecular biology and machine learning. A core concept in
+symmetry is invariance, which in our context is changing data coordinates,
+such as shifting a drug molecule in space or a cancer histology tissue sample,
+while leaving the shape of the object unchanged cite:[bronstein2021geometric].
 Following such a change which as will be formally defined later in the text as
-invariant transformation, the machine learning algorithms and ANNs must be able
-to recognize for example the drug molecule following rotation, and a tissue to
-be recognized as cancerous based on a histology image. 
+_invariant transformation_, the machine learning algorithms and ANNs must be able
+to recognize a drug molecule following rotation, or a tissue to be recognized 
+as cancerous from a shifted histology image. 
 
 In order to link the abstract symmetry concepts with data classification in
 machine learning, following the terminology of Bronstein et al., we consider
-the input data stem:[x_i] from a symmetry domain stem:[Omega]. The stem:[Omega]
-has a structure on which the input data are based upon, and within this domain
-range we train the machine learning algorithms and fit the classification and
-label prediction function of artificial neural networks. For example,
-microscopy images are essentially 2-dimensional numerical grids (matrices) of
-_n x n_ pixels (*Fig.2a*), with each pixel having a value for light intensity.
-In this case the data domain is composed of integers (stem:[ZZ]) on a grid
-stem:[Omega: ZZ_n xx ZZ_n], which can have all possible combinations of pixel
-intensities.  Similarly, for color images the data domain is stem:[x_i:Omega to
-ZZ_n^3 xx ZZ_n^3], with three overlayed integer grids each representing the
-green, blue and red layers composing the color image. The ANN data
-classification and label prediction function stem:[y_(pred_i)=f(x_i)] is
-applied on the input data stem:[x_i], which are a "signal" stem:["X"(Omega)]
-from the domain. The signal is essentially a subset of the domain, containing
-the specific pixel combinations representing the images in the dataset used for
-training the neural network, out of all possible combinations that can be
-formed on the grid stem:[Omega] (*Fig.2a*). 
+the input data stem:[x_i] to originate from a symmetry domain stem:[Omega]. The
+stem:[Omega] is the structure upon which the data are based, and upon the
+domain structure we train the artificial neural networks to perform
+classification, through the label prediction function stem:[f] as mentioned in
+the earlier section. For example, microscopy images are essentially
+2-dimensional numerical grids of _n x n_ pixels (*Fig.2a*), with each pixel
+having a value for the light intensity captured when the image was taken. In
+this case the data domain is a grid of integers (stem:[ZZ]), represented as
+stem:[Omega: ZZ_n xx ZZ_n]. Similarly, for color images the data domain is
+stem:[x_i:Omega to ZZ_n^3 xx ZZ_n^3], with three overlayed integer grids each
+representing the green, blue and red layers composing the color image. In
+either case, the stem:[Omega] contains all possible combinations of pixel
+intensities, while the specific pixel value combinations of the images in the
+input data stem:[x_i]  are a "signal" stem:["X"(Omega)] from the domain.  The
+ANN data classification and label prediction function stem:[y_(pred_i)=f(x_i)]
+is applied on the signal stem:["X"(Omega)] which is essentially a subset of 
+the domain stem:[Omega]. 
 
 A _symmetry group_ latexmath:[$G$] contains all possible transformations of the
-input - "signal" stem:["X"(Omega)] called symmetries latexmath:[$g$] or
-otherwise group actions. A symmetry transformation latexmath:[$g$] preserves
+input signal stem:["X"(Omega)] called symmetries latexmath:[$g$] or
+otherwise _group actions_. A symmetry transformation latexmath:[$g$] preserves
 the properties of the data, such as for example not distorting the objects in
 the image during rotation. The members of the symmetry group latexmath:[$g \in
-G$] are the associations of two or more coordinate points on the grid
-latexmath:[$u,v\in \Omega$] between which for example an image can be rotated,
-shifted or otherwise transformed without distortion. Therefore, the key aspect
+G$] are the associations of two or more coordinate points latexmath:[$u,v\in \Omega$] 
+on the data domain (grid in our image example). Between these coordinates, the image can be rotated,
+shifted or otherwise transformed without any distortion. Therefore, the key aspect
 of the formal mathematical definition of the group, is that the data attributes
 are preserved during object distortions that are common during the experimental
 acquisition of bioinformatics data. The concept of symmetry groups is
 important towards modeling the performance of machine learning algorithms, for
-classifying the data patterns correctly despite the variability found in the input data.
+classifying the data patterns correctly, despite the variability found in the input data.
 
 [.left]
-[graphviz, target=Fig2b, format=svg]
+[graphviz, target=Fig2a, format=svg]
 ....
 digraph grid_layout {
   node [shape=circle, style=filled, color=lightblue, fontname=Arial, fontsize=12, width=0.6, height=0.6];
@@ -282,11 +285,15 @@ digraph grid_layout {
 }
 ....
 
-[.left]
-[graphviz, target=Fig2a, format=svg]
+
+.An example Artificial Neural Network (ANN).
+[.right]
+[graphviz, target=Fig2b, format=svg]
 ....
 digraph directedgraph {
-  node [shape=circle, style=filled, color=lightblue, fontname=Arial, fontsize=12];
+
+  rankdir=LR;  
+  node [shape=circle, style=filled, color=lightblue, fontname=Arial, fontsize=12, width=0.7, height=0.7];
   edge [color=gray, penwidth=1.5];
 
   A [label="Node A", color=green];
@@ -306,6 +313,7 @@ digraph directedgraph {
   D -> F;
 }
 ....
+
 
 Another important data structure for bioinformatics is a _graph_ latexmath:[$G
 = (V, E)$] that is composed of _nodes_ latexmath:[$V$] representing biological
@@ -328,27 +336,22 @@ Finally, from a , images are a special case of graphs where the nodes are the
 pixels, and connect with edges in a structured pattern that form of a grid
 (*Fig.2a*) representing the adjacent position of the pixels.  
 
-Having established the mathematical and algorithmic parallels between
-graphs and images, we can now examine the analytical and classification power
-of machine learning ANNs in relation to variability and transformations in the data 
-based on the principles of the _symmetry group_ latexmath:[$G$] discussed earlier. for
-both data types in cases where we have in the dataset shifted or rotated input
-images or molecules represented as graphs.  We establish this through the
-principles of group theory, symmetry and invariance. These are the foundational
-mathematical and algorithmic principles that model the performance and output
-of machine learning algorithms ANNs in relation to the variability in the
-dataset. Consecutively, these principles can then be extrapolated for other
-types of data beyond graphs and images, for which ANNs are trained for
-prediction and classification.
-
-This is an important aspect of modeling data classification and training of
-ANNs through group theory and symmetry, so we can formalize the resilience of
-machine learning algorithms and their perfomance, in relation to the
-variability in the data.  Here we presented the group notion with a more
-data-centric definition which nonetheless follows the mathematical formalism,
-where we do not specify what the group operations but only how they can
-transform the input data. Therefore, different types of data can have the same
-symmetry group, where transformations of different types of data are performed
+Having established the mathematical and algorithmic parallels between graphs
+and images, we will now utilize the principles of the _symmetry group_
+latexmath:[$G$] to examine the analytical and classification power of machine
+learning ANNs, in relation to variability and transformations in the data. For
+both data types such as input images and molecules represented as graphs that
+are shifted or rotated, we establish the concept of invariance through the
+principles of group theory and symmetry.  These are the foundational
+mathematical and algorithmic principles that can be used to model the
+performance and output of machine learning algorithms ANNs, in relation to the
+variability in the dataset. Consecutively, these principles can then be
+extrapolated and generalized for other types of data beyond graphs and images,
+for which ANNs can be trained for prediction and classification. While we present 
+the group and symmetry definitions following a data-centric approach, we will
+nonetheless still follow the mathematical formalism, when describing how the group operations can
+transform the input data. Furtermore, different types of data can have the same
+symmetry group, and transformations of different types of data are performed
 by the same group operation. For example, an image with a triangle which
 essentially is a graph with three nodes, can have the same rotational symmetry
 group as a graph of three nodes or a numerical sequence of three elements.
@@ -399,9 +402,9 @@ two-dimensional, grid data domain latexmath:[$\Omega$], the formalisms developed
 here can also be extrapolated without loss of generality to any number of dimensions
 or data formats. We will first connect matrices to group actions
 latexmath:[$g$] (rotations, shifts etc.) in the symmetry group latexmath:[$g
-\in G$], by defining a function latexmath:[$\theta] that maps the group to a
-matrix as latexmath:[$\theta : G \rightarrow \mathbf{M}]. As mentioned
-previously, a matrix  latexmath:[$\mathbf{M} in \R^{n \times n}$] of
+\in G$], by defining a function latexmath:[$\theta$] that maps the group to a
+matrix as latexmath:[$\theta : G \rightarrow \mathbf{M}$]. As mentioned
+previously, a matrix  latexmath:[$\mathbf{M} in R^{n \times n}$] of
 numerical values (integers, fractions, positive and negative), when multiplied
 to the coordinate values of an object on the plane latexmath:[$\Omega$], it
 rotates or shifts the object coordinates for the exact amount correponsing to
@@ -416,12 +419,12 @@ assigning labels to new data points, which originate from real-world data that
 are noisy and contain tranformations and distortions. We first define that the
 estimator function of the ANN to be _invariant_ if the condition for the input
 data holds such as latexmath:[$f(\mathbf(M) x_i) = f(x_i)$] for all matrices
-representing actions latexmath:[$\fg \in \fG$] within the symmetry group. This
+representing actions latexmath:[$g \in G$] within the symmetry group. This
 formula presents the condition required for the neural network function to be
 invariant: its output value is the same whether the input data stem:[x_i] are
 not transformed or noisy (i.e an image or graph is not rotated on the plane),
 or when the input data are transformed to an amount represented by the matrix
-multiplication latexmath:[$f(\mathbf(M) x_i] . Therefore, the output values
+multiplication latexmath:[$f(\mathbf(M) x_i$] . Therefore, the output values
 stem:[y_(pred_i)=f(x_i)] by the ANN which are essentially predicted output
 labels (i.e stem:[y_(pred_i)] = potent drug / not potent etc.) based on the
 input data, are resilient to noisy and deformed real-world data, when the
@@ -447,11 +450,11 @@ cite:[sutherland2009introduction], in this case we have _homeomorphism_ instead
 of _invariance_. 
 
 Finally, if the rate of continuous transformation of the data is quantifiable,
-meaning that the function latexmath:[$\theta] that maps the group to a matrix
+meaning that the function latexmath:[$\theta$] that maps the group to a matrix
 is _differentiable_, then the members of the symmetry groups will be part of a
 _diffeomorphism_. As it follows from the principles of calculus, in this case
-infinitely multiple matrices latexmath:[$f(\mathbf(M)] will be needed to be
-produced by latexmath:[$\theta] for the continuous change of the data
+infinitely multiple matrices latexmath:[$f(\mathbf(M)$] will be needed to be
+produced by latexmath:[$\theta$] for the continuous change of the data
 coordinates at every point. These differentiable data structures are common
 with manifolds, which for example could be used to represent proteins in fine
 detail, as a molecule cloud with all atomic forces around the structure,
