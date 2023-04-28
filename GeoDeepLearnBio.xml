@@ -3,207 +3,446 @@
 <?asciidoc-numbered?>
 <article xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
-<title>Mathematical Principles of Artificial Neural Networks and Machine Learning for Bioinformatics</title>
-<date>2023-03-03</date>
+<title>Principles of Artificial Neural Networks and Machine Learning for Bioinformatics Applications</title>
+<date>2023-04-28</date>
 </info>
 <simpara>Konstantinos Krampis*<superscript>1</superscript>, Eric Ross<superscript>2</superscript>, Olorunseun O. Ogunwobi<superscript>1</superscript>, Grace Ma,<superscript>3</superscript> Raja Mazumder,<superscript>4</superscript> Claudia Wultsch<superscript>1</superscript></simpara>
-<simpara><superscript>1</superscript>Belfer Research Facility, Biological Sciences, Hunter College, City University of New York
-<superscript>2</superscript>Fox Chase Cancel Center
-<superscript>3</superscript>Temple University
-<superscript>4</superscript>George Washington University</simpara>
+<simpara><superscript>1</superscript>Belfer Research Facility, Biological Sciences, Hunter College, City University of New York, NY, USA
+<superscript>2</superscript>Fox Chase Cancer Center, Philadephia, PA, USA
+<superscript>3</superscript>Center for Asian Health, Lewis Katz School of Medicine, Temple University, Philadelphia, PA, USA
+<superscript>4</superscript>Biochemistry and Molecular Biology, George Washington University, Washington D.C., USA</simpara>
 <simpara><superscript>*</superscript>Corresponding Author, <emphasis>agbiotec@gmail.com</emphasis></simpara>
 <section xml:id="_abstract">
 <title>ABSTRACT</title>
-<simpara>Following the exponential growth of the machine and deep learning field in
-recent years, artificial neural network models have found significant
-applications towards bioinformatics data analysis. The various omics datasets
-are commonly represented in a graph format, such as for example protein or gene
-interaction networks, molecular structures and cellular signalling pathways.
-Unlike structured images, video and text that are commonly used for training
-artificial neural networks, graph data are in the non-euclidean domain and
-require significantly different algorithmic approaches. The machine learning
-research community, has developed a range of new algorithms for training
-artificial neural networks with graph data. These novel approaches and their
-importance for the bioinformatics field is established herein, through
-exhibition of the undelying mathematical foundations from group theory,
-functional analysis and linear algebra. Furthermore, it is argued that the most
-recent developments in the field such as geometric deep learning on data
-manifolds, can also significantly accelerate scientific discovery in
-bioinformatics by enabling new approaches to understand complex datasets.
-Finally, we conclude this opinion article with the options for implementations
-through the available software frameworks, as guideline for transitioning from
-the mathematical principles to practical graph machine learning tools for
-bioinformatics applications.</simpara>
+<simpara>With the exponential growth of machine learning and development of Artificial
+Neural Network (ANNs) in recent years, there is great opportunity to leverage
+this approach and accelarate biological discoveries through applications on the
+analysis of bioinformatics data.  Various types of datasets including for
+example protein or gene interaction networks, molecular structures and cellular
+signalling pathways, have already been used for machine learning by training
+ANNs for inference and pattern classification.  However, unlike regular data
+structures that are commonly used in the computer science and engineering
+fields, bioinformatics datasets present challenges that require unique
+algorithmic approaches.  The recent development of the geometric and deep
+learning approach within the machine learning field, is very promising towards
+accelerating analysis complex bioinformatics datasets.  The principles of ANNs
+and their importance for bioinformatics machine learning is demonstrated
+herein, through presentation of the undelying mathematical and statistical
+foundations from group theory, symmetry, linear algebra.  Furthermore, the
+structure and functions of ANN algorithms that form the core principles of
+artificial intelligence are explained, in relation to the bioinformatics data
+domain.  Overall, the manuscript provides guidance for researchers to
+understand the principles required for practicing machine learning and
+artificial intelligence, with the special considerations towards bioinformatics
+applications.</simpara>
 </section>
 <section xml:id="_introduction">
 <title>INTRODUCTION</title>
-<simpara>Symmetry and invariance is a central concept in physical, mathematical and
-biological systems, in addition to other areas of human endeavor such as social
-networks. It has been established since the early 20th century that fundamental
-laws of nature originate in symmetry, for example through the work of Noether
-and Wigner [<link linkend="noether1918invariante">1</link>].In the last decade, technologies such
-as genomic sequencing have enabled an exponential increase
-[<link linkend="katz2022sequence">2</link>] of the data that describe the fundamental elements,
-structure and function of biological systems. Other endeavors from fields as
-diverse as physics, and the rise of social media platforms
-[<link linkend="clissa2022survey">3</link>], have resulted in datasets of scale not previously
-available to scientists. This data explosion, has also been fundamental for the
-ever accelerating advancements in the field of machine learning, deep learning
-and artificial intelligence, where we now  have algorithms that can be trained
-to make discoveries from the data at a level that matches closely human
-intuition.</simpara>
-<simpara>As in any field (including bioinformatics) that develops rapidly whithin the
-span of a few years,deep learning and artificial intelligence researchers have
-developed hundreds of successful algorithms, however with a few unifying
-principles . In a seminal <literal>proto-book</literal> by Bronstein et al.
-[<link linkend="bronstein2021geometric">4</link>], a range of systematization principles for the
-different artificial neural network architectures from the deep learning field
-was presented, based on the concepts of symmetry that is formalized within the
-mathematical field of group theory. The authors also introduced the concept of
-Geometric Deep Learning, and demonstrated how the group theoretic principles of
-iso- and auto-morphism, along with invariance and equivariance of functions,
-can be used in composing and describing various deep learning algorithms.</simpara>
+<simpara>Symmetry and invariance is a central concept in physics, mathematical and
+biological systems, and has been established since the early 20th century that
+fundamental principles of nature are based on symmetry [<link linkend="noether1918invariante">1</link>].
+In the last decade, technologies such as genomic
+sequencing have enabled an exponential increase [<link linkend="katz2022sequence">2</link>] of the
+data that describe the molecular elements, structure and function of biological
+systems. Furthermore, data generation in fields as diverse as physics, software
+development and social media [<link linkend="clissa2022survey">3</link>], have resulted in datasets
+of scale not previously available to scientists. This data abundance, has been
+fundamental for the ever accelerating advancements in the field of machine
+learning, deep learning and artificial intelligence, where we now  have
+algorithms that can be trained to make discoveries from the data, at a level
+that closely matches human intuition.</simpara>
+<simpara>The field of deep learning and artificial intelligence, has developed rapidly
+within the span of a few years, and while researchers have developed hundreds
+of successful algorithms, there currently few unifying principles to organize
+systematically the machine learning algorithms. In a seminal <literal>proto-book</literal> by
+Bronstein et al.  [<link linkend="bronstein2021geometric">4</link>], a range of systematization
+principles for the different Artificial Neural Network (ANN) architectures and
+deep learning algorithms were presented, based on the concepts of symmetry and
+mathematical group theory.  The authors also introduced the concept of
+geometric deep learning, and demonstrated how the group theory, function
+invariance and equivariance principles, can be used as basis towards composing
+and describing the various deep learning algorithms. Along these lines, in the
+present manuscript we explain the structure of ANNs and the principles of machine
+learning algorithms, while providing a review of mathematical and statistical
+foundations related to the  development of artificial intelligence applications
+with bioinformatics data.</simpara>
 </section>
 <section xml:id="_the_structure_of_artificial_intelligence_and_neural_networks">
 <title>THE STRUCTURE OF ARTIFICIAL INTELLIGENCE AND NEURAL NETWORKS</title>
-<simpara>Before proceeding towards introducing these concepts further, we will describe
-the structure and function of deep learning and Artificial Neural Networks
-(ANNs) that are the foundation of artificial intelligence
-[<link linkend="li2019deep">5</link>],through a simple mathematical description. Assume a dataset
-consisting of <emphasis>n</emphasis> pairs of <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>,</mml:mo><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mi>n</mml:mi></mml:msub></mml:math></inlineequation>, with the <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> being <emphasis>n</emphasis>
-data points and <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> their labels. Each <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> data point can be for
-example be a number, a vector (array of numbers), a matrix (grid of numbers)
-storing the data for image pixels, or graph data structures composed by nodes
-and edges representing drugs or other chemical molecules. The data labels can
-be of various formats, such as binary (two-option) for example <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:math></inlineequation>
-"inhibits cancer growth", or <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mn>0</mml:mn></mml:math></inlineequation> "does not inhibit cancer". The labels
-can also be continuous numbers such as for example <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mn>0.3</mml:mn></mml:math></inlineequation> meaning 30%
-inhibition, while also each <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> could be a composite label such as
-<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mrow><mml:mo>[</mml:mo><mml:mrow><mml:mn>0</mml:mn><mml:mo>,</mml:mo><mml:mn>1</mml:mn><mml:mo>,</mml:mo><mml:mn>0</mml:mn></mml:mrow></mml:mrow></mml:math></inlineequation>] representing respectively drug attributes such as 'no
-inhibition', 'yes for toxicity', 'not metabolized', with 'not' for 0 and 'yes'
-1.</simpara>
-<simpara>Similar to a brain neural network, the computational abstractions used in
-machine learning and artificial intelligence, model neurons as signal
-aggregators and thresholding units.  Specifically, each artificial neuron
-performs a summation of incoming signals from its connected neighbooring
-neurons in the network, and "fires" when the aggregated signals reach a certain
-threshold.  This can be described with the summation <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:munderover><mml:mo>&#x2211;</mml:mo><mml:mn>1</mml:mn><mml:mi>k</mml:mi></mml:munderover><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>*</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>&#x2212;</mml:mo><mml:mi>b</mml:mi></mml:math></inlineequation> (<emphasis role="strong">Fig.1</emphasis>), where the <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub></mml:math></inlineequation> represents the connection
-weight of neighboring neuron <emphasis>k</emphasis>. The next term <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>k</mml:mi></mml:msub></mml:math></inlineequation> multiplied by the
-weight strength, is the incoming signal from the neigbooring neuron for which
-the weighted connection is established. As it will be mentioned in a subsquent
-section, the weight value is the only variable element in the ANNs that is
-adjusted by the algorithms in order to fit the data, similarly to the
-biological brain where learning takes place by strengthening connections among
-neurons. Unlike the biological brain, the ANNs used in practice for data
-analysis have fixed connections between the neurons and structure
-of the neural network. The last term <emphasis>b</emphasis> in the summation, represents a
-threshold that needs to be surpassed as <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:munderover><mml:mo>&#x2211;</mml:mo><mml:mn>1</mml:mn><mml:mi>k</mml:mi></mml:munderover><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>*</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>&gt;</mml:mo><mml:mi>b</mml:mi></mml:math></inlineequation>, in
-order for the neuron to activate and "fire" a signal.</simpara>
+<simpara>We will first describe the structures and function of deep learning and
+Artificial Neural Networks (ANNs) that are the basis of artificial intelligence
+[<link linkend="li2019deep">5</link>]. Assume a dataset consisting of <emphasis>n</emphasis> pairs of
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>,</mml:mo><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow><mml:mo>)</mml:mo></mml:mrow><mml:mi>n</mml:mi></mml:msub></mml:math></inlineequation>, with the <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> being <emphasis>n</emphasis> data points and <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation>
+their labels. Each <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> data point can be for example be a number, a
+vector (array of numbers), or a matrix (grid of numbers) storing diffent types
+of bioinformatics data.  The data and labels can be of various formats, such as
+binary (two-option) as for example <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:math></inlineequation> "inhibits cancer growth", or
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mn>0</mml:mn></mml:math></inlineequation> "does not inhibit cancer". The labels can also be continuous
+numbers such as for example <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mn>0.3</mml:mn></mml:math></inlineequation> meaning 30% inhibition, or a
+composite label such as <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mn>0</mml:mn><mml:mo>,</mml:mo><mml:mn>1</mml:mn><mml:mo>,</mml:mo><mml:mn>0</mml:mn></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> representing respectively drug
+attributes such as '0 - no inhibition', '1 - yes for toxicity', '0 - not
+metabolized'. Similarly, the input data points can also be composite such as
+for example <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mn>50</mml:mn><mml:mo>,</mml:mo><mml:mn>100</mml:mn></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> representing two measuments for a single
+biological entity. Independently of the label structure, the deep learning
+algorithms and the overall goal of artificial intelligence applications for
+bioinformatics, is to first train the ANN with data for which the labels are
+known, and then perform classification of newly generated data, by predicting
+their labels.</simpara>
 <simpara>The simplest structure of an artificial neural network as shown on <emphasis role="strong">Fig.1</emphasis> is
-"fully connected", with each neuron <emphasis>k</emphasis> in the network having a number of incoming
-and outgoing connections corresponding to the number of neurons in
-previous and next layer in the neural network. For example the first neuron
-<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>k</mml:mi><mml:mn>0</mml:mn></mml:msub><mml:mo>)</mml:mo></mml:mrow><mml:mn>1</mml:mn></mml:msup></mml:math></inlineequation> of Layer 1 on <emphasis role="strong">Fig.1</emphasis>, has <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>n</mml:mi><mml:mo>&#x2208;</mml:mo></mml:msub><mml:mo>=</mml:mo><mml:mn>2</mml:mn></mml:math></inlineequation> and <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>n</mml:mi><mml:mrow><mml:mi>o</mml:mi><mml:mi>u</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mn>3</mml:mn></mml:math></inlineequation>
-connections, corresponding to the two neurons of the preceeding Input Layer and
-the three neurons of the subsequent Layer 2. Finally, the output value of the
-neuron, is determined by applying to the summation value a thresholding or otherwise "logit" function
-<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>&#x3C6;</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> which is non-linear [<link linkend="li2019deep">5</link>].   This final value is the output of the
-firing neuron, and  is transmitted to its connected neurons in the next layer
-through the outgoing connections (or "axons" in the biological analogy).
-Multiple layers of such computational models of neurons connected together in layers (<emphasis role="strong">Fig.1</emphasis>),
-along with multiple connections per layer each having each own weight
-<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub></mml:math></inlineequation>, forms an Artificial Neural Network (ANN).</simpara>
-<informalfigure>
+"fully connected", with each neuron <emphasis>k</emphasis> in the ANN having a number of incoming
+and outgoing connections corresponding to the number of neurons in previous and
+next layer in the neural network. For example the neuron <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msubsup><mml:mi>k</mml:mi><mml:mn>0</mml:mn><mml:mn>1</mml:mn></mml:msubsup></mml:math></inlineequation> of the
+<emphasis>First Layer (1)</emphasis> on <emphasis role="strong">Fig.1</emphasis>, has <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>n</mml:mi><mml:mo>=</mml:mo><mml:mn>2</mml:mn></mml:math></inlineequation> incoming and <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>n</mml:mi><mml:mo>=</mml:mo><mml:mn>3</mml:mn></mml:math></inlineequation> outgoing
+connections, corresponding respectively to the "input layer" with two neurons,
+and three connections with the neurons of the internal ("hidden layer") labeled
+<emphasis>Second Layer (2)</emphasis> on the figure. The internal layers are called "hidden"
+since they do not receive input data directly, similarly to the neurons performing
+cognition in animal brains, as opposed to sensory neurons. While the hidden
+layers can have an arbitrary number of neurons based on the complexity of
+the label classification problem we need the ANN to resolve [<link linkend="uzair2020effects">6</link>], the input
+layer has the exact number of neurons corresponding to the input data structure. On
+<emphasis role="strong">Fig. 1</emphasis> for example we have two input neurons, and the data can be of the
+form <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mn>50</mml:mn><mml:mo>,</mml:mo><mml:mn>100</mml:mn></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation>. Finally, the output layer has a number of neurons
+corresponding to the number of labels <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> per input data point in the data,
+and on <emphasis role="strong">Fig. 1</emphasis> there is a single label.</simpara>
+<informalfigure role="middle">
 <mediaobject>
 <imageobject>
-<imagedata fileref="graphviz.svg" contentwidth="659" contentdepth="361"/>
+<imagedata fileref="Fig1.svg"/>
 </imageobject>
-<textobject><phrase>Fig</phrase></textobject>
+<textobject><phrase>Fig1</phrase></textobject>
 </mediaobject>
 </informalfigure>
-<simpara>Mathematically, a trained ANN is a function <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi></mml:math></inlineequation> that predicts the labels
-<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:msub></mml:math></inlineequation> for the input data <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation>, such as for example 'no
-inhibition', 'yes for toxicity' etc. for data representing drug
-molecules.  The function <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi></mml:math></inlineequation> is non-linear and is estimated by fitting a
-training dataset, which correlates labels <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> to data points <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation>.
-Most important, <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi></mml:math></inlineequation> is a composition of the <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>&#x3C6;</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation>
-thresholding functions of the each neuron interconnected in the artificial
-network graph [<link linkend="li2019deep">5</link>]. This is key aspect of the ANNs, since the
-non-linearities present in each individual logit neuron function
-<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>k</mml:mi></mml:msub></mml:math></inlineequation>, are aggregated across the neural network and on the function
-<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi></mml:math></inlineequation>, which enables fitting complex multi-dimensional input data with
-non-linear distributions. This is the key fact that enables ANNs to achieve
-higher clasification power compared to traditional statistical methods
-[<link linkend="tang2019recent">6</link>]. With hundreds of papers and monographs that have been
-written on the technical details of training ANNs,and since the focus of the
-present review manuscript are networks designed with graph and other
-non-euclidean datasets, we will next attempt to summarize the training in few
-sentences and refer the reader to the citations for further details.</simpara>
-<simpara>In summary, the ANN algorithm is using the training data to identify a function
-<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi></mml:math></inlineequation> that predicts labels from the data such as <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mi>f</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation>.
-As mentioned previously, <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi></mml:math></inlineequation> is a composition of the
-<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>&#x3C6;</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:msup><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>k</mml:mi><mml:mn>0</mml:mn></mml:msub><mml:mo>)</mml:mo></mml:mrow><mml:mn>1</mml:mn></mml:msup></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> functions of the each neuron in the ANN, and as such
-the training is the estimation of the weights <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub></mml:math></inlineequation> of the neuron
-connections, while minimizing the error <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>E</mml:mi></mml:math></inlineequation> based on the difference
-between <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:msub></mml:math></inlineequation> and <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation>.  This error quantifies the neural
-network precision by comparing predicted <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:msub></mml:math></inlineequation> and actual labels
-<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation>. The neuron connection weight <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub></mml:math></inlineequation> estimation by the algorithm
-takes place through fitting the network function <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi></mml:math></inlineequation> on a large training
-dataset of <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msubsup><mml:mrow><mml:mo>{</mml:mo><mml:mrow><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>,</mml:mo><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow><mml:mo>}</mml:mo></mml:mrow><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:msubsup></mml:math></inlineequation>, pairs of input data and labels, while it
-evaluates the error <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>E</mml:mi></mml:math></inlineequation> using smaller testing and validation data subsets.
-The training algorithm works by making an initial estimated guess for
-initializing the weights, and then performing multiple cycles (called "epochs")
-of fitting <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> the training data to the network. At the end of each
-cycle "backpropagation" is performed [<link linkend="tang2019recent">6</link>], which involves
-gradient descent optimization, in order to fine tune the weights of the
-individual neurons in <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:munderover><mml:mo>&#x2211;</mml:mo><mml:mrow><mml:mi>k</mml:mi><mml:mo>=</mml:mo><mml:mn>1</mml:mn></mml:mrow><mml:mi>n</mml:mi></mml:munderover><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>*</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:mi>b</mml:mi></mml:math></inlineequation>.  The
-gradient descent (REF) searches the possible combinations of weight values, and
-since it is a heuristic algorithm it minimizes but cannot reach zero error
-<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>E</mml:mi></mml:math></inlineequation>. At the completion of multiple training cycles the training algorithm
-identifies a set of weights which best fit the data model, and the ANN settles
-on the optimal parameters that estimate the <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>&#x3C6;</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> function
-for each interconnected neuron.  Consequently, the overall <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> is
-also estimated,since it is the composition of the individual
-<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>&#x3C6;</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> neuron functions.  Once the artificial neural network
-training has ben completed by finding the most optimal set of weights, it is
-now ready to be used for label prediction with new, unknown <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> data.</simpara>
+<simpara><?asciidoc-hr?></simpara>
+<simpara><emphasis role="strong">Figure 1.</emphasis> An example <emphasis role="strong">Artificial Neural Network (ANN)</emphasis>. The signal
+aggregation taking place on the second neuron <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:msubsup><mml:mi>k</mml:mi><mml:mn>1</mml:mn><mml:mrow><mml:mo>(</mml:mo><mml:mtable><mml:mtr><mml:mtd><mml:mn>2</mml:mn></mml:mtd></mml:mtr></mml:mtable><mml:mo>)</mml:mo></mml:mrow></mml:msubsup></mml:msub></mml:math></inlineequation> of the
+second hidden layer, can be expressed with the formula
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:msubsup><mml:mi>k</mml:mi><mml:mn>1</mml:mn><mml:mrow><mml:mo>(</mml:mo><mml:mtable><mml:mtr><mml:mtd><mml:mn>2</mml:mn></mml:mtd></mml:mtr></mml:mtable><mml:mo>)</mml:mo></mml:mrow></mml:msubsup></mml:msub><mml:mo>=</mml:mo><mml:munderover><mml:mo>&#x2211;</mml:mo><mml:msub><mml:mi>k</mml:mi><mml:mrow><mml:mn>0</mml:mn><mml:mo>,</mml:mo><mml:mn>1</mml:mn><mml:mo>,</mml:mo><mml:mn>2</mml:mn></mml:mrow></mml:msub><mml:mrow><mml:mo>(</mml:mo><mml:mtable><mml:mtr><mml:mtd><mml:mn>1</mml:mn></mml:mtd></mml:mtr></mml:mtable><mml:mo>)</mml:mo></mml:mrow></mml:munderover><mml:msub><mml:mi>w</mml:mi><mml:mrow><mml:mi>k</mml:mi><mml:mn>0</mml:mn></mml:mrow></mml:msub><mml:mo>*</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mrow><mml:mi>k</mml:mi><mml:mn>0</mml:mn></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mrow><mml:mi>k</mml:mi><mml:mn>1</mml:mn></mml:mrow></mml:msub><mml:mo>*</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mrow><mml:mi>k</mml:mi><mml:mn>1</mml:mn></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mrow><mml:mi>k</mml:mi><mml:mn>2</mml:mn></mml:mrow></mml:msub><mml:mo>*</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mrow><mml:mi>k</mml:mi><mml:mn>2</mml:mn></mml:mrow></mml:msub><mml:mo>&#x2212;</mml:mo><mml:mi>b</mml:mi></mml:math></inlineequation>, which is the aggregation of neuron signals from the first
+layer, shown as red arrows on the figure. The <emphasis>b</emphasis> is the threshold that needs
+to be overcome by the aggregation sum in order for the neuron to fire, and then
+the neuron will transmit a signal along the line shown towards the output on
+the final layer on the figure. The reader should refer to the text for more
+details.</simpara>
+<simpara><?asciidoc-hr?></simpara>
+<simpara>Similar to neural networks in animal brains, the computational abstractions
+used in machine learning and artificial intelligence, model neurons as
+computational units performing signal summation and threshold activation.
+Specifically, each artificial neuron performs a summation of incoming signals
+from its connected neighbooring neurons in the preceeding layer on the network,
+shown for example as red arrows on <emphasis role="strong">Fig.1</emphasis> for <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:msubsup><mml:mi>k</mml:mi><mml:mn>1</mml:mn><mml:mrow><mml:mo>(</mml:mo><mml:mtable><mml:mtr><mml:mtd><mml:mn>2</mml:mn></mml:mtd></mml:mtr></mml:mtable><mml:mo>)</mml:mo></mml:mrow></mml:msubsup></mml:msub></mml:math></inlineequation>. The
+signal processing across the ANN transitions from input data <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> on the
+leftmost layer (<emphasis role="strong">Fig.1</emphasis>), to output of data labels <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> on the right end.
+Within each neuron, when the aggregated input reaches a certain threshold, the
+neuron "fires" and transmits a signal to the next layer. The signals coming
+into the neuron can be either the data directly from the input layer, or
+signals generated by activation of the neurons in the intermediate - "hidden"
+layers. The summation and thresholding computation within each neuron is
+represented with the function <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:munderover><mml:mo>&#x2211;</mml:mo><mml:mn>1</mml:mn><mml:mi>k</mml:mi></mml:munderover><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>*</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>&#x2212;</mml:mo><mml:mi>b</mml:mi></mml:math></inlineequation>, where
+the <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub></mml:math></inlineequation> is the connection weights of the preceding neurons. Each
+connection arrow on <emphasis role="strong">Fig.1</emphasis> has a different weight, such as for example
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mrow><mml:mi>k</mml:mi><mml:mn>0</mml:mn></mml:mrow></mml:msub></mml:math></inlineequation> which is the incoming signal from the neuron
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:msubsup><mml:mi>k</mml:mi><mml:mn>0</mml:mn><mml:mrow><mml:mo>(</mml:mo><mml:mtable><mml:mtr><mml:mtd><mml:mn>1</mml:mn></mml:mtd></mml:mtr></mml:mtable><mml:mo>)</mml:mo></mml:mrow></mml:msubsup></mml:msub></mml:math></inlineequation> to neuron <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:msubsup><mml:mi>k</mml:mi><mml:mn>1</mml:mn><mml:mrow><mml:mo>(</mml:mo><mml:mtable><mml:mtr><mml:mtd><mml:mn>2</mml:mn></mml:mtd></mml:mtr></mml:mtable><mml:mo>)</mml:mo></mml:mrow></mml:msubsup></mml:msub></mml:math></inlineequation>, multiplied by the
+weight <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>w</mml:mi><mml:mrow><mml:mi>k</mml:mi><mml:mn>0</mml:mn></mml:mrow></mml:msub></mml:math></inlineequation>, which represents the strength of the connection between
+these two artificial neurons.</simpara>
+<simpara>For the majority of applications, the weight values <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub></mml:math></inlineequation> are the only
+elements in the ANN structure that are variable, and are adjusted by the
+algorithms during training with the input data. This is similar to the
+biological brain, where learning takes place by strengthening connections among
+neurons [<link linkend="wainberg2018deep">7</link>]. However, unlike the biological brain the ANNs
+used in practice for data analysis have fixed connections between the neurons
+and the structure of the neural network does not change during training and
+learning to recognize and classify new data. The last term <emphasis>b</emphasis> in the
+summation, represents a threshold that needs to be surpassed such as
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:munderover><mml:mo>&#x2211;</mml:mo><mml:mn>1</mml:mn><mml:mi>k</mml:mi></mml:munderover><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>*</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>&gt;</mml:mo><mml:mi>b</mml:mi></mml:math></inlineequation>, in order for the neuron to activate.  One
+final step before the output value of the neuron is tranmitted, is the
+application of a "logit" function to the summation value, that is represented
+as <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>&#x3C6;</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation>. The <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>&#x3C6;</mml:mi></mml:math></inlineequation> can be selected from a range of
+non-linear functions depending on the the type of input data, and the specific
+analysis and data classification domain for which the ANN will be used
+[<link linkend="li2019deep">5</link>]. The value of the logit function is the output of the neuron,
+which is transmitted to its connected neurons in the next layer through the
+outgoing connections, shown as an arrows on <emphasis role="strong">Fig.1</emphasis> and corresponding to the
+brain cell axons in the biological analogy. Multiple layers of neurons
+connected together in layers (<emphasis role="strong">Fig.1</emphasis>), along with multiple connections per
+layer each having each own weight <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub></mml:math></inlineequation>, forms the Artificial Neural
+Network (ANN).</simpara>
+<simpara>From a mathematical formalism perspective, a trained ANN is a function <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi></mml:math></inlineequation>
+that predicts labels <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:msub></mml:math></inlineequation> such as for example 'no inhibition',
+'yes for toxicity' etc., for different types of input data <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> ranging
+from histology images to drug molecules represented as graph data structures.
+Therefore, the ANN performs data classification as a mapping function
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow><mml:mo>=</mml:mo><mml:msub><mml:mi>y</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:msub></mml:math></inlineequation>, from the input data to the labels. Furthermore, the
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> is a non-linear function, since it is an aggregate composition of
+the non-linear functions <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>&#x3C6;</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> of the individual
+interconnected neurons in the network [<link linkend="li2019deep">5</link>].  As a result, the
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> can classify labels for data inputs that originate from complex
+data distributions, and this fact enables ANNs to achieve higher analytical
+power compared to typical statistical learning algorithms
+[<link linkend="tang2019recent">8</link>]. The <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:math></inlineequation> is estimated by fitting a training
+dataset, which correlates labels <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> to data points <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation>.  With
+hundreds of papers and monographs that have been written on the technical
+details of training ANNs, we will next attempt to briefly summarize the process
+and refer the reader to the citations for further details.</simpara>
+<simpara>As mentioned previously, the only variable element in the ANN structure are the
+weights <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub></mml:math></inlineequation> of the neuron connections, and therefore training an ANN to
+classify data is the estimation of the weights. Furtheromre, the training
+process involves minimizing the error <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>E</mml:mi></mml:math></inlineequation>, which is the difference between
+the labels <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:msub></mml:math></inlineequation> predicted by the function <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi></mml:math></inlineequation> and the true
+labels <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation>. This error metric is akin to true/false positive and
+negatives (precision and recall) used in statistics, however diffent formulas
+are used for its estimation for multi-label or complex input data to the ANN
+(for more details, [<link linkend="kriegeskorte2019neural">9</link>]). The neuron connection weight
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub></mml:math></inlineequation> estimation by the algorithm takes place by fitting the network
+function <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi></mml:math></inlineequation> on a large training dataset of <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msubsup><mml:mrow><mml:mo>{</mml:mo><mml:mrow><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>,</mml:mo><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow><mml:mo>}</mml:mo></mml:mrow><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:msubsup></mml:math></inlineequation> pairs of
+input data and labels, while the error <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>E</mml:mi></mml:math></inlineequation> is calculated by using a subset
+of the data for testing and validation.  The training algorithm starts with an
+initial value of the weights, and then performs multiple cycles (called
+"epochs") towards estimating the function <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi></mml:math></inlineequation> by fitting the data
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> to the network and calculating the error <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>E</mml:mi></mml:math></inlineequation> by comparing
+predicted <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:msub></mml:math></inlineequation> and the true labels <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation>. At the end of each
+cycle "backpropagation" is performed [<link linkend="tang2019recent">8</link>], which involves a
+gradient descent optimization algorithm, in order to fine tune the weights of
+the individual neurons and minimize <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>E</mml:mi></mml:math></inlineequation>.  The gradient descent
+[<link linkend="ruder2016overview">10</link>] searches the possible combinations of weight values,
+and since it is a heuristic algorithm it minimizes <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>E</mml:mi></mml:math></inlineequation>, but cannot reach
+zero error. At the completion of multiple training cycles the training
+algorithm identifies a set of weights which best fit the data, and the ANN
+settles on the optimal values that estimate the <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>&#x3C6;</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> function for
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:munderover><mml:mo>&#x2211;</mml:mo><mml:mn>1</mml:mn><mml:mi>k</mml:mi></mml:munderover><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>*</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>&#x2212;</mml:mo><mml:mi>b</mml:mi></mml:math></inlineequation>, where <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub></mml:math></inlineequation> is the weight in
+each interconnected neuron. Consequently, the overall <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi></mml:math></inlineequation> represented by
+the network is also estimated,since as it was mentioned previously is the
+composition of the individual <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>&#x3C6;</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> neuron functions.  Once
+the artificial neural network training has been completed by finding the most
+optimal set of weights, it is now ready to be used for label prediction with
+new, unknown <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> data.</simpara>
 </section>
 <section xml:id="_artificial_intelligence_group_theory_symmetry_and_invariance">
 <title>ARTIFICIAL INTELLIGENCE, GROUP THEORY, SYMMETRY AND INVARIANCE</title>
-<simpara>We conclude, by briefly reviewing how the principles of group theory, symmetry
-and invariance, have been recently utilized as a foundational framework to
-explain learning algorithms for ANNs [<link linkend="bronstein2021geometric">4</link>].</simpara>
-<simpara>Following the terminology of Bronstein et al., we consider the input <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation>
-from a data domain <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x3A9;</mml:mo></mml:math></inlineequation>, which has a specific structure corresponding
-to the data type used for training the ANN. For example, microscopy images are
-essentially 2-dimensional numerical grids (matrices) of <emphasis>n x n</emphasis> pixels, with
-each pixel having a value for light intensity.  In this case the data domain is
-composed of integers (<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x2124;</mml:mo></mml:math></inlineequation>) as grid <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x3A9;</mml:mo><mml:mo>:</mml:mo><mml:msub><mml:mo>&#x2124;</mml:mo><mml:mi>n</mml:mi></mml:msub><mml:mo>&#xD7;</mml:mo><mml:msub><mml:mo>&#x2124;</mml:mo><mml:mi>n</mml:mi></mml:msub></mml:math></inlineequation>, which can
-have all possible combinations of pixel intensities. Similarly, for color
-images the data domain is <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>:</mml:mo><mml:mo>&#x3A9;</mml:mo><mml:mo>&#x2192;</mml:mo><mml:msubsup><mml:mo>&#x2124;</mml:mo><mml:mi>n</mml:mi><mml:mn>3</mml:mn></mml:msubsup><mml:mo>&#xD7;</mml:mo><mml:msubsup><mml:mo>&#x2124;</mml:mo><mml:mi>n</mml:mi><mml:mn>3</mml:mn></mml:msubsup></mml:math></inlineequation>, with 3 integer
-grids each representing the green, blue and red layers composing the color
-image. The ANN data fitting and label prediction function
-<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mi>f</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> is applied on a "signal" <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mtext>X</mml:mtext><mml:mrow><mml:mo>(</mml:mo><mml:mo>&#x3A9;</mml:mo><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> from the
-domain, which is a subset of the domain <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x3A9;</mml:mo></mml:math></inlineequation> with the specific images
-used for training the neural network.</simpara>
-<simpara>Concluding this review, we will briefly discuss the concepts of symmetry and
-invariance through the lens of group theory, in order to examine the
-classifying power of ANNs in relation to statistical variance in the data. In
-summary, symmetry is the study of space and structure, with examples referring
-to to geometrical and algebraic constructs in mathematics, matter
-configurations in physics and molecular biology structures. Invariance of an
-object under transformation, is the property of changing the position of the
-object in space, such as rotating a drug molecule or shifting a cancer
-histology image, while leaving the properties of the object unchanged
-[<link linkend="bronstein2021geometric">4</link>]. In these examples, the drug remains potent
-following rotation of the molecule, and the tissue is still recognized as
-cancerous based on the histology image.</simpara>
-<simpara>When artificial neural networks act as function estimators <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mtext>X</mml:mtext><mml:mrow><mml:mo>(</mml:mo><mml:mo>&#x3A9;</mml:mo><mml:mo>)</mml:mo></mml:mrow><mml:mo>&#x2192;</mml:mo><mml:mtext>Y</mml:mtext></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> to predict output labels (i.e <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> = potent drug / not potent,</simpara>
+<simpara>We conclude, by reviewing how the principles of group theory, symmetry and
+invariance, provide a foundational framework to understand the function of
+machine learning algorithms, and the classifying power of ANNs in relation to
+statistical variance, transformations, and non-homogeneity in the input data.
+In broad terms, symmetry is the analysis of geometric and algebraic
+mathematical structures, and can have applications with data found in the
+fields of physics, molecular biology and machine learning. A core concept in
+symmetry is invariance, which in our context is changing data coordinates,
+such as shifting a drug molecule in space or a cancer histology tissue sample,
+while leaving the shape of the object unchanged [<link linkend="bronstein2021geometric">4</link>].
+Following such a change which as will be formally defined later in the text as
+<emphasis>invariant transformation</emphasis>, the machine learning algorithms and ANNs must be able
+to recognize a drug molecule following rotation, or a tissue to be recognized
+as cancerous from a shifted histology image.</simpara>
+<simpara>In order to link the abstract symmetry concepts with data classification in
+machine learning, following the terminology of Bronstein et al., we consider
+the input data <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> to originate from a symmetry domain <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x3A9;</mml:mo></mml:math></inlineequation>. The
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x3A9;</mml:mo></mml:math></inlineequation> is the structure upon which the data are based, and upon the
+domain structure we train the artificial neural networks to perform
+classification, through the label prediction function <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi></mml:math></inlineequation> as mentioned in
+the earlier section. For example, microscopy images are essentially
+2-dimensional numerical grids of <emphasis>n x n</emphasis> pixels (<emphasis role="strong">Fig.2a</emphasis>), with each pixel
+having a value for the light intensity captured when the image was taken. In
+this case the data domain is a grid of integers (<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x2124;</mml:mo></mml:math></inlineequation>), represented as
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x3A9;</mml:mo><mml:mo>:</mml:mo><mml:msub><mml:mo>&#x2124;</mml:mo><mml:mi>n</mml:mi></mml:msub><mml:mo>&#xD7;</mml:mo><mml:msub><mml:mo>&#x2124;</mml:mo><mml:mi>n</mml:mi></mml:msub></mml:math></inlineequation>. Similarly, for color images the data domain is
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>:</mml:mo><mml:mo>&#x3A9;</mml:mo><mml:mo>&#x2192;</mml:mo><mml:msubsup><mml:mo>&#x2124;</mml:mo><mml:mi>n</mml:mi><mml:mn>3</mml:mn></mml:msubsup><mml:mo>&#xD7;</mml:mo><mml:msubsup><mml:mo>&#x2124;</mml:mo><mml:mi>n</mml:mi><mml:mn>3</mml:mn></mml:msubsup></mml:math></inlineequation>, with three overlayed integer grids each
+representing the green, blue and red layers composing the color image. In
+either case, the <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x3A9;</mml:mo></mml:math></inlineequation> contains all possible combinations of pixel
+intensities, while the specific pixel value combinations of the images in the
+input data <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation>  are a "signal" <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mtext>X</mml:mtext><mml:mrow><mml:mo>(</mml:mo><mml:mo>&#x3A9;</mml:mo><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> from the domain.  The
+ANN data classification and label prediction function <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mi>f</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation>
+is applied on the signal <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mtext>X</mml:mtext><mml:mrow><mml:mo>(</mml:mo><mml:mo>&#x3A9;</mml:mo><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> which is essentially a subset of
+the domain <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x3A9;</mml:mo></mml:math></inlineequation>.</simpara>
+<simpara>A <emphasis>symmetry group</emphasis> <inlineequation><alt><![CDATA[G]]></alt><mathphrase><![CDATA[G]]></mathphrase></inlineequation> contains all possible transformations of the
+input signal <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mtext>X</mml:mtext><mml:mrow><mml:mo>(</mml:mo><mml:mo>&#x3A9;</mml:mo><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> called symmetries <inlineequation><alt><![CDATA[g]]></alt><mathphrase><![CDATA[g]]></mathphrase></inlineequation> or
+otherwise <emphasis>group actions</emphasis>. A symmetry transformation <inlineequation><alt><![CDATA[g]]></alt><mathphrase><![CDATA[g]]></mathphrase></inlineequation> preserves
+the properties of the data, such as for example not distorting the objects in
+the image during rotation. The members of the symmetry group <inlineequation><alt><![CDATA[g \in
+G]]></alt><mathphrase><![CDATA[g \in
+G]]></mathphrase></inlineequation> are the associations of two or more coordinate points <inlineequation><alt><![CDATA[u,v\in \Omega]]></alt><mathphrase><![CDATA[u,v\in \Omega]]></mathphrase></inlineequation>
+on the data domain (grid in our image example). Between these coordinates, the image can be rotated,
+shifted or otherwise transformed without any distortion. Therefore, the key aspect
+of the formal mathematical definition of the group, is that the data attributes
+are preserved during object distortions that are common during the experimental
+acquisition of bioinformatics data. The concept of symmetry groups is
+important towards modeling the performance of machine learning algorithms, for
+classifying the data patterns correctly, despite the variability found in the input data.</simpara>
+<informalfigure role="left">
+<mediaobject>
+<imageobject>
+<imagedata fileref="Fig2a.svg"/>
+</imageobject>
+<textobject><phrase>Fig2a</phrase></textobject>
+</mediaobject>
+</informalfigure>
+<informalfigure role="right">
+<mediaobject>
+<imageobject>
+<imagedata fileref="Fig2b.svg"/>
+</imageobject>
+<textobject><phrase>Fig2b</phrase></textobject>
+</mediaobject>
+</informalfigure>
+<simpara><?asciidoc-hr?></simpara>
+<simpara><emphasis role="strong">Figure 2. (a).</emphasis> A <emphasis>grid</emphasis> data structure representing image pixels, and
+formally is a <emphasis>graph</emphasis> <emphasis role="strong">(b).</emphasis> A <emphasis>graph</emphasis> <inlineequation><alt><![CDATA[G = (V, E)]]></alt><mathphrase><![CDATA[G = (V, E)]]></mathphrase></inlineequation>, is composed of
+<emphasis>nodes</emphasis> <inlineequation><alt><![CDATA[V]]></alt><mathphrase><![CDATA[V]]></mathphrase></inlineequation> shown as circles, and <emphasis>edges</emphasis>  connecting the nodes and
+shown as arrows. It can represent a protein, where the amino acids are the
+nodes and the peptide bonds between amino acids are the edges.</simpara>
+<simpara><?asciidoc-hr?></simpara>
+<simpara>Another important data structure for bioinformatics is a <emphasis>graph</emphasis> <inlineequation><alt><![CDATA[G
+= (V, E)]]></alt><mathphrase><![CDATA[G
+= (V, E)]]></mathphrase></inlineequation>, composed of <emphasis>nodes</emphasis> <inlineequation><alt><![CDATA[V]]></alt><mathphrase><![CDATA[V]]></mathphrase></inlineequation> representing biological
+entities, and <emphasis>edges</emphasis>  which are the connections between pairs of nodes
+(<emphasis role="strong">Fig.2b</emphasis>).  In a specific instance of a graph for a real-world object,  the
+edges are a subset of all possible links between nodes. An example graph data
+structure for a biological molecule such a protein or a drug, would represent
+the amino acids or atoms as node entities, and the chemical bonds between each
+of these entities as edges. The edges can correspond to either the
+carbonyl-amino (C-N) peptide bonds between amino acids and molecular
+interactions across the peptide chain on the protein structure, or the chemical
+bonds between atoms in a drug molecule. Furthermore, attributes in the
+molecular data such as for example polarity and amino acid weight, or drug
+binding properties can be represented as <inlineequation><alt><![CDATA[s]]></alt><mathphrase><![CDATA[s]]></mathphrase></inlineequation> - dimensional node
+attributes, where <emphasis>s</emphasis> are the attributes assigned to each node.  Similarly, the
+edges or even entire graphs can have attributes, for experimental data measured
+on the molecular interactions represented by the edges, and measurements of the
+properties of the complete protein or drug.  Finally, from an algorithmic
+perspective , images are a special case of graphs where the nodes are the
+pixels, and connect with edges in a structured pattern that form of a grid
+(<emphasis role="strong">Fig.2a</emphasis>) representing the adjacent position of the pixels.</simpara>
+<simpara>Having established the mathematical and algorithmic parallels between graphs
+and images, we will now utilize the principles of the <emphasis>symmetry group</emphasis>
+<inlineequation><alt><![CDATA[G]]></alt><mathphrase><![CDATA[G]]></mathphrase></inlineequation> to examine the analytical and classification power of machine
+learning ANNs, in relation to variability and transformations in the data. For
+both data types such as input images or molecules represented as graphs that
+are shifted or rotated, we establish the concept of invariance through the
+principles of group theory and symmetry. These are the foundational
+mathematical and algorithmic formalisms, that can be used to model the
+performance and output of machine learning algorithms ANNs in relation to the
+variability in the dataset. Consecutively, these principles can then be
+extrapolated and generalized for other types of data beyond graphs and images,
+for which ANNs are trained for prediction and classification. While we present
+the group and symmetry definitions following a data-centric approach, we will
+nonetheless still follow the mathematical formalism, when describing how the
+group operations can transform the input data. Furtermore, different types of
+data can have the same symmetry group, and different transformations can be
+performed by the same group operation. For example, an image with a triangle
+which essentially is a graph with three nodes, can have the same rotational
+symmetry group as a graph of three nodes or a numerical sequence of three
+elements.</simpara>
+<simpara>When chemical and biological molecules are represented as graphs as described
+earlier, the nodes <inlineequation><alt><![CDATA[V]]></alt><mathphrase><![CDATA[V]]></mathphrase></inlineequation> can be in any order depending on how the
+data were measured during the experiment.   This does not change the meaning of
+the data, and as long as the edges <emphasis role="strong">E</emphasis> representing the connections between
+the molecules are not modified, we have a proper representation of the
+molecular entity independently of the ordering of <emphasis role="strong">V</emphasis>. In this case, where
+two graphs for the same molecule have the same edges but different ordering of
+nodes, they are called <emphasis>isomorphic</emphasis>. Any machine learning algorithm performing
+pattern recognition on graphs, should not depend on the ordering of nodes so
+that classification with ANNs and artificial intelligence is not affected by
+experiment measurement variations in real-world data.  This is something that
+is taken for granted with human intelligence, where for example we can
+recognize an object even when a photograph is rotated at an angle. Returning to
+our formal definitions, in order for ANNs algorithms to equivalently recognize
+<emphasis>isomorphic</emphasis> graphs, the functions <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>&#x3C6;</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> and overall
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> of the ANN acting on graph data should be <emphasis>permutation
+invariant</emphasis>.This means that for any permutation of the input dataset, the output
+value of these functions are identical independently of the ordering of the
+nodes <emphasis role="strong">V</emphasis> for example in the case of graphs. This concept can be similarly
+applied to images, which as mentioned previously are special cases of fully
+connected graphs, and furthermore these principles can also be generalized to
+other data types beyond images or graphs.</simpara>
+<simpara>In order to formalize further the concept of invariance, and since both
+examples of the image and graphs are similarly points on a grids on a two
+dimemensional plane, we can use linear algebra. Specifically, by using a matrix
+we can represent the data transformations as group actions <inlineequation><alt><![CDATA[g]]></alt><mathphrase><![CDATA[g]]></mathphrase></inlineequation>,
+within the symmetry group <inlineequation><alt><![CDATA[G]]></alt><mathphrase><![CDATA[G]]></mathphrase></inlineequation>. The use of matrices enables us to
+connect the group symmetries with the actual data, through matrix
+multiplications that modify the coordinates of the object and consecutively
+represent the data transformations through the multiplication. The dimensions
+of the matrix <inlineequation><alt><![CDATA[n \times n]]></alt><mathphrase><![CDATA[n \times n]]></mathphrase></inlineequation> are usually similar to these of the
+signal space <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mtext>X</mml:mtext><mml:mrow><mml:mo>(</mml:mo><mml:mo>&#x3A9;</mml:mo><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> for the data (for example, <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mo>&#x2124;</mml:mo><mml:mi>n</mml:mi></mml:msub><mml:mo>&#xD7;</mml:mo><mml:msub><mml:mo>&#x2124;</mml:mo><mml:mi>n</mml:mi></mml:msub></mml:math></inlineequation> images).
+The the matrix dimensions not depend on the size of the group i.e.  the number
+of possible symmetries, or the dimensionality of underlying data domain
+<inlineequation><alt><![CDATA[\Omega]]></alt><mathphrase><![CDATA[\Omega]]></mathphrase></inlineequation>. With this definition in place, we can formalize
+symmetries and group actions for modifying data objects, and the use of matrix
+and linear transformations as basis for connecting invariance in relation to
+variability in the data.</simpara>
+<simpara>We will now conclude by establishing the mathematical and linear algebra
+formalisms, for resilience of the ANNs and machine learning algorithm pattern
+recognition, in relation to transformations in the data. While our framework is
+on a two-dimensional, grid data domain <inlineequation><alt><![CDATA[\Omega]]></alt><mathphrase><![CDATA[\Omega]]></mathphrase></inlineequation>, the formalisms
+developed here can also be extrapolated without loss of generality to any
+number of dimensions or data formats. We will first connect matrices to group
+actions <inlineequation><alt><![CDATA[g]]></alt><mathphrase><![CDATA[g]]></mathphrase></inlineequation> (rotations, shifts etc.) in the symmetry group
+<inlineequation><alt><![CDATA[g \in G]]></alt><mathphrase><![CDATA[g \in G]]></mathphrase></inlineequation>, by defining a function <inlineequation><alt><![CDATA[\theta]]></alt><mathphrase><![CDATA[\theta]]></mathphrase></inlineequation> that maps
+the group to a matrix as <inlineequation><alt><![CDATA[\theta : G \rightarrow \mathbf{M}]]></alt><mathphrase><![CDATA[\theta : G \rightarrow \mathbf{M}]]></mathphrase></inlineequation>. As
+mentioned previously, a matrix  <inlineequation><alt><![CDATA[\mathbf{M} \in  R^{n \times n}]]></alt><mathphrase><![CDATA[\mathbf{M} \in  R^{n \times n}]]></mathphrase></inlineequation> of
+numerical values (integers, fractions, positive and negative), when multiplied
+to the coordinate values of an object on the plane <inlineequation><alt><![CDATA[\Omega]]></alt><mathphrase><![CDATA[\Omega]]></mathphrase></inlineequation>, it
+rotates or shifts the object coordinates for the exact amount correponsing to
+the group action within the symmetry group.</simpara>
+<simpara>With these definitions in place, we will now connect the matrix formalisms with
+the neural network estimator function <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mi>f</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation>, that is
+identified by adjusting neuron connection weights during multiple training
+cycles with the input data.  Our goal is to leverage the mathematical
+formalisms of group symmetry and invariance, in order to establish the ANN
+resilience for classifying and assigning labels to new data points. The data
+points originate from real-world data that might contain tranformations and
+distortions. We first define that the estimator function of the ANN to be
+<emphasis>invariant</emphasis>, if the condition for the input data holds such as
+<inlineequation><alt><![CDATA[f(\mathbf{M} \times x_i) = f(x_i)]]></alt><mathphrase><![CDATA[f(\mathbf{M} \times x_i) = f(x_i)]]></mathphrase></inlineequation> for all matrices
+<inlineequation><alt><![CDATA[\mathbf{M}]]></alt><mathphrase><![CDATA[\mathbf{M}]]></mathphrase></inlineequation> representing the actions <inlineequation><alt><![CDATA[g \in G]]></alt><mathphrase><![CDATA[g \in G]]></mathphrase></inlineequation> within
+the symmetry group. This formula presents the condition required for the neural
+network function to be invariant: its output value is the same whether the
+input data <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> are transformed or not (i.e an image or graph is not
+rotated on the plane), as this is represented by the matrix multiplication
+<inlineequation><alt><![CDATA[\mathbf{M} \times x_i]]></alt><mathphrase><![CDATA[\mathbf{M} \times x_i]]></mathphrase></inlineequation> . Therefore, the output values
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mi>f</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> by the ANN which are essentially predicted output
+labels (i.e <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:msub></mml:math></inlineequation> = potent drug / not potent etc.) based on the
+input data, are resilient to noisy and deformed real-world data, when the
+network estimator function is invariant.  In a different case, the estimator
+function approximated by the ANN can be <emphasis>equivariant</emphasis> and defined as
+<inlineequation><alt><![CDATA[f(\mathbf{M} \times x_i) = \mathbf{M} \times f(x_i)]]></alt><mathphrase><![CDATA[f(\mathbf{M} \times x_i) = \mathbf{M} \times f(x_i)]]></mathphrase></inlineequation>. This means
+that the output of the ANN will be modified, but the label prediction result
+will be equally shifted along with the shift in the input data.</simpara>
+<simpara>Up to this point, we have discussed only discrete tranformations in linear
+algebra terms, with matrix multiplications that result in a shift of
+coordinates and rigid transformations of the data, such as a rotation of the
+image or the graph by a specific angle on the grid <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x3A9;</mml:mo></mml:math></inlineequation>. However, we
+can have also also have continuous, more fine grained shifts which is common
+with real-world data. In this case, the ANNs algorithms should be able to
+recognize patterns, classify and label the data without any loss of
+performance. Mathematically, the continuous transformations follow equally with
+the invariant and equivariant functions described earlier.  If for example the
+domain <inlineequation><alt><![CDATA[\Omega]]></alt><mathphrase><![CDATA[\Omega]]></mathphrase></inlineequation> contains data that have smooth transformations and
+shifts, such as moving images (video) or shifts of molecules and graphs that
+preserve <emphasis>continuity</emphasis> in a topological definition
+[<link linkend="sutherland2009introduction">11</link>], in this case we have a <emphasis>homeomorphism</emphasis>
+instead of <emphasis>invariance</emphasis>.</simpara>
+<simpara>Finally, if the rate of continuous transformation of the data is quantifiable,
+meaning that the function <inlineequation><alt><![CDATA[\theta]]></alt><mathphrase><![CDATA[\theta]]></mathphrase></inlineequation> that maps the group to a matrix
+is <emphasis>differentiable</emphasis>, then the members of the symmetry groups will be part of a
+<emphasis>diffeomorphism</emphasis>. As it follows from the principles of calculus, in this case
+infinitely multiple matrices <inlineequation><alt><![CDATA[f(\mathbf(M)]]></alt><mathphrase><![CDATA[f(\mathbf(M)]]></mathphrase></inlineequation> will be needed to be
+produced by <inlineequation><alt><![CDATA[\theta]]></alt><mathphrase><![CDATA[\theta]]></mathphrase></inlineequation> for the continuous change of the data
+coordinates at every point. These differentiable data structures are common
+with manifolds, which for example could be used to represent proteins in fine
+detail. In this case the molecule would be represented as cloud with all atomic
+forces around the structure, instead of the discrete data structure of nodes
+and edges of a graph.  Finally, if the manifold structure includes also a
+metric of <emphasis>distance</emphasis> between its points to further quantify the data
+transformations, in this case we will have an <emphasis>isometry</emphasis> during the
+transformation due to a group action from the symmetry group.</simpara>
 <simpara><anchor xml:id="noether1918invariante" xreflabel="[noether1918invariante]"/>[1] E. Noether, “Invariante variationsprobleme, math-phys,” <emphasis>Klasse, pp235-257</emphasis>, 1918.</simpara>
 <simpara><anchor xml:id="katz2022sequence" xreflabel="[katz2022sequence]"/>[2] K. Katz, O. Shutov, R. Lapoint, M. Kimelman, J. R. Brister, and C. O’Sullivan, “The sequence read archive: a decade more of explosive growth,” <emphasis>Nucleic acids research</emphasis>, vol. 50, no. D1, pp. D387–D390, 2022.</simpara>
 <simpara><anchor xml:id="clissa2022survey" xreflabel="[clissa2022survey]"/>[3] L. Clissa, “Survey of Big Data sizes in 2021.” 2022.</simpara>
 <simpara><anchor xml:id="bronstein2021geometric" xreflabel="[bronstein2021geometric]"/>[4] M. M. Bronstein, J. Bruna, T. Cohen, and P. Veličković, “Geometric deep learning: Grids, groups, graphs, geodesics, and gauges,” <emphasis>arXiv preprint arXiv:2104.13478</emphasis>, 2021.</simpara>
 <simpara><anchor xml:id="li2019deep" xreflabel="[li2019deep]"/>[5] Y. Li, C. Huang, L. Ding, Z. Li, Y. Pan, and X. Gao, “Deep learning in bioinformatics: Introduction, application, and perspective in the big data era,” <emphasis>Methods</emphasis>, vol. 166, pp. 4–21, 2019.</simpara>
-<simpara><anchor xml:id="tang2019recent" xreflabel="[tang2019recent]"/>[6] B. Tang, Z. Pan, K. Yin, and A. Khateeb, “Recent advances of deep learning in bioinformatics and computational biology,” <emphasis>Frontiers in genetics</emphasis>, vol. 10, p. 214, 2019.</simpara>
+<simpara><anchor xml:id="uzair2020effects" xreflabel="[uzair2020effects]"/>[6] M. Uzair and N. Jamil, “Effects of hidden layers on the efficiency of neural networks,” in <emphasis>2020 IEEE 23rd international multitopic conference (INMIC)</emphasis>, 2020, pp. 1–6.</simpara>
+<simpara><anchor xml:id="wainberg2018deep" xreflabel="[wainberg2018deep]"/>[7] M. Wainberg, D. Merico, A. Delong, and B. J. Frey, “Deep learning in biomedicine,” <emphasis>Nature biotechnology</emphasis>, vol. 36, no. 9, pp. 829–838, 2018.</simpara>
+<simpara><anchor xml:id="tang2019recent" xreflabel="[tang2019recent]"/>[8] B. Tang, Z. Pan, K. Yin, and A. Khateeb, “Recent advances of deep learning in bioinformatics and computational biology,” <emphasis>Frontiers in genetics</emphasis>, vol. 10, p. 214, 2019.</simpara>
+<simpara><anchor xml:id="kriegeskorte2019neural" xreflabel="[kriegeskorte2019neural]"/>[9] N. Kriegeskorte and T. Golan, “Neural network models and deep learning,” <emphasis>Current Biology</emphasis>, vol. 29, no. 7, pp. R231–R236, 2019.</simpara>
+<simpara><anchor xml:id="ruder2016overview" xreflabel="[ruder2016overview]"/>[10] S. Ruder, “An overview of gradient descent optimization algorithms,” <emphasis>arXiv preprint arXiv:1609.04747</emphasis>, 2016.</simpara>
+<simpara><anchor xml:id="sutherland2009introduction" xreflabel="[sutherland2009introduction]"/>[11] W. A. Sutherland, <emphasis>Introduction to metric and topological spaces</emphasis>. Oxford University Press, 2009.</simpara>
 </section>
 </article>

@@ -4,7 +4,6 @@ Konstantinos Krampis*^1^, Eric Ross^2^, Olorunseun O. Ogunwobi^1^, Grace Ma,^3^ 
 
 
 :stem:
-:bibtex-file: ./GDL-bibliography/references.bib
 
 ^1^Belfer Research Facility, Biological Sciences, Hunter College, City University of New York, NY, USA
 ^2^Fox Chase Cancer Center, Philadephia, PA, USA
@@ -467,71 +466,73 @@ Having established the mathematical and algorithmic parallels between graphs
 and images, we will now utilize the principles of the _symmetry group_
 latexmath:[$G$] to examine the analytical and classification power of machine
 learning ANNs, in relation to variability and transformations in the data. For
-both data types such as input images and molecules represented as graphs that
+both data types such as input images or molecules represented as graphs that
 are shifted or rotated, we establish the concept of invariance through the
-principles of group theory and symmetry.  These are the foundational
-mathematical and algorithmic principles that can be used to model the
-performance and output of machine learning algorithms ANNs, in relation to the
+principles of group theory and symmetry. These are the foundational
+mathematical and algorithmic formalisms, that can be used to model the
+performance and output of machine learning algorithms ANNs in relation to the
 variability in the dataset. Consecutively, these principles can then be
 extrapolated and generalized for other types of data beyond graphs and images,
-for which ANNs can be trained for prediction and classification. While we present 
+for which ANNs are trained for prediction and classification. While we present
 the group and symmetry definitions following a data-centric approach, we will
-nonetheless still follow the mathematical formalism, when describing how the group operations can
-transform the input data. Furtermore, different types of data can have the same
-symmetry group, and transformations of different types of data are performed
-by the same group operation. For example, an image with a triangle which
-essentially is a graph with three nodes, can have the same rotational symmetry
-group as a graph of three nodes or a numerical sequence of three elements.
+nonetheless still follow the mathematical formalism, when describing how the
+group operations can transform the input data. Furtermore, different types of
+data can have the same symmetry group, and different transformations can be
+performed by the same group operation. For example, an image with a triangle
+which essentially is a graph with three nodes, can have the same rotational
+symmetry group as a graph of three nodes or a numerical sequence of three
+elements.
 
 When chemical and biological molecules are represented as graphs as described
 earlier, the nodes latexmath:[$V$] can be in any order depending on how the
 data were measured during the experiment.   This does not change the meaning of
 the data, and as long as the edges **E** representing the connections between
-the molecules are correct we have a proper representation of the molecular
-entity independently of the ordering of **V**. In this case, where two graphs
-for the same molecule have the same edges but different ordering of nodes, they
-are called _isomorphic_. Any machine learning algorithm performing operations
-on graphs, should not depend on the ordering of nodes so that classification
-and pattern recognition with ANNs and artificial intelligence is not affected
-by experiment measurement variations in real-world data.  This is something
-that is taken for granted with human intelligence, where for example we can
+the molecules are not modified, we have a proper representation of the
+molecular entity independently of the ordering of **V**. In this case, where
+two graphs for the same molecule have the same edges but different ordering of
+nodes, they are called _isomorphic_. Any machine learning algorithm performing
+pattern recognition on graphs, should not depend on the ordering of nodes so
+that classification with ANNs and artificial intelligence is not affected by
+experiment measurement variations in real-world data.  This is something that
+is taken for granted with human intelligence, where for example we can
 recognize an object even when a photograph is rotated at an angle. Returning to
 our formal definitions, in order for ANNs algorithms to equivalently recognize
 _isomorphic_ graphs, the functions stem:[varphi(sigma_(k))] and overall
 stem:[f(x_i)] of the ANN acting on graph data should be _permutation
-invariant_.This means that for any permutation of the input dataset , the
-output value of these functions are identical independently of the ordering of
-the nodes **V** for example in the case of graphs. This concept can be
-similarly applied to images, which as mentioned previously are special cases of
-fully connected graphs, and these principles can also be generalized further to
+invariant_.This means that for any permutation of the input dataset, the output
+value of these functions are identical independently of the ordering of the
+nodes **V** for example in the case of graphs. This concept can be similarly
+applied to images, which as mentioned previously are special cases of fully
+connected graphs, and furthermore these principles can also be generalized to
 other data types beyond images or graphs.
 
 In order to formalize further the concept of invariance, and since both
 examples of the image and graphs are similarly points on a grids on a two
-dimemensional plane, we can use linear algebra and specifically a matrix, to
-represent the data transformations as group actions latexmath:[$g$] within the
-symmetry group latexmath:[$G$]. The use of matrices enables us to connect the
-group symmetries with the actual data, through matrix multiplications that
-modify the coordinates of the object and consecutively represent the data
-transformations through the multiplication (*Fig. 2b*). The dimensions of the
-matrix latexmath:[$n \times n$] are usually similar to these of the signal
-space stem:["X"(Omega)] for the data (for example, stem:[nxn] images), and they
-not depend on the size of the group i.e.  the number of possible symmetries, or
-the dimensionality of underlying data domain latexmath:[$\Omega$]. With this
-definition in place, we can define symmetries and group actions for modifying
-data objects, and the use of matrix and linear transformations as basis for
-connecting invariance in relation to variability in the data. 
+dimemensional plane, we can use linear algebra. Specifically, by using a matrix
+we can represent the data transformations as group actions latexmath:[$g$],
+within the symmetry group latexmath:[$G$]. The use of matrices enables us to
+connect the group symmetries with the actual data, through matrix
+multiplications that modify the coordinates of the object and consecutively
+represent the data transformations through the multiplication. The dimensions
+of the matrix latexmath:[$n \times n$] are usually similar to these of the
+signal space stem:["X"(Omega)] for the data (for example, stem:[ZZ_n xx ZZ_n] images).
+The the matrix dimensions not depend on the size of the group i.e.  the number
+of possible symmetries, or the dimensionality of underlying data domain
+latexmath:[$\Omega$]. With this definition in place, we can formalize
+symmetries and group actions for modifying data objects, and the use of matrix
+and linear transformations as basis for connecting invariance in relation to
+variability in the data. 
 
-We will now conclude by establishing the mathematical and linear algebra formalisms,
-for resilience of the ANNs and machine learning algorithm pattern recognition,
-in relation to transformations in the data. While our framework is on a
-two-dimensional, grid data domain latexmath:[$\Omega$], the formalisms developed
-here can also be extrapolated without loss of generality to any number of dimensions
-or data formats. We will first connect matrices to group actions
-latexmath:[$g$] (rotations, shifts etc.) in the symmetry group latexmath:[$g
-\in G$], by defining a function latexmath:[$\theta$] that maps the group to a
-matrix as latexmath:[$\theta : G \rightarrow \mathbf{M}$]. As mentioned
-previously, a matrix  latexmath:[$\mathbf{M} in R^{n \times n}$] of
+We will now conclude by establishing the mathematical and linear algebra
+formalisms, for resilience of the ANNs and machine learning algorithm pattern
+recognition, in relation to transformations in the data. While our framework is
+on a two-dimensional, grid data domain latexmath:[$\Omega$], the formalisms
+developed here can also be extrapolated without loss of generality to any
+number of dimensions or data formats. We will first connect matrices to group
+actions latexmath:[$g$] (rotations, shifts etc.) in the symmetry group
+latexmath:[$g \in G$], by defining a function latexmath:[$\theta$] that maps
+the group to a matrix as latexmath:[$\theta : G \rightarrow \mathbf{M}$]. As
+mentioned previously, a matrix  latexmath:[$\mathbf{M} \in  R^{n \times n}$] of
 numerical values (integers, fractions, positive and negative), when multiplied
 to the coordinate values of an object on the plane latexmath:[$\Omega$], it
 rotates or shifts the object coordinates for the exact amount correponsing to
@@ -539,27 +540,28 @@ the group action within the symmetry group.
 
 With these definitions in place, we will now connect the matrix formalisms with
 the neural network estimator function stem:[y_(pred_i)=f(x_i)], that is
-identified by adjusted weights through multiple cycles with the training data.
-Our goal is through the mathematical formalisms of group symmetry and
-invariance, to establish the ANN resilience and performance for classifying and
-assigning labels to new data points, which originate from real-world data that
-are noisy and contain tranformations and distortions. We first define that the
-estimator function of the ANN to be _invariant_ if the condition for the input
-data holds such as latexmath:[$f(\mathbf(M) x_i) = f(x_i)$] for all matrices
-representing actions latexmath:[$g \in G$] within the symmetry group. This
-formula presents the condition required for the neural network function to be
-invariant: its output value is the same whether the input data stem:[x_i] are
-not transformed or noisy (i.e an image or graph is not rotated on the plane),
-or when the input data are transformed to an amount represented by the matrix
-multiplication latexmath:[$f(\mathbf(M) x_i$] . Therefore, the output values
+identified by adjusting neuron connection weights during multiple training
+cycles with the input data.  Our goal is to leverage the mathematical
+formalisms of group symmetry and invariance, in order to establish the ANN
+resilience for classifying and assigning labels to new data points. The data
+points originate from real-world data that might contain tranformations and
+distortions. We first define that the estimator function of the ANN to be
+_invariant_, if the condition for the input data holds such as
+latexmath:[$f(\mathbf{M} \times x_i) = f(x_i)$] for all matrices
+latexmath:[$\mathbf{M}$] representing the actions latexmath:[$g \in G$] within
+the symmetry group. This formula presents the condition required for the neural
+network function to be invariant: its output value is the same whether the
+input data stem:[x_i] are transformed or not (i.e an image or graph is not
+rotated on the plane), as this is represented by the matrix multiplication
+latexmath:[$\mathbf{M} \times x_i$] . Therefore, the output values
 stem:[y_(pred_i)=f(x_i)] by the ANN which are essentially predicted output
 labels (i.e stem:[y_(pred_i)] = potent drug / not potent etc.) based on the
 input data, are resilient to noisy and deformed real-world data, when the
 network estimator function is invariant.  In a different case, the estimator
-function approximated by the ANN can be equivariant and be defined as
-latexmath:[$f(\mathbf(M) x_i) = \mathbf(M)f(x_i)$]. This means that the output
-of the ANN will be modified, but the label prediction result will be equally
-shifted along with the shift in the input data. 
+function approximated by the ANN can be _equivariant_ and defined as
+latexmath:[$f(\mathbf{M} \times x_i) = \mathbf{M} \times f(x_i)$]. This means
+that the output of the ANN will be modified, but the label prediction result
+will be equally shifted along with the shift in the input data. 
 
 Up to this point, we have discussed only discrete tranformations in linear
 algebra terms, with matrix multiplications that result in a shift of
@@ -568,13 +570,13 @@ image or the graph by a specific angle on the grid stem:[Omega]. However, we
 can have also also have continuous, more fine grained shifts which is common
 with real-world data. In this case, the ANNs algorithms should be able to
 recognize patterns, classify and label the data without any loss of
-performance, and mathematically the continuous transformations follow equally
-with the invariant and equivariant functions described earlier.  If for example
-the domain latexmath:[$\Omega$] contains data that have smooth transformations
-and shifts, such as for example moving images (video) or shifts of molecules
-and graphs that preserve _continuity_ in a topological definition
-cite:[sutherland2009introduction], in this case we have _homeomorphism_ instead
-of _invariance_. 
+performance. Mathematically, the continuous transformations follow equally with
+the invariant and equivariant functions described earlier.  If for example the
+domain latexmath:[$\Omega$] contains data that have smooth transformations and
+shifts, such as moving images (video) or shifts of molecules and graphs that
+preserve _continuity_ in a topological definition
+cite:[sutherland2009introduction], in this case we have a _homeomorphism_
+instead of _invariance_. 
 
 Finally, if the rate of continuous transformation of the data is quantifiable,
 meaning that the function latexmath:[$\theta$] that maps the group to a matrix
@@ -584,12 +586,12 @@ infinitely multiple matrices latexmath:[$f(\mathbf(M)$] will be needed to be
 produced by latexmath:[$\theta$] for the continuous change of the data
 coordinates at every point. These differentiable data structures are common
 with manifolds, which for example could be used to represent proteins in fine
-detail, as a molecule cloud with all atomic forces around the structure,
-instead of the discrete, abstract representation of nodes and edges of a graph.
-Finally, if the manifold structure includes also a metric of _distance_ between
-its points to further quantify the data transformations, in this case we will
-have an _isometry_ during the transformation due to a group action within the
-symmetry group.
+detail. In this case the molecule would be represented as cloud with all atomic
+forces around the structure, instead of the discrete data structure of nodes
+and edges of a graph.  Finally, if the manifold structure includes also a
+metric of _distance_ between its points to further quantify the data
+transformations, in this case we will have an _isometry_ during the
+transformation due to a group action from the symmetry group.
 
 bibliography::[]
 

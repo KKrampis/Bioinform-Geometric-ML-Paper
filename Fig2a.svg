@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg height='197pt' preserveAspectRatio='xMidYMid meet' viewBox='0.00 0.00 236.94 196.89' width='237pt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'>
+<g class='graph' id='graph0' transform='scale(1 1) rotate(0) translate(4 192.89)'>
+<title>grid_layout</title>
+<polygon fill='white' points='-4,4 -4,-192.89 232.94,-192.89 232.94,4 -4,4' stroke='transparent'/>
+<text font-family='Times,serif' font-size='14.00' text-anchor='middle' x='114.47' y='-7.8'>a. grid data for image pixels</text>
+
+<g class='node' id='node1'>
+<title>A</title>
+<ellipse cx='32.47' cy='-156.42' fill='green' rx='31.74' ry='31.74' stroke='green'/>
+<text font-family='Arial' font-size='11.00' text-anchor='middle' x='32.47' y='-153.62'>Node A</text>
+</g>
+
+<g class='node' id='node2'>
+<title>B</title>
+<ellipse cx='114.47' cy='-156.42' fill='blue' rx='31.74' ry='31.74' stroke='blue'/>
+<text font-family='Arial' font-size='11.00' text-anchor='middle' x='114.47' y='-153.62'>Node B</text>
+</g>
+
+<g class='edge' id='edge1'>
+<title>A&#45;&gt;B</title>
+<path d='M64.5,-156.42C67.12,-156.42 69.74,-156.42 72.36,-156.42' fill='none' stroke='gray' stroke-width='1.5'/>
+<polygon fill='gray' points='72.46,-159.92 82.46,-156.42 72.46,-152.92 72.46,-159.92' stroke='gray' stroke-width='1.5'/>
+</g>
+
+<g class='node' id='node4'>
+<title>D</title>
+<ellipse cx='32.47' cy='-55.47' fill='yellow' rx='32.44' ry='32.44' stroke='yellow'/>
+<text font-family='Arial' font-size='11.00' text-anchor='middle' x='32.47' y='-52.67'>Node D</text>
+</g>
+
+<g class='edge' id='edge5'>
+<title>A&#45;&gt;D</title>
+<path d='M32.47,-124.38C32.47,-116.07 32.47,-106.95 32.47,-98.17' fill='none' stroke='gray' stroke-width='1.5'/>
+<polygon fill='gray' points='35.97,-98.08 32.47,-88.08 28.97,-98.08 35.97,-98.08' stroke='gray' stroke-width='1.5'/>
+</g>
+
+<g class='node' id='node3'>
+<title>C</title>
+<ellipse cx='196.47' cy='-156.42' fill='red' rx='32.44' ry='32.44' stroke='red'/>
+<text font-family='Arial' font-size='11.00' text-anchor='middle' x='196.47' y='-153.62'>Node C</text>
+</g>
+
+<g class='edge' id='edge2'>
+<title>B&#45;&gt;C</title>
+<path d='M146.5,-156.42C148.83,-156.42 151.16,-156.42 153.48,-156.42' fill='none' stroke='gray' stroke-width='1.5'/>
+<polygon fill='gray' points='153.68,-159.92 163.68,-156.42 153.68,-152.92 153.68,-159.92' stroke='gray' stroke-width='1.5'/>
+</g>
+
+<g class='node' id='node5'>
+<title>E</title>
+<ellipse cx='114.47' cy='-55.47' fill='orange' rx='31.74' ry='31.74' stroke='orange'/>
+<text font-family='Arial' font-size='11.00' text-anchor='middle' x='114.47' y='-52.67'>Node E</text>
+</g>
+
+<g class='edge' id='edge6'>
+<title>B&#45;&gt;E</title>
+<path d='M114.47,-124.38C114.47,-115.91 114.47,-106.59 114.47,-97.65' fill='none' stroke='gray' stroke-width='1.5'/>
+<polygon fill='gray' points='117.97,-97.4 114.47,-87.4 110.97,-97.4 117.97,-97.4' stroke='gray' stroke-width='1.5'/>
+</g>
+
+<g class='node' id='node6'>
+<title>F</title>
+<ellipse cx='196.47' cy='-55.47' fill='purple' rx='31.74' ry='31.74' stroke='purple'/>
+<text font-family='Arial' font-size='11.00' text-anchor='middle' x='196.47' y='-52.67'>Node F</text>
+</g>
+
+<g class='edge' id='edge7'>
+<title>C&#45;&gt;F</title>
+<path d='M196.47,-123.84C196.47,-115.46 196.47,-106.3 196.47,-97.5' fill='none' stroke='gray' stroke-width='1.5'/>
+<polygon fill='gray' points='199.97,-97.41 196.47,-87.41 192.97,-97.41 199.97,-97.41' stroke='gray' stroke-width='1.5'/>
+</g>
+
+<g class='edge' id='edge3'>
+<title>D&#45;&gt;E</title>
+<path d='M65.14,-55.47C67.58,-55.47 70.02,-55.47 72.46,-55.47' fill='none' stroke='gray' stroke-width='1.5'/>
+<polygon fill='gray' points='72.49,-58.97 82.49,-55.47 72.49,-51.97 72.49,-58.97' stroke='gray' stroke-width='1.5'/>
+</g>
+
+<g class='edge' id='edge4'>
+<title>E&#45;&gt;F</title>
+<path d='M146.5,-55.47C149.12,-55.47 151.74,-55.47 154.36,-55.47' fill='none' stroke='gray' stroke-width='1.5'/>
+<polygon fill='gray' points='154.46,-58.97 164.46,-55.47 154.46,-51.97 154.46,-58.97' stroke='gray' stroke-width='1.5'/>
+</g>
+</g>
+</svg>

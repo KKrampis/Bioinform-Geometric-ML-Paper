@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg height='177pt' preserveAspectRatio='xMidYMid meet' viewBox='0.00 0.00 473.11 177.34' width='473pt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'>
+<g class='graph' id='graph0' transform='scale(1 1) rotate(0) translate(4 173.34)'>
+<title>directedgraph</title>
+<polygon fill='white' points='-4,4 -4,-173.34 469.11,-173.34 469.11,4 -4,4' stroke='transparent'/>
+<text font-family='Times,serif' font-size='14.00' text-anchor='middle' x='232.56' y='-7.8'>b. graph data structure for a protein or other molecule</text>
+
+<g class='node' id='node1'>
+<title>A</title>
+<ellipse cx='31.87' cy='-106.87' fill='green' rx='31.74' ry='31.74' stroke='green'/>
+<text font-family='Arial' font-size='11.00' text-anchor='middle' x='31.87' y='-104.07'>Node A</text>
+</g>
+
+<g class='node' id='node2'>
+<title>B</title>
+<ellipse cx='131.61' cy='-76.87' fill='blue' rx='31.74' ry='31.74' stroke='blue'/>
+<text font-family='Arial' font-size='11.00' text-anchor='middle' x='131.61' y='-74.07'>Node B</text>
+</g>
+
+<g class='edge' id='edge1'>
+<title>A&#45;&gt;B</title>
+<path d='M62.46,-97.79C71.47,-95.02 81.52,-91.94 91.07,-89.01' fill='none' stroke='gray' stroke-width='1.5'/>
+<polygon fill='gray' points='92.25,-92.31 100.78,-86.03 90.2,-85.61 92.25,-92.31' stroke='gray' stroke-width='1.5'/>
+</g>
+
+<g class='node' id='node3'>
+<title>C</title>
+<ellipse cx='231.96' cy='-136.87' fill='red' rx='32.44' ry='32.44' stroke='red'/>
+<text font-family='Arial' font-size='11.00' text-anchor='middle' x='231.96' y='-134.07'>Node C</text>
+</g>
+
+<g class='edge' id='edge2'>
+<title>A&#45;&gt;C</title>
+<path d='M63.48,-112.03C74.86,-113.92 87.88,-116.04 99.74,-117.87 129.73,-122.51 163.63,-127.41 189.46,-131.07' fill='none' stroke='gray' stroke-width='1.5'/>
+<polygon fill='gray' points='189.26,-134.58 199.65,-132.51 190.23,-127.64 189.26,-134.58' stroke='gray' stroke-width='1.5'/>
+</g>
+
+<g class='edge' id='edge3'>
+<title>B&#45;&gt;C</title>
+<path d='M159.23,-93.11C170.2,-99.8 183.08,-107.66 194.88,-114.86' fill='none' stroke='gray' stroke-width='1.5'/>
+<polygon fill='gray' points='193.28,-117.98 203.64,-120.2 196.92,-112.01 193.28,-117.98' stroke='gray' stroke-width='1.5'/>
+</g>
+
+<g class='node' id='node4'>
+<title>D</title>
+<ellipse cx='332.9' cy='-76.87' fill='yellow' rx='32.44' ry='32.44' stroke='yellow'/>
+<text font-family='Arial' font-size='11.00' text-anchor='middle' x='332.9' y='-74.07'>Node D</text>
+</g>
+
+<g class='edge' id='edge4'>
+<title>B&#45;&gt;D</title>
+<path d='M163.75,-76.87C197.77,-76.87 252.45,-76.87 290.16,-76.87' fill='none' stroke='gray' stroke-width='1.5'/>
+<polygon fill='gray' points='290.32,-80.37 300.32,-76.87 290.32,-73.37 290.32,-80.37' stroke='gray' stroke-width='1.5'/>
+</g>
+
+<g class='edge' id='edge5'>
+<title>C&#45;&gt;D</title>
+<path d='M259.99,-120.48C271.03,-113.78 283.95,-105.95 295.77,-98.78' fill='none' stroke='gray' stroke-width='1.5'/>
+<polygon fill='gray' points='297.82,-101.63 304.55,-93.45 294.19,-95.65 297.82,-101.63' stroke='gray' stroke-width='1.5'/>
+</g>
+
+<g class='node' id='node5'>
+<title>E</title>
+<ellipse cx='433.24' cy='-136.87' fill='orange' rx='31.74' ry='31.74' stroke='orange'/>
+<text font-family='Arial' font-size='11.00' text-anchor='middle' x='433.24' y='-134.07'>Node E</text>
+</g>
+
+<g class='edge' id='edge6'>
+<title>C&#45;&gt;E</title>
+<path d='M264.53,-136.87C298.74,-136.87 353.46,-136.87 391.03,-136.87' fill='none' stroke='gray' stroke-width='1.5'/>
+<polygon fill='gray' points='391.14,-140.37 401.14,-136.87 391.14,-133.37 391.14,-140.37' stroke='gray' stroke-width='1.5'/>
+</g>
+
+<g class='edge' id='edge7'>
+<title>D&#45;&gt;E</title>
+<path d='M361.03,-93.42C372.09,-100.17 385.02,-108.06 396.8,-115.25' fill='none' stroke='gray' stroke-width='1.5'/>
+<polygon fill='gray' points='395.18,-118.36 405.54,-120.58 398.83,-112.38 395.18,-118.36' stroke='gray' stroke-width='1.5'/>
+</g>
+
+<g class='node' id='node6'>
+<title>F</title>
+<ellipse cx='433.24' cy='-54.87' fill='purple' rx='31.74' ry='31.74' stroke='purple'/>
+<text font-family='Arial' font-size='11.00' text-anchor='middle' x='433.24' y='-52.07'>Node F</text>
+</g>
+
+<g class='edge' id='edge8'>
+<title>D&#45;&gt;F</title>
+<path d='M364.75,-69.97C373.34,-68.05 382.81,-65.93 391.86,-63.9' fill='none' stroke='gray' stroke-width='1.5'/>
+<polygon fill='gray' points='392.85,-67.27 401.84,-61.67 391.32,-60.44 392.85,-67.27' stroke='gray' stroke-width='1.5'/>
+</g>
+</g>
+</svg>
