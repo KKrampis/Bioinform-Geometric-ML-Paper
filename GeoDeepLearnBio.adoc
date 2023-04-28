@@ -109,9 +109,123 @@ form stem:[x_i = (50,100)]. Finally, the output layer has a number of neurons
 corresponding to the number of labels stem:[y_i] per input data point in the data, 
 and on *Fig. 1* there is a single label.
 
-.An example *Artificial Neural Network (ANN)*. The signal aggregation taking place on the second neuron stem:[sigma_(k_1^((2)))] of the second hidden layer, can be expressed with the formula stem:[sigma_(k_1^((2)))=sum_(k_(0,1,2))^((1)) w_(k0)**x_(k0) + w_(k1)**x_(k1) + w_(k2)**x_(k2) - b], which is the aggregation of neuron signals from the first layer, shown as red arrows on the figure. The _b_ is the threshold that needs to be overcome by the aggregation sum in order for the neuron to fire, and then the neuron will transmit a signal along the line shown towards the output on the final layer on the figure. The reader should refer to the text for more details.
-[#img-fig1] 
-image::graphviz.svg[Fig1]
+
+[.middle]
+[graphviz, target=Fig1, format=svg]
+....
+digraph G {
+
+    // ===============================
+    // rankdir: directed graph drawn from left to right 
+    // details: http://www.graphviz.org/doc/info/attrs.html
+    // ===============================
+    rankdir=LR;  
+    edge[style=solid, tailport=e];
+    nodesep=0.4;
+    
+    // ===============================
+    // splines=line:  draw straight lines to connect nodes
+    // ===============================
+    splines=line;
+    node [label=""];
+    subgraph cluster_0 {
+        label="Input layer";
+        node [color=chartreuse, 
+              style=filled, 
+              shape=circle];
+        x0 [fillcolor=chartreuse, 
+            label=<X<sub>1</sub>>];
+        x1 [fillcolor=chartreuse, 
+            label=<X<sub>2</sub>>];
+ 
+    }
+
+    subgraph cluster_1 {
+        color=white;
+        label="First Layer (1)";
+        node [color=dodgerblue, 
+              style=filled, 
+              shape=circle];
+        a02 [fillcolor=dodgerblue, 
+             label=<k<sub>1</sub><sup>(1)</sup>>];
+        a12 [fillcolor=dodgerblue, 
+             label=<k<sub>2</sub><sup>(1)</sup>>];
+        a22 [fillcolor=dodgerblue, 
+             label=<k<sub>3</sub><sup>(1)</sup>>];
+    }
+
+    subgraph cluster_2 {
+        color=white;
+        label="Second Layer (2)";
+        node [color=dodgerblue, 
+              style=filled, 
+              shape=circle];
+        a03 [fillcolor=dodgerblue, 
+             label=<k<sub>3</sub><sup>(2)</sup>>];
+        a13 [fillcolor=dodgerblue, 
+             label=<k<sub>2</sub><sup>(2)</sup>>];
+        a23 [fillcolor=dodgerblue, 
+             label=<k<sub>1</sub><sup>(2)</sup>>];
+
+    }
+
+    subgraph cluster_3 {
+ 
+        label="Output Layer";
+        node [color=coral1, 
+              style=filled, 
+              shape=circle];
+        O1 [fillcolor=coral1, 
+            label=<Y<sub> </sub>>];
+      
+
+    }
+
+   // ===============================
+   // This is the trick to enforce the bias node stays at the top of 
+   // vertical array of nodes in each layer
+   // style=invisible: makes the edge connection invisible
+   // dir=none: hide the arrow 
+   // ===============================
+    x0 -> a02 [penwidth=0.5];
+    x0 -> a12 [penwidth=0.5];
+    x0 -> a22 [penwidth=0.5];
+    
+    x1 -> a02 [penwidth=0.5];
+    x1 -> a12 [penwidth=0.5];
+    x1 -> a22 [penwidth=0.5];
+
+    a02 -> a03 [penwidth=0.5];
+    a02 -> a13 [label=<W<SUB>k1</SUB> * X<SUB>k1</SUB>>, fontcolor=blue, color=red, fontsize=10, penwidth=2.5];
+    a02 -> a23 [penwidth=0.5];
+ 
+    a12 -> a03 [penwidth=0.5];
+    a12 -> a13 [label=<W<SUB>k2</SUB> * X<SUB>k2</SUB>>,fontcolor=blue, color=red, fontsize=10, penwidth=2.5 ];
+    a12 -> a23 [penwidth=0.5];
+
+    a22 -> a03 [penwidth=0.5];
+    a22 -> a13 [label=<W<SUB>k3</SUB> * X<SUB>k3</SUB>>,fontcolor=blue, color=red, fontsize=10, penwidth=2.5];
+    a22 -> a23 [penwidth=0.5];
+ 
+    a03 -> O1 [penwidth=0.5];
+    a13 -> O1 [penwidth=0.5];
+    a23 -> O1 [penwidth=0.5];
+}
+....
+
+'''
+*Figure 1.* An example *Artificial Neural Network (ANN)*. The signal
+aggregation taking place on the second neuron stem:[sigma_(k_1^((2)))] of the
+second hidden layer, can be expressed with the formula
+stem:[sigma_(k_1^((2)))=sum_(k_(0,1,2))^((1)) w_(k0)**x_(k0) + w_(k1)**x_(k1) +
+w_(k2)**x_(k2) - b], which is the aggregation of neuron signals from the first
+layer, shown as red arrows on the figure. The _b_ is the threshold that needs
+to be overcome by the aggregation sum in order for the neuron to fire, and then
+the neuron will transmit a signal along the line shown towards the output on
+the final layer on the figure. The reader should refer to the text for more
+details.
+
+'''
 
 Similar to neural networks in animal brains, the computational abstractions
 used in machine learning and artificial intelligence, model neurons as
@@ -264,7 +378,9 @@ classifying the data patterns correctly, despite the variability found in the in
 [graphviz, target=Fig2a, format=svg]
 ....
 digraph grid_layout {
-  node [shape=circle, style=filled, color=lightblue, fontname=Arial, fontsize=12, width=0.6, height=0.6];
+
+  label="a. grid data for image pixels"
+  node [shape=circle, style=filled, color=lightblue, fontname=Arial, fontsize=11];
   edge [color=gray, penwidth=1.5];
 
   A [label="Node A", color=green];
@@ -286,14 +402,14 @@ digraph grid_layout {
 ....
 
 
-.An example Artificial Neural Network (ANN).
 [.right]
 [graphviz, target=Fig2b, format=svg]
 ....
 digraph directedgraph {
 
+  label="b. graph data structure for a protein or other molecule"
   rankdir=LR;  
-  node [shape=circle, style=filled, color=lightblue, fontname=Arial, fontsize=12, width=0.7, height=0.7];
+  node [shape=circle, style=filled, color=lightblue, fontname=Arial, fontsize=11];
   edge [color=gray, penwidth=1.5];
 
   A [label="Node A", color=green];
@@ -315,8 +431,19 @@ digraph directedgraph {
 ....
 
 
+'''
+*Figure 2. (a).* A _grid_ data structure representing image pixels, and
+formally is a _graph_ *(b).* A _graph_ latexmath:[$G = (V, E)$], is composed of
+_nodes_ latexmath:[$V$] shown as circles, and _edges_  connecting the nodes and
+shown as arrows. It can represent a protein, where the amino acids are the
+nodes and the peptide bonds between amino acids are the edges.
+
+'''
+
+
+
 Another important data structure for bioinformatics is a _graph_ latexmath:[$G
-= (V, E)$] that is composed of _nodes_ latexmath:[$V$] representing biological
+= (V, E)$], composed of _nodes_ latexmath:[$V$] representing biological
 entities, and _edges_  which are the connections between pairs of nodes
 (*Fig.2b*).  In a specific instance of a graph for a real-world object,  the
 edges are a subset of all possible links between nodes. An example graph data
@@ -325,14 +452,14 @@ the amino acids or atoms as node entities, and the chemical bonds between each
 of these entities as edges. The edges can correspond to either the
 carbonyl-amino (C-N) peptide bonds between amino acids and molecular
 interactions across the peptide chain on the protein structure, or the chemical
-bonds between atoms in a drug molecule in the preceding example. Furthermore,
-attributes in the molecular data such as for example polarity and amino acid
-weight, or drug binding properties can be represented as latexmath:[$s$] -
-dimensional node attributes, where _s_ are the attributes for each object
-represented as a node.  Similarly the edges or even entire graphs can have
-attributes, respectively for experimental data measured on the molecular
-interactions as edges, or measurements for the complete protein or drug.
-Finally, from a , images are a special case of graphs where the nodes are the
+bonds between atoms in a drug molecule. Furthermore, attributes in the
+molecular data such as for example polarity and amino acid weight, or drug
+binding properties can be represented as latexmath:[$s$] - dimensional node
+attributes, where _s_ are the attributes assigned to each node.  Similarly, the
+edges or even entire graphs can have attributes, for experimental data measured
+on the molecular interactions represented by the edges, and measurements of the
+properties of the complete protein or drug.  Finally, from an algorithmic
+perspective , images are a special case of graphs where the nodes are the
 pixels, and connect with edges in a structured pattern that form of a grid
 (*Fig.2a*) representing the adjacent position of the pixels.  
 
