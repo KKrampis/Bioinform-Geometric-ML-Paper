@@ -4,8 +4,10 @@
 <article xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>Principles of Artificial Neural Networks and Machine Learning for Bioinformatics Applications</title>
-<date>2023-04-28</date>
+<date>2023-05-05</date>
 </info>
+<section xml:id="_principles_of_artificial_neural_networks_and_machine_learning_for_bioinformatics_applications">
+<title>Principles of Artificial Neural Networks and Machine Learning for Bioinformatics Applications</title>
 <simpara>Konstantinos Krampis*<superscript>1</superscript>, Eric Ross<superscript>2</superscript>, Olorunseun O. Ogunwobi<superscript>1</superscript>, Grace Ma,<superscript>3</superscript> Raja Mazumder,<superscript>4</superscript> Claudia Wultsch<superscript>1</superscript></simpara>
 <simpara><superscript>1</superscript>Belfer Research Facility, Biological Sciences, Hunter College, City University of New York, NY, USA
 <superscript>2</superscript>Fox Chase Cancer Center, Philadephia, PA, USA
@@ -35,6 +37,7 @@ domain.  Overall, the manuscript provides guidance for researchers to
 understand the principles required for practicing machine learning and
 artificial intelligence, with the special considerations towards bioinformatics
 applications.</simpara>
+<simpara><emphasis role="strong">Keywords:</emphasis> _machine learning, artificial intelligence, bioinformatics, cancer biology, neural networks, symmetry, group theory, algorithms</simpara>
 </section>
 <section xml:id="_introduction">
 <title>INTRODUCTION</title>
@@ -433,6 +436,21 @@ and edges of a graph.  Finally, if the manifold structure includes also a
 metric of <emphasis>distance</emphasis> between its points to further quantify the data
 transformations, in this case we will have an <emphasis>isometry</emphasis> during the
 transformation due to a group action from the symmetry group.</simpara>
+<section xml:id="_funding_information">
+<title>Funding Information</title>
+<simpara>This work has been supported by Award Number U54 CA221704(5) From The National Cancer Institute.</simpara>
+</section>
+<section xml:id="_author_contributions">
+<title>Author Contributions</title>
+<simpara>K.Krampis wrote the manuscript and performed the
+research. C. Wultch provided overview during the development of the rresearch
+and the manuscrit. E.Ross, O.Ogunwobi, G. Ma and R. Mazumder contributed to the
+development of the research and provided feedback during the development of the
+manuscript.</simpara>
+</section>
+<section xml:id="_conflict_of_interest">
+<title>Conflict of Interest</title>
+<simpara>The authors declare no conflicts of interest.</simpara>
 <simpara><anchor xml:id="noether1918invariante" xreflabel="[noether1918invariante]"/>[1] E. Noether, “Invariante variationsprobleme, math-phys,” <emphasis>Klasse, pp235-257</emphasis>, 1918.</simpara>
 <simpara><anchor xml:id="katz2022sequence" xreflabel="[katz2022sequence]"/>[2] K. Katz, O. Shutov, R. Lapoint, M. Kimelman, J. R. Brister, and C. O’Sullivan, “The sequence read archive: a decade more of explosive growth,” <emphasis>Nucleic acids research</emphasis>, vol. 50, no. D1, pp. D387–D390, 2022.</simpara>
 <simpara><anchor xml:id="clissa2022survey" xreflabel="[clissa2022survey]"/>[3] L. Clissa, “Survey of Big Data sizes in 2021.” 2022.</simpara>
@@ -444,5 +462,7 @@ transformation due to a group action from the symmetry group.</simpara>
 <simpara><anchor xml:id="kriegeskorte2019neural" xreflabel="[kriegeskorte2019neural]"/>[9] N. Kriegeskorte and T. Golan, “Neural network models and deep learning,” <emphasis>Current Biology</emphasis>, vol. 29, no. 7, pp. R231–R236, 2019.</simpara>
 <simpara><anchor xml:id="ruder2016overview" xreflabel="[ruder2016overview]"/>[10] S. Ruder, “An overview of gradient descent optimization algorithms,” <emphasis>arXiv preprint arXiv:1609.04747</emphasis>, 2016.</simpara>
 <simpara><anchor xml:id="sutherland2009introduction" xreflabel="[sutherland2009introduction]"/>[11] W. A. Sutherland, <emphasis>Introduction to metric and topological spaces</emphasis>. Oxford University Press, 2009.</simpara>
+</section>
+</section>
 </section>
 </article>

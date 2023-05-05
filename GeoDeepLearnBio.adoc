@@ -1,4 +1,4 @@
-= Principles of Artificial Neural Networks and Machine Learning for Bioinformatics Applications
+=== Principles of Artificial Neural Networks and Machine Learning for Bioinformatics Applications
 
 Konstantinos Krampis*^1^, Eric Ross^2^, Olorunseun O. Ogunwobi^1^, Grace Ma,^3^ Raja Mazumder,^4^ Claudia Wultsch^1^
 
@@ -12,7 +12,8 @@ Konstantinos Krampis*^1^, Eric Ross^2^, Olorunseun O. Ogunwobi^1^, Grace Ma,^3^ 
 
 ^*^Corresponding Author, _agbiotec@gmail.com_
 
-== ABSTRACT 
+
+==== ABSTRACT 
 With the exponential growth of machine learning and development of Artificial
 Neural Network (ANNs) in recent years, there is great opportunity to leverage
 this approach and accelarate biological discoveries through applications on the
@@ -36,7 +37,10 @@ artificial intelligence, with the special considerations towards bioinformatics
 applications.
 
 
-== INTRODUCTION
+*Keywords:* _machine learning, artificial intelligence, bioinformatics, cancer biology, neural networks, symmetry, group theory, algorithms
+
+
+==== INTRODUCTION
 
 Symmetry and invariance is a central concept in physics, mathematical and
 biological systems, and has been established since the early 20th century that
@@ -68,7 +72,7 @@ learning algorithms, while providing a review of mathematical and statistical
 foundations related to the  development of artificial intelligence applications
 with bioinformatics data.
 
-== THE STRUCTURE OF ARTIFICIAL INTELLIGENCE AND NEURAL NETWORKS
+==== THE STRUCTURE OF ARTIFICIAL INTELLIGENCE AND NEURAL NETWORKS
 
 We will first describe the structures and function of deep learning and
 Artificial Neural Networks (ANNs) that are the basis of artificial intelligence
@@ -322,7 +326,7 @@ the artificial neural network training has been completed by finding the most
 optimal set of weights, it is now ready to be used for label prediction with
 new, unknown stem:[x_i] data.
 
-== ARTIFICIAL INTELLIGENCE, GROUP THEORY, SYMMETRY AND INVARIANCE
+==== ARTIFICIAL INTELLIGENCE, GROUP THEORY, SYMMETRY AND INVARIANCE
 
 We conclude, by reviewing how the principles of group theory, symmetry and
 invariance, provide a foundational framework to understand the function of
@@ -592,6 +596,19 @@ and edges of a graph.  Finally, if the manifold structure includes also a
 metric of _distance_ between its points to further quantify the data
 transformations, in this case we will have an _isometry_ during the
 transformation due to a group action from the symmetry group.
+
+===== Funding Information 
+This work has been supported by Award Number U54 CA221704(5) From The National Cancer Institute.
+
+===== Author Contributions 
+K.Krampis wrote the manuscript and performed the
+research. C. Wultch provided overview during the development of the rresearch
+and the manuscrit. E.Ross, O.Ogunwobi, G. Ma and R. Mazumder contributed to the
+development of the research and provided feedback during the development of the
+manuscript.
+
+===== Conflict of Interest
+The authors declare no conflicts of interest.
 
 bibliography::[]
 
