@@ -37,8 +37,19 @@ artificial intelligence, with the special considerations towards bioinformatics
 applications.
 
 
-*Keywords:* _machine learning, artificial intelligence, bioinformatics, cancer biology, neural networks, symmetry, group theory, algorithms
+*Keywords:*_machine learning, artificial intelligence, bioinformatics, cancer biology, neural networks, symmetry, group theory, algorithms_
 
+
+==== SIMPLE SUMMARY 
+The present manuscript provides an overview of the formalisms at the foundation
+of Artificial Neural Networks (ANNs), that are the basis of Artificial
+Intelligence within the broader field of Machine Learning.  The review is from
+the perspective of bioinformatics data, and multiple examples of the
+applications of the formalisms to experimental scenarios  are presented herein.
+The mathematical formalisms are explained in detail, and biologists who are not
+Machine Learning experts are provided with the opportunity to understand the
+algorithmic basis of Artificial Intelligence towards bioinformatics
+applications.
 
 ==== INTRODUCTION
 
@@ -597,18 +608,38 @@ metric of _distance_ between its points to further quantify the data
 transformations, in this case we will have an _isometry_ during the
 transformation due to a group action from the symmetry group.
 
-===== Funding Information 
-This work has been supported by Award Number U54 CA221704(5) From The National Cancer Institute.
+===== CONCLUSION 
+The accelerated developments in the fields of Machine Learning and Artificial
+Intelligence in recent years, have also had significant impact in the field of
+Bioinformatics. Due to the rapid developements, there has been diminished
+opportunity to categorize the algorithms and their applications, along with
+their perfomance with different types of bioinformatics data.  By leveraging
+the symmetry and group theory mathematical formalisms, we can establish the
+priciples of operation of Artificial Intelligence algorithms with
+bioinformatics data and the directions for future development in the field.
 
-===== Author Contributions 
-K.Krampis wrote the manuscript and performed the
+*Funding Information:* This work has been supported by Award Number U54
+CA221704(5) From The National Cancer Institute.
+
+*Author Contributions:* K.Krampis wrote the manuscript and performed the
 research. C. Wultch provided overview during the development of the rresearch
 and the manuscrit. E.Ross, O.Ogunwobi, G. Ma and R. Mazumder contributed to the
 development of the research and provided feedback during the development of the
 manuscript.
 
-===== Conflict of Interest
-The authors declare no conflicts of interest.
+*Conflict of Interest:* The authors declare no conflicts of interest.
+
+*Institutional Review Board Statement:* Not Applicable.
+
+*Informed Consent Statement:* Not Applicable.
+
+*Data Availability Statement:* No data were generated as part of the present
+review paper.
+
+*Acknowledgments:* The authors would like to thank their respective
+institutions for supporting their scholarly work.
+
+*Conflicts of Interest:* The authors declare no conflict of interest.
 
 bibliography::[]
 
