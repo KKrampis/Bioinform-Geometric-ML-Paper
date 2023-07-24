@@ -1,0 +1,237 @@
+﻿REVIEWER 1.
+
+
+The authors would like to thank the reviewer for the time spent reading the
+manuscript and providing constructive feedback. Description of the updates
+following the recommendations of the reviewer are shown below.
+
+
+1. Abstract: Please replace the term “Bioinformatics data” with “largescale
+dataset” or “high-throughput datasets”.
+
+
+-Updated.
+
+
+
+
+2. In the introduction section please add text describing the differences
+between ML, DL and AI. In introduction, it is not clear if this article is all
+about AI or ANN or ML. Please clearly define the objective of this Manuscript.
+
+
+We have added a few sentences in the 'Introduction' section of the manuscript
+ describing the differences between ML, DL and AI, and defining
+the objective of the manuscript.
+
+
+
+
+3. Line 65: ‘diffent’, is it a typo?Also, it doesn't have to be bioinformatics
+data. Please remove the word ‘bioinformatics’
+
+
+The typo has been corrected and the word has been removed.
+
+
+
+
+4. Line 65. “The data and labels can be of…” in the subsequent sentence only
+labels are described, not the data. Please remove the word “data”. Authors
+might want to add an additional sentence that data points, i.e. xi can be
+ordinal, continuous or integer.
+
+
+The word data has been removed, and only labels is left in this specific and subsequent
+ sentences clarifying the meaning as suggested by the reviewer.  
+
+
+
+
+5.  Line 115, some readers might be curious how weights are defined in ANN.
+Please add appropriate text to add details. I believe weights are the most
+important part and often remain under-described in most of the manuscripts.
+
+
+We have added two sentences defining in more details the  ANN weights.
+" The weights in artificial neural networks represent the strength of connections
+between neurons. They determine the impact of input signals on the final output..."
+
+
+
+6. The entire manuscript is a technical description of deep learning-”How it
+works”. However, it has no meaningful details with respect to bioinformatics.
+In the manuscript itself, authors mentioned that bioinformatics datasets are
+different from regular datasets (abstract). However, it is not clear what those
+differences are and how deep learning can help us in solving the challenges
+associated with bioinformatics dataset.
+
+
+The authors fully agree with the reviewer on this comment. Under the light of
+this feedback - comments, and while re-assessing the manuscript, the authors
+concluded that majority (largest sections 2-3) are focused on the structure,
+function and mathematical - theoretical principles of Artificial Neural
+Networks. We have therefore adjusted the shorter sections where the
+bioinformatics applications are mostly mentioned in the Title / Summary /
+Abstract / Introduction (section 1) and conclusion (section 4), to reflect this
+fact. 
+
+
+The value of the manuscript is in explaining the underlying structures of
+Artificial Intelligence in its implementation as Artificial Neural Networks
+(ANNs) - Deep Learning Algorithms. The authors believe that this provides value
+both for bioinformaticians (who in many aspects are algorithmically /
+computationally thinking biologists), to understand the biological principles
+and paradigms that Artificial Neural Networks (ANNs) and Deep Learning
+algorithms are based on. Furthermore, the explanation of the underlying ANNs
+structure and mathematical principles of operation, can help bioinformaticians
+(and biologists who have interest), to understand better Artificial
+Intelligence and potentially utilize it as application to their own research as
+data. As the authors are bioinformaticians and biologists themselves, the
+manuscript was also written targeting a similar audience which we understand,
+communicate and collaborate daily with, instead for example the authors being
+computer scientists and writing for that audience. The technical content of ANN
+mathematical / algorithmic principles presented in formal but easy to
+understand by non-experts in sections 2-3, we believe something similar is not
+present in the bioinformatics literature and provides value for a
+bioinformaticians / technically oriented biologists, who are interested to
+understand the theoretical and algorithmic underpinnings of Artificial Neural
+Networks (ANNs) and Deep Learning algorithms.
+
+
+7. The title of the manuscript includes “Bioinformatics Applications”, which
+are also missing in the manuscript. I suggest authors to implement and describe
+a small bioinformatics case study with publicly available real datasets.
+
+
+As mentioned in response to comment no.6 above, since the majority of the
+manuscript is focused on the structure, function and mathematical - theoretical
+principles of Artificial Neural Networks. Therefore, rather than providing a
+case study some bioinformatics commercial applications were included (see
+comment no. 8 below).
+
+
+8. I also suggest authors to compile the list of commercial achievements made
+using AI in the field of genomics, epigenomics, 3D structure modeling or
+drug-development.
+
+
+Two sentences have been added at the “Conclusion” section of the manuscript
+regarding commercial applications, along with the relevant additional citations
+at the end of the article. We wrote this addition to be brief, in order to keep
+the focus of our manuscript to the mathematical - theoretical principles of
+Artificial Neural Networks that was our intention with the writing, and not to
+expand the review to multiple directions and to a larger volume that will
+render it indigestible by the audience.
+
+
+
+
+
+
+REVIEWER 2.
+
+
+The authors would like to thank the reviewer for the time spent reading the
+manuscript and providing constructive feedback. Description of the updates
+following the recommendations of the reviewer are shown below.
+
+
+In regards to the reviewer comment “First, why are they conducting this review?
+That should solve a problem in the field of inquiry. The difficulties of the
+future of bioinformatics applications need to be addressed. It is essential to
+emphasize the contributions made by this review to the proposed field of
+application.
+
+
+The value of the manuscript is in explaining the underlying structures of
+Artificial Intelligence in its implementation as Artificial Neural Networks
+(ANNs) - Deep Learning Algorithms. The authors believe that this provides value
+both for bioinformaticians (who in many aspects are algorithmically /
+computationally thinking biologists), to understand the biological principles
+and paradigms that Artificial Neural Networks (ANNs) and Deep Learning
+algorithms are based on. Furthermore, the explanation of the underlying ANNs
+structure and mathematical principles of operation, can help bioinformaticians
+(and biologists who have interest), to understand better Artificial
+Intelligence and potentially utilize it as application to their own research as
+data. As the authors are bioinformaticians and biologists themselves, the
+manuscript was also written targeting a similar audience which we understand,
+communicate and collaborate daily with, instead for example the authors being
+computer scientists and writing for that audience. 
+
+
+“The author(s) must discuss the limitations of ANN and ML. The best way to
+summarize the current goal is to conduct a review. Thus, a synopsis of ANN and
+ML techniques and examples of their application must be included. Finally, how
+does this review differ from others that have been conducted? The paper could
+benefit from better word choice, phrasing, and even overall structure”
+
+
+The goal of this review was to present the technical content of ANN
+mathematical / algorithmic principles, in formal but easy to understand by
+non-experts / biologists and bioinformatics developers. We also   believe
+something similar is not present in the bioinformatics literature and provides
+value for a bioinformaticians / technically oriented biologists, who are
+interested to understand the theoretical and algorithmic underpinnings of
+Artificial Neural Networks (ANNs) and Deep Learning algorithms.
+
+
+
+
+
+
+REVIEWER 3.
+
+
+The authors would like to thank the reviewer for the time spent reading the
+manuscript and providing constructive feedback. Description of the updates
+following the recommendations of the reviewer are shown below.
+
+
+As the reviewer noted “This paper is a survey of the theoretical underpinnings
+of artificial neural Networks.”
+
+
+1. if it has a survey so more work and related work is missing, we can't do a
+survey on machine learning and ANN with only 11 references;
+
+
+The value of the manuscript is in explaining the underlying structures of
+Artificial Intelligence in its implementation as Artificial Neural Networks
+(ANNs) - Deep Learning Algorithms. The authors believe that this provides value
+both for bioinformaticians (who in many aspects are algorithmically /
+computationally thinking biologists), to understand the biological principles
+and paradigms that Artificial Neural Networks (ANNs) and Deep Learning
+algorithms are based on. Furthermore, the explanation of the underlying ANNs
+structure and mathematical principles of operation, can help bioinformaticians
+(and biologists who have interest), to understand better Artificial
+Intelligence and potentially utilize it as application to their own research as
+data. As the authors are bioinformaticians and biologists themselves, the
+manuscript was also written targeting a similar audience which we understand,
+communicate and collaborate daily with, instead for example the authors being
+computer scientists and writing for that audience. The technical content of ANN
+mathematical / algorithmic principles presented in formal but easy to
+understand by non-experts in sections 2-3, we believe something similar is not
+present in the bioinformatics literature and provides value for a
+bioinformaticians / technically oriented biologists, who are interested to
+understand the theoretical and algorithmic underpinnings of Artificial Neural
+Networks (ANNs) and Deep Learning algorithms.
+
+
+2. and if you consider this paper as a research paper I can't find any
+contribution or anything;
+
+
+This is not a research manuscript, and the purpose and target of the review is
+clarified in the response to comment 1 above.
+
+
+As the reviewer noted “Please put more effort into the organization of your
+paper and above all avoid very long paragraphs and redundancies and add more
+work in the section related work and a comparative study between the existence”
+
+
+We have re-structured the text to break long into shorter paragraphs, and
+removed redundancies in the text. Material has been added at the “Conclusion”
+section of the manuscript regarding applications, along with the relevant
+additional citations at the end of the article.

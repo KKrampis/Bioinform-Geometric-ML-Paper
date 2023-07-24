@@ -17,7 +17,7 @@ Konstantinos Krampis*^1^, Eric Ross^2^, Olorunseun O. Ogunwobi^1^, Grace Ma,^3^ 
 With the exponential growth of machine learning and development of Artificial
 Neural Network (ANNs) in recent years, there is great opportunity to leverage
 this approach and accelarate biological discoveries through applications on the
-analysis of bioinformatics data.  Various types of datasets including for
+analysis of high-throughput data.  Various types of datasets including for
 example protein or gene interaction networks, molecular structures and cellular
 signalling pathways, have already been used for machine learning by training
 ANNs for inference and pattern classification.  However, unlike regular data
@@ -52,6 +52,18 @@ algorithmic basis of Artificial Intelligence towards bioinformatics
 applications.
 
 ==== INTRODUCTION
+
+In summary, Artificial Intelligence (AI), Machine Learning (ML), and Deep
+Learning (DL) are related concepts with key differences: AI focuses on creating
+machines that can perform tasks requiring human intelligence, ML enables
+computers to learn from data and make predictions without explicit programming,
+and DL uses deep neural networks to extract patterns from complex datasets. AI
+encompasses ML and DL, which are subsets of AI. ML algorithms learn patterns
+from data to make accurate predictions or decisions and can be categorized into
+supervised, unsupervised, and reinforcement learning. DL algorithms, inspired
+by the human brain, use deep neural networks to learn and extract patterns from
+large-scale datasets. DL has had success in image and speech recognition,
+natural language processing, and autonomous driving.
 
 Symmetry and invariance is a central concept in physics, mathematical and
 biological systems, and has been established since the early 20th century that
@@ -90,8 +102,8 @@ Artificial Neural Networks (ANNs) that are the basis of artificial intelligence
 cite:[li2019deep]. Assume a dataset consisting of _n_ pairs of
 stem:[(x_i,y_i)_n], with the stem:[x_i] being _n_ data points and stem:[y_i]
 their labels. Each stem:[x_i] data point can be for example be a number, a
-vector (array of numbers), or a matrix (grid of numbers) storing diffent types
-of bioinformatics data.  The data and labels can be of various formats, such as
+vector (array of numbers), or a matrix (grid of numbers) storing different types
+of bioinformatics data.  The labels can be of various formats, such as
 binary (two-option) as for example stem:[y_i=1] "inhibits cancer growth", or
 stem:[y_i=0] "does not inhibit cancer". The labels can also be continuous
 numbers such as for example stem:[y_i=0.3] meaning 30% inhibition, or a
@@ -109,19 +121,20 @@ The simplest structure of an artificial neural network as shown on *Fig.1* is
 "fully connected", with each neuron _k_ in the ANN having a number of incoming
 and outgoing connections corresponding to the number of neurons in previous and
 next layer in the neural network. For example the neuron stem:[k_0^(1)] of the
-_First Layer (1)_ on *Fig.1*, has stem:[n = 2] incoming and stem:[n = 3] outgoing
-connections, corresponding respectively to the "input layer" with two neurons,
-and three connections with the neurons of the internal ("hidden layer") labeled
-_Second Layer (2)_ on the figure. The internal layers are called "hidden"
-since they do not receive input data directly, similarly to the neurons performing
-cognition in animal brains, as opposed to sensory neurons. While the hidden
-layers can have an arbitrary number of neurons based on the complexity of
-the label classification problem we need the ANN to resolve cite:[uzair2020effects], the input
-layer has the exact number of neurons corresponding to the input data structure. On
-*Fig. 1* for example we have two input neurons, and the data can be of the
-form stem:[x_i = (50,100)]. Finally, the output layer has a number of neurons 
-corresponding to the number of labels stem:[y_i] per input data point in the data, 
-and on *Fig. 1* there is a single label.
+_First Layer (1)_ on *Fig.1*, has stem:[n = 2] incoming and stem:[n = 3]
+outgoing connections, corresponding respectively to the "input layer" with two
+neurons, and three connections with the neurons of the internal ("hidden
+layer") labeled _Second Layer (2)_ on the figure. The internal layers are
+called "hidden" since they do not receive input data directly, similarly to the
+neurons performing cognition in animal brains, as opposed to sensory neurons.
+While the hidden layers can have an arbitrary number of neurons based on the
+complexity of the label classification problem we need the ANN to resolve
+cite:[uzair2020effects], the input layer has the exact number of neurons
+corresponding to the input data structure. On *Fig. 1* for example we have two
+input neurons, and the data can be of the form stem:[x_i = (50,100)]. Finally,
+the output layer has a number of neurons corresponding to the number of labels
+stem:[y_i] per input data point in the data, and on *Fig. 1* there is a single
+label.
 
 
 [.middle]
@@ -263,6 +276,15 @@ weight stem:[w_(k0)], which represents the strength of the connection between
 these two artificial neurons.
 
 
+The weights in artificial neural networks represent the strength of connections
+between neurons. They determine the impact of input signals on the final output
+of the network. During the training process, these weights are adjusted to
+minimize the difference between the network's predicted output and the desired
+output. The weights essentially control the flow of information through the
+network, allowing it to learn and make accurate predictions. Correctly tuned
+weights are crucial for the network to effectively learn patterns and
+generalize its knowledge to new input data.
+
 For the majority of applications, the weight values stem:[w_(k)] are the only
 elements in the ANN structure that are variable, and are adjusted by the
 algorithms during training with the input data. This is similar to the
@@ -306,7 +328,7 @@ and refer the reader to the citations for further details.
 
 As mentioned previously, the only variable element in the ANN structure are the
 weights stem:[w_k] of the neuron connections, and therefore training an ANN to
-classify data is the estimation of the weights. Furtheromre, the training
+classify data is the estimation of the weights. Furthermore, the training
 process involves minimizing the error stem:[E], which is the difference between
 the labels stem:[y_(pred_i)] predicted by the function stem:[f] and the true
 labels stem:[y_i]. This error metric is akin to true/false positive and
@@ -607,6 +629,51 @@ and edges of a graph.  Finally, if the manifold structure includes also a
 metric of _distance_ between its points to further quantify the data
 transformations, in this case we will have an _isometry_ during the
 transformation due to a group action from the symmetry group.
+
+==== APPLICATIONS OF AI IN BIOINFORMATICS
+
+Artificial Intelligence and Deep Learning have emerged as a powerful tool with
+diverse applications in the field of bioinformatics. Multiple example of
+applications of AI in bioinformatics have been reported in the literature [REFS],
+which showcase the potential to revolutionize healthcare and life sciences.
+
+One of the significant applications is drug discovery, as AI algorithms enable the
+analysis of large datasets of chemical compounds, predicting their effectiveness
+and safety. This accelerates the drug discovery process by screening potential
+candidates and optimizing their properties, leading to significant cost and time
+savings.
+
+In the field of genomics AI algorithms have been applied to the analysis of DNA
+sequencing and gene expression data, facilitating the identification of
+disease-causing mutations and understanding genetic variations [REFs].
+Furthermore, genomic data analysis with AI algorithms has resulted into insights
+aid in the development of personalized medicine approaches, tailoring treatments to
+individual patients.
+
+Consecutively, precision medicine can benefit from AI, where by integratively
+analyzing patient data, including genetic information, medical history, and
+lifestyle factors, AI can predict drug responses, identify potential side effects,
+and suggest optimal treatment options for individual patients. This personalized
+approach has great promise to enhance patient care and treatment outcomes, along
+with disease diagnosis enhanced by AI techniques such as analysis through machine
+learning algorithms of medical images, including MRI scans, X-rays, and
+histopathology images, of diseases like cancer. This assists pathologists and
+radiologists in making accurate diagnoses, for early detection and diagnosis and to
+improve patient outcomes.
+
+AI can also play a significant role in the development of bioinformatics tools and
+software through acceleration of code delopment for tools  for the analysis and
+interpretation of biological data, such as sequence alignment, protein structure
+prediction, and functional annotation.  Moreover, AI-powered natural language
+processing techniques are used to analyze scientific literature, patents, and
+clinical trial reports. This enables researchers to stay updated with the latest
+discoveries and facilitates knowledge discovery in the field.
+
+In the are of clinical trials machine learning algorithms can help analyze vast
+amounts of clinical trial data, by improving the rates of success for new drugs and
+treatment strategies for patients partipating in the trials, through optimization
+of the clinical trial designs, reduction costs and overall acceleration of the drug
+development pipelines.
 
 ===== CONCLUSION 
 The accelerated developments in the fields of Machine Learning and Artificial
