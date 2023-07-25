@@ -1,4 +1,4 @@
-=== Principles of Artificial Neural Networks and Machine Learning for Bioinformatics Applications
+== Principles of Artificial Neural Networks and Machine Learning for Bioinformatics Applications
 
 Konstantinos Krampis*^1^, Eric Ross^2^, Olorunseun O. Ogunwobi^1^, Grace Ma,^3^ Raja Mazumder,^4^ Claudia Wultsch^1^
 
@@ -632,48 +632,53 @@ transformation due to a group action from the symmetry group.
 
 ==== APPLICATIONS OF AI IN BIOINFORMATICS
 
-Artificial Intelligence and Deep Learning have emerged as a powerful tool with
-diverse applications in the field of bioinformatics. Multiple example of
-applications of AI in bioinformatics have been reported in the literature [REFS],
-which showcase the potential to revolutionize healthcare and life sciences.
+Artificial Intelligence (AI) and Deep Learning have emerged as a powerful tool
+with diverse applications in the field of bioinformatics, and multiple research
+studies have been reported in the literature
+cite:[pmid37446831,pmid37189058,pmid37043378], which showcase the potential of
+the technology to revolutionize healthcare and life sciences.
 
-One of the significant applications is drug discovery, as AI algorithms enable the
-analysis of large datasets of chemical compounds, predicting their effectiveness
-and safety. This accelerates the drug discovery process by screening potential
-candidates and optimizing their properties, leading to significant cost and time
-savings.
+One of the significant applications is drug discovery, as AI algorithms enable
+the analysis of large datasets of chemical compounds, predicting their
+effectiveness and safety cite:[pmid37479540,pmid37458097,pmid37454742]. This
+accelerates the drug discovery process by screening potential candidates and
+optimizing their properties, leading to significant cost and time savings.
 
 In the field of genomics AI algorithms have been applied to the analysis of DNA
 sequencing and gene expression data, facilitating the identification of
-disease-causing mutations and understanding genetic variations [REFs].
-Furthermore, genomic data analysis with AI algorithms has resulted into insights
-aid in the development of personalized medicine approaches, tailoring treatments to
-individual patients.
+disease-causing mutations and understanding genetic variations
+cite:[pmid37453366,pmid37446311,pmid37386009,pmid37370847]. Furthermore, genomic data
+analysis with AI algorithms has resulted into insights aid in the development
+of personalized medicine approaches, tailoring treatments to individual
+patients.
 
 Consecutively, precision medicine can benefit from AI, where by integratively
 analyzing patient data, including genetic information, medical history, and
-lifestyle factors, AI can predict drug responses, identify potential side effects,
-and suggest optimal treatment options for individual patients. This personalized
-approach has great promise to enhance patient care and treatment outcomes, along
-with disease diagnosis enhanced by AI techniques such as analysis through machine
-learning algorithms of medical images, including MRI scans, X-rays, and
-histopathology images, of diseases like cancer. This assists pathologists and
-radiologists in making accurate diagnoses, for early detection and diagnosis and to
-improve patient outcomes.
+lifestyle factors, AI can predict drug responses, identify potential side
+effects, and suggest optimal treatment options for individual patients. This
+personalized approach has great promise to enhance patient care and treatment
+outcomes, along with disease diagnosis enhanced by AI techniques such as
+analysis through machine learning algorithms of medical images, including MRI
+scans, X-rays, and histopathology images, of diseases like cancer
+cite:[pmid37488621,pmid37478073,pmid37474003,pmid37449611]. This assists pathologists and
+radiologists in making accurate diagnoses, for early detection and diagnosis
+and to improve patient outcomes.
 
-AI can also play a significant role in the development of bioinformatics tools and
-software through acceleration of code delopment for tools  for the analysis and
-interpretation of biological data, such as sequence alignment, protein structure
-prediction, and functional annotation.  Moreover, AI-powered natural language
-processing techniques are used to analyze scientific literature, patents, and
-clinical trial reports. This enables researchers to stay updated with the latest
-discoveries and facilitates knowledge discovery in the field.
+AI can also play a significant role in the development of bioinformatics tools
+and software through acceleration of code delopment for tools  for the analysis
+and interpretation of biological data, such as sequence alignment, protein
+structure prediction, and functional annotation
+cite:[pmid37329982,pmid37463768,pmid37460991].  Moreover, AI-powered natural
+language processing techniques are used to analyze scientific literature,
+patents, and clinical trial reports. This enables researchers to stay updated
+with the latest discoveries and facilitates knowledge discovery in the field.
 
 In the are of clinical trials machine learning algorithms can help analyze vast
-amounts of clinical trial data, by improving the rates of success for new drugs and
-treatment strategies for patients partipating in the trials, through optimization
-of the clinical trial designs, reduction costs and overall acceleration of the drug
-development pipelines.
+amounts of clinical trial data, by improving the rates of success for new drugs
+and treatment strategies for patients partipating in the trials
+cite:[pmid37486997,pmid37483175]. The algorithms can result in better
+optimization of the clinical trial designs, reduction costs and overall
+acceleration of the drug development pipelines cite:[pmid37479540,pmid37458097].
 
 ===== CONCLUSION 
 The accelerated developments in the fields of Machine Learning and Artificial

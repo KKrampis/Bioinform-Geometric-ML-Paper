@@ -440,8 +440,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 </div>
 <div id="content">
-<div class="sect2">
-<h3 id="_principles_of_artificial_neural_networks_and_machine_learning_for_bioinformatics_applications">Principles of Artificial Neural Networks and Machine Learning for Bioinformatics Applications</h3>
+<div class="sect1">
+<h2 id="_principles_of_artificial_neural_networks_and_machine_learning_for_bioinformatics_applications">Principles of Artificial Neural Networks and Machine Learning for Bioinformatics Applications</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Konstantinos Krampis*<sup>1</sup>, Eric Ross<sup>2</sup>, Olorunseun O. Ogunwobi<sup>1</sup>, Grace Ma,<sup>3</sup> Raja Mazumder,<sup>4</sup> Claudia Wultsch<sup>1</sup></p>
 </div>
@@ -460,7 +461,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>With the exponential growth of machine learning and development of Artificial
 Neural Network (ANNs) in recent years, there is great opportunity to leverage
 this approach and accelarate biological discoveries through applications on the
-analysis of bioinformatics data.  Various types of datasets including for
+analysis of high-throughput data.  Various types of datasets including for
 example protein or gene interaction networks, molecular structures and cellular
 signalling pathways, have already been used for machine learning by training
 ANNs for inference and pattern classification.  However, unlike regular data
@@ -499,6 +500,19 @@ applications.</p>
 </div>
 <div class="sect3">
 <h4 id="_introduction">INTRODUCTION</h4>
+<div class="paragraph">
+<p>In summary, Artificial Intelligence (AI), Machine Learning (ML), and Deep
+Learning (DL) are related concepts with key differences: AI focuses on creating
+machines that can perform tasks requiring human intelligence, ML enables
+computers to learn from data and make predictions without explicit programming,
+and DL uses deep neural networks to extract patterns from complex datasets. AI
+encompasses ML and DL, which are subsets of AI. ML algorithms learn patterns
+from data to make accurate predictions or decisions and can be categorized into
+supervised, unsupervised, and reinforcement learning. DL algorithms, inspired
+by the human brain, use deep neural networks to learn and extract patterns from
+large-scale datasets. DL has had success in image and speech recognition,
+natural language processing, and autonomous driving.</p>
+</div>
 <div class="paragraph">
 <p>Symmetry and invariance is a central concept in physics, mathematical and
 biological systems, and has been established since the early 20th century that
@@ -540,8 +554,8 @@ Artificial Neural Networks (ANNs) that are the basis of artificial intelligence
 [<a href="#li2019deep">5</a>]. Assume a dataset consisting of <em>n</em> pairs of
 \$(x_i,y_i)_n\$, with the \$x_i\$ being <em>n</em> data points and \$y_i\$
 their labels. Each \$x_i\$ data point can be for example be a number, a
-vector (array of numbers), or a matrix (grid of numbers) storing diffent types
-of bioinformatics data.  The data and labels can be of various formats, such as
+vector (array of numbers), or a matrix (grid of numbers) storing different types
+of bioinformatics data.  The labels can be of various formats, such as
 binary (two-option) as for example \$y_i=1\$ "inhibits cancer growth", or
 \$y_i=0\$ "does not inhibit cancer". The labels can also be continuous
 numbers such as for example \$y_i=0.3\$ meaning 30% inhibition, or a
@@ -560,19 +574,20 @@ their labels.</p>
 "fully connected", with each neuron <em>k</em> in the ANN having a number of incoming
 and outgoing connections corresponding to the number of neurons in previous and
 next layer in the neural network. For example the neuron \$k_0^(1)\$ of the
-<em>First Layer (1)</em> on <strong>Fig.1</strong>, has \$n = 2\$ incoming and \$n = 3\$ outgoing
-connections, corresponding respectively to the "input layer" with two neurons,
-and three connections with the neurons of the internal ("hidden layer") labeled
-<em>Second Layer (2)</em> on the figure. The internal layers are called "hidden"
-since they do not receive input data directly, similarly to the neurons performing
-cognition in animal brains, as opposed to sensory neurons. While the hidden
-layers can have an arbitrary number of neurons based on the complexity of
-the label classification problem we need the ANN to resolve [<a href="#uzair2020effects">6</a>], the input
-layer has the exact number of neurons corresponding to the input data structure. On
-<strong>Fig. 1</strong> for example we have two input neurons, and the data can be of the
-form \$x_i = (50,100)\$. Finally, the output layer has a number of neurons
-corresponding to the number of labels \$y_i\$ per input data point in the data,
-and on <strong>Fig. 1</strong> there is a single label.</p>
+<em>First Layer (1)</em> on <strong>Fig.1</strong>, has \$n = 2\$ incoming and \$n = 3\$
+outgoing connections, corresponding respectively to the "input layer" with two
+neurons, and three connections with the neurons of the internal ("hidden
+layer") labeled <em>Second Layer (2)</em> on the figure. The internal layers are
+called "hidden" since they do not receive input data directly, similarly to the
+neurons performing cognition in animal brains, as opposed to sensory neurons.
+While the hidden layers can have an arbitrary number of neurons based on the
+complexity of the label classification problem we need the ANN to resolve
+[<a href="#uzair2020effects">6</a>], the input layer has the exact number of neurons
+corresponding to the input data structure. On <strong>Fig. 1</strong> for example we have two
+input neurons, and the data can be of the form \$x_i = (50,100)\$. Finally,
+the output layer has a number of neurons corresponding to the number of labels
+\$y_i\$ per input data point in the data, and on <strong>Fig. 1</strong> there is a single
+label.</p>
 </div>
 <div class="imageblock middle">
 <div class="content">
@@ -614,6 +629,16 @@ connection arrow on <strong>Fig.1</strong> has a different weight, such as for e
 \$sigma_(k_0^((1)))\$ to neuron \$sigma_(k_1^((2)))\$, multiplied by the
 weight \$w_(k0)\$, which represents the strength of the connection between
 these two artificial neurons.</p>
+</div>
+<div class="paragraph">
+<p>The weights in artificial neural networks represent the strength of connections
+between neurons. They determine the impact of input signals on the final output
+of the network. During the training process, these weights are adjusted to
+minimize the difference between the network&#8217;s predicted output and the desired
+output. The weights essentially control the flow of information through the
+network, allowing it to learn and make accurate predictions. Correctly tuned
+weights are crucial for the network to effectively learn patterns and
+generalize its knowledge to new input data.</p>
 </div>
 <div class="paragraph">
 <p>For the majority of applications, the weight values \$w_(k)\$ are the only
@@ -661,7 +686,7 @@ and refer the reader to the citations for further details.</p>
 <div class="paragraph">
 <p>As mentioned previously, the only variable element in the ANN structure are the
 weights \$w_k\$ of the neuron connections, and therefore training an ANN to
-classify data is the estimation of the weights. Furtheromre, the training
+classify data is the estimation of the weights. Furthermore, the training
 process involves minimizing the error \$E\$, which is the difference between
 the labels \$y_(pred_i)\$ predicted by the function \$f\$ and the true
 labels \$y_i\$. This error metric is akin to true/false positive and
@@ -926,6 +951,63 @@ metric of <em>distance</em> between its points to further quantify the data
 transformations, in this case we will have an <em>isometry</em> during the
 transformation due to a group action from the symmetry group.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_applications_of_ai_in_bioinformatics">APPLICATIONS OF AI IN BIOINFORMATICS</h4>
+<div class="paragraph">
+<p>Artificial Intelligence (AI) and Deep Learning have emerged as a powerful tool
+with diverse applications in the field of bioinformatics, and multiple research
+studies have been reported in the literature
+[<a href="#pmid37446831">12</a>, <a href="#pmid37189058">13</a>, <a href="#pmid37043378">14</a>], which showcase the potential of
+the technology to revolutionize healthcare and life sciences.</p>
+</div>
+<div class="paragraph">
+<p>One of the significant applications is drug discovery, as AI algorithms enable
+the analysis of large datasets of chemical compounds, predicting their
+effectiveness and safety [<a href="#pmid37479540">15</a>, <a href="#pmid37458097">16</a>, <a href="#pmid37454742">17</a>]. This
+accelerates the drug discovery process by screening potential candidates and
+optimizing their properties, leading to significant cost and time savings.</p>
+</div>
+<div class="paragraph">
+<p>In the field of genomics AI algorithms have been applied to the analysis of DNA
+sequencing and gene expression data, facilitating the identification of
+disease-causing mutations and understanding genetic variations
+[<a href="#pmid37453366">18</a>, <a href="#pmid37446311">19</a>, <a href="#pmid37386009">20</a>, <a href="#pmid37370847">21</a>]. Furthermore, genomic data
+analysis with AI algorithms has resulted into insights aid in the development
+of personalized medicine approaches, tailoring treatments to individual
+patients.</p>
+</div>
+<div class="paragraph">
+<p>Consecutively, precision medicine can benefit from AI, where by integratively
+analyzing patient data, including genetic information, medical history, and
+lifestyle factors, AI can predict drug responses, identify potential side
+effects, and suggest optimal treatment options for individual patients. This
+personalized approach has great promise to enhance patient care and treatment
+outcomes, along with disease diagnosis enhanced by AI techniques such as
+analysis through machine learning algorithms of medical images, including MRI
+scans, X-rays, and histopathology images, of diseases like cancer
+[<a href="#pmid37488621">22</a>, <a href="#pmid37478073">23</a>, <a href="#pmid37474003">24</a>, <a href="#pmid37449611">25</a>]. This assists pathologists and
+radiologists in making accurate diagnoses, for early detection and diagnosis
+and to improve patient outcomes.</p>
+</div>
+<div class="paragraph">
+<p>AI can also play a significant role in the development of bioinformatics tools
+and software through acceleration of code delopment for tools  for the analysis
+and interpretation of biological data, such as sequence alignment, protein
+structure prediction, and functional annotation
+[<a href="#pmid37329982">26</a>, <a href="#pmid37463768">27</a>, <a href="#pmid37460991">28</a>].  Moreover, AI-powered natural
+language processing techniques are used to analyze scientific literature,
+patents, and clinical trial reports. This enables researchers to stay updated
+with the latest discoveries and facilitates knowledge discovery in the field.</p>
+</div>
+<div class="paragraph">
+<p>In the are of clinical trials machine learning algorithms can help analyze vast
+amounts of clinical trial data, by improving the rates of success for new drugs
+and treatment strategies for patients partipating in the trials
+[<a href="#pmid37486997">29</a>, <a href="#pmid37483175">30</a>]. The algorithms can result in better
+optimization of the clinical trial designs, reduction costs and overall
+acceleration of the drug development pipelines [<a href="#pmid37479540">15</a>, <a href="#pmid37458097">16</a>].</p>
+</div>
 <div class="sect4">
 <h5 id="_conclusion">CONCLUSION</h5>
 <div class="paragraph">
@@ -1002,13 +1084,71 @@ institutions for supporting their scholarly work.</p>
 <div class="paragraph">
 <p><a id="sutherland2009introduction"></a>[11] W. A. Sutherland, <em>Introduction to metric and topological spaces</em>. Oxford University Press, 2009.</p>
 </div>
+<div class="paragraph">
+<p><a id="pmid37446831"></a>[12] M. Lee, “Recent Advances in Deep Learning for Protein-Protein Interaction Analysis: A Comprehensive Review,” <em>Molecules</em>, vol. 28, no. 13, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37189058"></a>[13] M. Wysocka, O. Wysocki, M. Zufferey, D. Landers, and A. Freitas, “A systematic review of biologically-informed deep learning models for cancer: fundamental trends for encoding and interpreting oncology data,” <em>BMC Bioinformatics</em>, vol. 24, no. 1, p. 198, May 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37043378"></a>[14] B. Jahanyar, H. Tabatabaee, and A. Rowhanimanesh, “Harnessing Deep Learning for Omics in an Era of COVID-19,” <em>OMICS</em>, vol. 27, no. 4, pp. 141–152, Apr. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37479540"></a>[15] F. W. Pun, I. V. Ozerov, and A. Zhavoronkov, “AI-powered therapeutic target discovery,” <em>Trends Pharmacol Sci</em>, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37458097"></a>[16] G. Floresta, C. Zagni, V. Patamia, and A. Rescifina, “How can artificial intelligence be utilized for de novo drug design against COVID-19 (SARS-CoV-2)?,” <em>Expert Opin Drug Discov</em>, pp. 1–4, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37454742"></a>[17] Y. Zhou <em>et al.</em>, “Deep learning in preclinical antibody drug discovery and development,” <em>Methods</em>, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37453366"></a>[18] A. rez-Mena, E. n, M. J. Alvarez-Cubero, A. Anguita-Ruiz, L. J. Martinez-Gonzalez, and J. Alcala-Fdez, “Explainable artificial intelligence to predict and identify prostate cancer tissue by gene expression,” <em>Comput Methods Programs Biomed</em>, vol. 240, p. 107719, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37446311"></a>[19] W. Wei, Y. Li, and T. Huang, “Using Machine Learning Methods to Study Colorectal Cancer Tumor Micro-Environment and Its Biomarkers,” <em>Int J Mol Sci</em>, vol. 24, no. 13, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37386009"></a>[20] D. Shigemizu <em>et al.</em>, “Classification and deep-learning-based prediction of Alzheimer disease subtypes by using genomic data,” <em>Transl Psychiatry</em>, vol. 13, no. 1, p. 232, Jun. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37370847"></a>[21] Z. Mirza <em>et al.</em>, “Identification of Novel Diagnostic and Prognostic Gene Signature Biomarkers for Breast Cancer Using Artificial Intelligence and Machine Learning Assisted Transcriptomics Analysis,” <em>Cancers (Basel)</em>, vol. 15, no. 12, Jun. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37488621"></a>[22] R. Adam, K. Dell’Aquila, L. Hodges, T. Maldjian, and T. Q. Duong, “Deep learning applications to breast cancer detection by magnetic resonance imaging: a literature review,” <em>Breast Cancer Res</em>, vol. 25, no. 1, p. 87, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37478073"></a>[23] Y. Tong <em>et al.</em>, “Prediction of lymphoma response to CAR T cells by deep learning-based image analysis,” <em>PLoS One</em>, vol. 18, no. 7, p. e0282573, 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37474003"></a>[24] L. R. Archila <em>et al.</em>, “Performance of an Artificial Intelligence Model for Recognition and Quantitation of Histologic Features of Eosinophilic Esophagitis on Biopsy Samples,” <em>Mod Pathol</em>, p. 100285, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37449611"></a>[25] Q. Li, A. Sandoval, and B. Chen, “Advancing spinal cord injury research with optical clearing, light sheet microscopy, and artificial intelligence-based image analysis,” <em>Neural Regen Res</em>, vol. 18, no. 12, pp. 2661–2662, Dec. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37329982"></a>[26] M. Santorsola and F. Lescai, “The promise of explainable deep learning for omics data analysis: Adding new discovery tools to AI,” <em>N Biotechnol</em>, vol. 77, pp. 1–11, Jun. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37463768"></a>[27] B. Waissengrin <em>et al.</em>, “Artificial intelligence (AI) molecular analysis tool assists in rapid treatment decision in lung cancer: a case report,” <em>J Clin Pathol</em>, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37460991"></a>[28] F. Hosseini, F. Asadi, H. Emami, and M. Ebnali, “Machine learning applications for early detection of esophageal cancer: a systematic review,” <em>BMC Med Inform Decis Mak</em>, vol. 23, no. 1, p. 124, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37486997"></a>[29] S. M. Ahmed, R. V. Shivnaraine, and J. C. Wu, “FDA Modernization Act 2.0 Paves the Way to Computational Biology and Clinical Trials in a Dish,” <em>Circulation</em>, vol. 148, no. 4, pp. 309–311, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37483175"></a>[30] A. Aliper <em>et al.</em>, “Prediction of clinical trials outcomes based on target choice and clinical trial design with multi-modal artificial intelligence,” <em>Clin Pharmacol Ther</em>, Jul. 2023.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-05-08 13:25:35 +0200
+Last updated 2023-07-25 21:22:28 +0200
 </div>
 </div>
 <script type="text/x-mathjax-config">
