@@ -4,7 +4,7 @@
 <article xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>Principles of Artificial Neural Networks and Machine Learning for Bioinformatics Applications</title>
-<date>2023-07-25</date>
+<date>2023-07-26</date>
 </info>
 <section xml:id="_principles_of_artificial_neural_networks_and_machine_learning_for_bioinformatics_applications">
 <title>Principles of Artificial Neural Networks and Machine Learning for Bioinformatics Applications</title>
@@ -64,34 +64,34 @@ supervised, unsupervised, and reinforcement learning. DL algorithms, inspired
 by the human brain, use deep neural networks to learn and extract patterns from
 large-scale datasets. DL has had success in image and speech recognition,
 natural language processing, and autonomous driving.</simpara>
-<simpara>Symmetry and invariance is a central concept in physics, mathematical and
-biological systems, and has been established since the early 20th century that
-fundamental principles of nature are based on symmetry [<link linkend="noether1918invariante">1</link>].
-In the last decade, technologies such as genomic
-sequencing have enabled an exponential increase [<link linkend="katz2022sequence">2</link>] of the
-data that describe the molecular elements, structure and function of biological
-systems. Furthermore, data generation in fields as diverse as physics, software
-development and social media [<link linkend="clissa2022survey">3</link>], have resulted in datasets
-of scale not previously available to scientists. This data abundance, has been
-fundamental for the ever accelerating advancements in the field of machine
-learning, deep learning and artificial intelligence, where we now  have
-algorithms that can be trained to make discoveries from the data, at a level
-that closely matches human intuition.</simpara>
+<simpara>In the last decade, technologies such as genomic sequencing have enabled an
+exponential increase [<link linkend="katz2022sequence">1</link>] of the data that describe the
+molecular elements, structure and function of biological systems. Furthermore,
+data generation in fields as diverse as physics, software development and
+social media [<link linkend="clissa2022survey">2</link>], have resulted in datasets of scale not
+previously available to scientists. This data abundance, has been fundamental
+for the ever accelerating advancements in the field of machine learning, deep
+learning and artificial intelligence, where we now  have algorithms that can be
+trained to make discoveries from the data, at a level that closely matches
+human intuition.</simpara>
 <simpara>The field of deep learning and artificial intelligence, has developed rapidly
 within the span of a few years, and while researchers have developed hundreds
 of successful algorithms, there currently few unifying principles to organize
 systematically the machine learning algorithms. In a seminal <literal>proto-book</literal> by
-Bronstein et al.  [<link linkend="bronstein2021geometric">4</link>], a range of systematization
+Bronstein et al.  [<link linkend="bronstein2021geometric">3</link>], a range of systematization
 principles for the different Artificial Neural Network (ANN) architectures and
 deep learning algorithms were presented, based on the concepts of symmetry and
-mathematical group theory.  The authors also introduced the concept of
-geometric deep learning, and demonstrated how the group theory, function
+mathematical group theory.  Symmetry and invariance is a central concept in
+physics, mathematical and biological systems, and has been established since
+the early 20th century that fundamental principles of nature are based on
+symmetry [<link linkend="noether1918invariante">4</link>].  The authors also introduced the concept
+of geometric deep learning, and demonstrated how the group theory, function
 invariance and equivariance principles, can be used as basis towards composing
 and describing the various deep learning algorithms. Along these lines, in the
-present manuscript we explain the structure of ANNs and the principles of machine
-learning algorithms, while providing a review of mathematical and statistical
-foundations related to the  development of artificial intelligence applications
-with bioinformatics data.</simpara>
+present manuscript we explain the structure of ANNs and the principles of
+machine learning algorithms, while providing a review of mathematical and
+statistical foundations related to the  development of artificial intelligence
+applications with bioinformatics data.</simpara>
 </section>
 <section xml:id="_the_structure_of_artificial_intelligence_and_neural_networks">
 <title>THE STRUCTURE OF ARTIFICIAL INTELLIGENCE AND NEURAL NETWORKS</title>
@@ -262,7 +262,7 @@ mathematical structures, and can have applications with data found in the
 fields of physics, molecular biology and machine learning. A core concept in
 symmetry is invariance, which in our context is changing data coordinates,
 such as shifting a drug molecule in space or a cancer histology tissue sample,
-while leaving the shape of the object unchanged [<link linkend="bronstein2021geometric">4</link>].
+while leaving the shape of the object unchanged [<link linkend="bronstein2021geometric">3</link>].
 Following such a change which as will be formally defined later in the text as
 <emphasis>invariant transformation</emphasis>, the machine learning algorithms and ANNs must be able
 to recognize a drug molecule following rotation, or a tissue to be recognized
@@ -475,44 +475,48 @@ transformation due to a group action from the symmetry group.</simpara>
 with diverse applications in the field of bioinformatics, and multiple research
 studies have been reported in the literature
 [<link linkend="pmid37446831">12</link>, <link linkend="pmid37189058">13</link>, <link linkend="pmid37043378">14</link>], which showcase the potential of
-the technology to revolutionize healthcare and life sciences.</simpara>
-<simpara>One of the significant applications is drug discovery, as AI algorithms enable
-the analysis of large datasets of chemical compounds, predicting their
-effectiveness and safety [<link linkend="pmid37479540">15</link>, <link linkend="pmid37458097">16</link>, <link linkend="pmid37454742">17</link>]. This
-accelerates the drug discovery process by screening potential candidates and
-optimizing their properties, leading to significant cost and time savings.</simpara>
+the technology to revolutionize healthcare and life sciences.  One of the
+significant applications is drug discovery, as AI algorithms enable the
+analysis of large datasets of chemical compounds, predicting their
+effectiveness and safety [<link linkend="pmid37479540">15</link>, <link linkend="pmid37458097">16</link>, <link linkend="pmid37454742">17</link>]. These
+studies have ddemonstrated that AI can accelerate the drug discovery process by
+screening potential candidates and optimizing their properties, leading to
+significant cost and time savings.</simpara>
 <simpara>In the field of genomics AI algorithms have been applied to the analysis of DNA
 sequencing and gene expression data, facilitating the identification of
 disease-causing mutations and understanding genetic variations
-[<link linkend="pmid37453366">18</link>, <link linkend="pmid37446311">19</link>, <link linkend="pmid37386009">20</link>, <link linkend="pmid37370847">21</link>]. Furthermore, genomic data
-analysis with AI algorithms has resulted into insights aid in the development
-of personalized medicine approaches, tailoring treatments to individual
-patients.</simpara>
-<simpara>Consecutively, precision medicine can benefit from AI, where by integratively
-analyzing patient data, including genetic information, medical history, and
-lifestyle factors, AI can predict drug responses, identify potential side
-effects, and suggest optimal treatment options for individual patients. This
-personalized approach has great promise to enhance patient care and treatment
-outcomes, along with disease diagnosis enhanced by AI techniques such as
-analysis through machine learning algorithms of medical images, including MRI
-scans, X-rays, and histopathology images, of diseases like cancer
-[<link linkend="pmid37488621">22</link>, <link linkend="pmid37478073">23</link>, <link linkend="pmid37474003">24</link>, <link linkend="pmid37449611">25</link>]. This assists pathologists and
-radiologists in making accurate diagnoses, for early detection and diagnosis
-and to improve patient outcomes.</simpara>
-<simpara>AI can also play a significant role in the development of bioinformatics tools
-and software through acceleration of code delopment for tools  for the analysis
-and interpretation of biological data, such as sequence alignment, protein
+[<link linkend="pmid37453366">18</link>, <link linkend="pmid37446311">19</link>, <link linkend="pmid37386009">20</link>, <link linkend="pmid37370847">21</link>]. Furthermore, in
+these studies, genomic data analysis with AI algorithms has resulted into
+insights which can aid towards the development of personalized medicine
+approaches and as result to tailor treatments to individual patients.
+Consecutively, use of AI algorithms for bioinformatics can contribute towards
+development of precision medicine.  By integratively analyzing patient data,
+including genetic information, medical history, and lifestyle factors, with the
+help of AI insight we can better predict drug responses, identify potential
+side effects, and suggest optimal treatment options for individual patients.</simpara>
+<simpara>This personalized medicine approach can also involve enhancing patient care and
+treatment outcomes, through disease diagnosis enhanced by machine learning
+analysis of medical images, including MRI scans, X-rays, and histopathology
+images, of diseases like cancer
+[<link linkend="pmid37488621">22</link>, <link linkend="pmid37478073">23</link>, <link linkend="pmid37474003">24</link>, <link linkend="pmid37449611">25</link>]. The AI algorithms
+can assist pathologists and radiologists in making accurate diagnoses, for
+early detection and diagnosis and to overall improve patient outcomes.</simpara>
+<simpara>AI can also play a significant role in aiding the development of bioinformatics
+tools and software through acceleration of code delopment for the analysis and
+interpretation of biological data, such as sequence alignment, protein
 structure prediction, and functional annotation
 [<link linkend="pmid37329982">26</link>, <link linkend="pmid37463768">27</link>, <link linkend="pmid37460991">28</link>].  Moreover, AI-powered natural
-language processing techniques are used to analyze scientific literature,
+language processing techniques have been used to analyze scientific literature,
 patents, and clinical trial reports. This enables researchers to stay updated
 with the latest discoveries and facilitates knowledge discovery in the field.</simpara>
-<simpara>In the are of clinical trials machine learning algorithms can help analyze vast
-amounts of clinical trial data, by improving the rates of success for new drugs
-and treatment strategies for patients partipating in the trials
-[<link linkend="pmid37486997">29</link>, <link linkend="pmid37483175">30</link>]. The algorithms can result in better
-optimization of the clinical trial designs, reduction costs and overall
-acceleration of the drug development pipelines [<link linkend="pmid37479540">15</link>, <link linkend="pmid37458097">16</link>].</simpara>
+<simpara>Finally, in the area of clinical trials machine learning algorithms have been
+appplied to mining vast amounts of data from clinical trials , and as result
+improving the rates of success for new drugs and treatment strategies for
+patients partipating in the trials [<link linkend="pmid37486997">29</link>, <link linkend="pmid37483175">30</link>]. Additional
+studies have also demonstated that machine learning algorithms can result in
+better optimization of the clinical trial designs, reduction costs and overall
+acceleration of the drug development pipelines
+[<link linkend="pmid37479540">15</link>, <link linkend="pmid37458097">16</link>].</simpara>
 <section xml:id="_conclusion">
 <title>CONCLUSION</title>
 <simpara>The accelerated developments in the fields of Machine Learning and Artificial
@@ -538,10 +542,10 @@ review paper.</simpara>
 <simpara><emphasis role="strong">Acknowledgments:</emphasis> The authors would like to thank their respective
 institutions for supporting their scholarly work.</simpara>
 <simpara><emphasis role="strong">Conflicts of Interest:</emphasis> The authors declare no conflict of interest.</simpara>
-<simpara><anchor xml:id="noether1918invariante" xreflabel="[noether1918invariante]"/>[1] E. Noether, “Invariante variationsprobleme, math-phys,” <emphasis>Klasse, pp235-257</emphasis>, 1918.</simpara>
-<simpara><anchor xml:id="katz2022sequence" xreflabel="[katz2022sequence]"/>[2] K. Katz, O. Shutov, R. Lapoint, M. Kimelman, J. R. Brister, and C. O’Sullivan, “The sequence read archive: a decade more of explosive growth,” <emphasis>Nucleic acids research</emphasis>, vol. 50, no. D1, pp. D387–D390, 2022.</simpara>
-<simpara><anchor xml:id="clissa2022survey" xreflabel="[clissa2022survey]"/>[3] L. Clissa, “Survey of Big Data sizes in 2021.” 2022.</simpara>
-<simpara><anchor xml:id="bronstein2021geometric" xreflabel="[bronstein2021geometric]"/>[4] M. M. Bronstein, J. Bruna, T. Cohen, and P. Veličković, “Geometric deep learning: Grids, groups, graphs, geodesics, and gauges,” <emphasis>arXiv preprint arXiv:2104.13478</emphasis>, 2021.</simpara>
+<simpara><anchor xml:id="katz2022sequence" xreflabel="[katz2022sequence]"/>[1] K. Katz, O. Shutov, R. Lapoint, M. Kimelman, J. R. Brister, and C. O’Sullivan, “The sequence read archive: a decade more of explosive growth,” <emphasis>Nucleic acids research</emphasis>, vol. 50, no. D1, pp. D387–D390, 2022.</simpara>
+<simpara><anchor xml:id="clissa2022survey" xreflabel="[clissa2022survey]"/>[2] L. Clissa, “Survey of Big Data sizes in 2021.” 2022.</simpara>
+<simpara><anchor xml:id="bronstein2021geometric" xreflabel="[bronstein2021geometric]"/>[3] M. M. Bronstein, J. Bruna, T. Cohen, and P. Veličković, “Geometric deep learning: Grids, groups, graphs, geodesics, and gauges,” <emphasis>arXiv preprint arXiv:2104.13478</emphasis>, 2021.</simpara>
+<simpara><anchor xml:id="noether1918invariante" xreflabel="[noether1918invariante]"/>[4] E. Noether, “Invariante variationsprobleme, math-phys,” <emphasis>Klasse, pp235-257</emphasis>, 1918.</simpara>
 <simpara><anchor xml:id="li2019deep" xreflabel="[li2019deep]"/>[5] Y. Li, C. Huang, L. Ding, Z. Li, Y. Pan, and X. Gao, “Deep learning in bioinformatics: Introduction, application, and perspective in the big data era,” <emphasis>Methods</emphasis>, vol. 166, pp. 4–21, 2019.</simpara>
 <simpara><anchor xml:id="uzair2020effects" xreflabel="[uzair2020effects]"/>[6] M. Uzair and N. Jamil, “Effects of hidden layers on the efficiency of neural networks,” in <emphasis>2020 IEEE 23rd international multitopic conference (INMIC)</emphasis>, 2020, pp. 1–6.</simpara>
 <simpara><anchor xml:id="wainberg2018deep" xreflabel="[wainberg2018deep]"/>[7] M. Wainberg, D. Merico, A. Delong, and B. J. Frey, “Deep learning in biomedicine,” <emphasis>Nature biotechnology</emphasis>, vol. 36, no. 9, pp. 829–838, 2018.</simpara>

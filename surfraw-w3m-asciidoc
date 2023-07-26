@@ -6,3 +6,8 @@ surfraw scholar -p The imbedding problem for Riemannian manifolds | xargs w3m -o
 xargs w3m -o accept_encoding='indentity;q=0' -dump_source
 
 w3m -o accept_encoding='indentity;q=0' https://robotwealth.com/how-to-connect-google-colab-to-a-local-jupyter-runtime/ -dump_source | pandoc -f html -t asciidoc > local-jupyter.adoc
+
+w3m -o accept_encoding='indentity;q=0' https://www.biblestudytools.com/ecclesiastes/3-1-compare.html  -dump_source | pandoc -f html -t plain | grep -A 2 -E "New Livint Translation|New International Version|English Standard Version|New American Standard Bible|New Revised Standard Version|Revised Standard Version for|New King James Version for|King James Version for"
+
+
+w3m -o accept_encoding='indentity;q=0' https://www.biblestudytools.com/john/1-1-compare.html  -dump_source | pandoc -f html -t plain | grep  -A 4  -E "New Living Translation|New International Version|English Standard Version|New American Standard Bible|New Revised Standard Version|Revised Standard Version for|New King James Version for|King James Version for" | tr '\n' ' ' | sed -e 's/ -- /_/g' | tr '_' '\n
