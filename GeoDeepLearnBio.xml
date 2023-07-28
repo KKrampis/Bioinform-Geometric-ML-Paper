@@ -4,7 +4,7 @@
 <article xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>Principles of Artificial Neural Networks and Machine Learning for Bioinformatics Applications</title>
-<date>2023-07-26</date>
+<date>2023-07-28</date>
 </info>
 <section xml:id="_principles_of_artificial_neural_networks_and_machine_learning_for_bioinformatics_applications">
 <title>Principles of Artificial Neural Networks and Machine Learning for Bioinformatics Applications</title>
@@ -113,25 +113,25 @@ biological entity. Independently of the label structure, the deep learning
 algorithms and the overall goal of artificial intelligence applications for
 bioinformatics, is to first train the ANN with data for which the labels are
 known, and then perform classification of newly generated data, by predicting
-their labels.</simpara>
+their labels [<link linkend="Nair2021">6</link>].</simpara>
 <simpara>The simplest structure of an artificial neural network as shown on <emphasis role="strong">Fig.1</emphasis> is
 "fully connected", with each neuron <emphasis>k</emphasis> in the ANN having a number of incoming
 and outgoing connections corresponding to the number of neurons in previous and
-next layer in the neural network. For example the neuron <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msubsup><mml:mi>k</mml:mi><mml:mn>0</mml:mn><mml:mn>1</mml:mn></mml:msubsup></mml:math></inlineequation> of the
-<emphasis>First Layer (1)</emphasis> on <emphasis role="strong">Fig.1</emphasis>, has <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>n</mml:mi><mml:mo>=</mml:mo><mml:mn>2</mml:mn></mml:math></inlineequation> incoming and <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>n</mml:mi><mml:mo>=</mml:mo><mml:mn>3</mml:mn></mml:math></inlineequation>
-outgoing connections, corresponding respectively to the "input layer" with two
-neurons, and three connections with the neurons of the internal ("hidden
-layer") labeled <emphasis>Second Layer (2)</emphasis> on the figure. The internal layers are
-called "hidden" since they do not receive input data directly, similarly to the
-neurons performing cognition in animal brains, as opposed to sensory neurons.
-While the hidden layers can have an arbitrary number of neurons based on the
-complexity of the label classification problem we need the ANN to resolve
-[<link linkend="uzair2020effects">6</link>], the input layer has the exact number of neurons
-corresponding to the input data structure. On <emphasis role="strong">Fig. 1</emphasis> for example we have two
-input neurons, and the data can be of the form <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mn>50</mml:mn><mml:mo>,</mml:mo><mml:mn>100</mml:mn></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation>. Finally,
-the output layer has a number of neurons corresponding to the number of labels
-<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> per input data point in the data, and on <emphasis role="strong">Fig. 1</emphasis> there is a single
-label.</simpara>
+next layer in the neural network [<link linkend="Nair2021">6</link>]. For example the neuron
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msubsup><mml:mi>k</mml:mi><mml:mn>0</mml:mn><mml:mn>1</mml:mn></mml:msubsup></mml:math></inlineequation> of the <emphasis>First Layer (1)</emphasis> on <emphasis role="strong">Fig.1</emphasis>, has <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>n</mml:mi><mml:mo>=</mml:mo><mml:mn>2</mml:mn></mml:math></inlineequation> incoming
+and <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>n</mml:mi><mml:mo>=</mml:mo><mml:mn>3</mml:mn></mml:math></inlineequation> outgoing connections, corresponding respectively to the "input
+layer" with two neurons, and three connections with the neurons of the internal
+("hidden layer") labeled <emphasis>Second Layer (2)</emphasis> on the figure. The internal layers
+are called "hidden" since they do not receive input data directly, similarly to
+the neurons performing cognition in animal brains, as opposed to sensory
+neurons.  While the hidden layers can have an arbitrary number of neurons based
+on the complexity of the label classification problem we need the ANN to
+resolve [<link linkend="uzair2020effects">7</link>], the input layer has the exact number of
+neurons corresponding to the input data structure. On <emphasis role="strong">Fig. 1</emphasis> for example we
+have two input neurons, and the data can be of the form <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mrow><mml:mo>(</mml:mo><mml:mrow><mml:mn>50</mml:mn><mml:mo>,</mml:mo><mml:mn>100</mml:mn></mml:mrow><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation>.
+Finally, the output layer has a number of neurons corresponding to the number
+of labels <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> per input data point in the data, and on <emphasis role="strong">Fig. 1</emphasis> there is
+a single label.</simpara>
 <informalfigure role="middle">
 <mediaobject>
 <imageobject>
@@ -153,21 +153,20 @@ details.</simpara>
 <simpara><?asciidoc-hr?></simpara>
 <simpara>Similar to neural networks in animal brains, the computational abstractions
 used in machine learning and artificial intelligence, model neurons as
-computational units performing signal summation and threshold activation.
-Specifically, each artificial neuron performs a summation of incoming signals
-from its connected neighbooring neurons in the preceeding layer on the network,
-shown for example as red arrows on <emphasis role="strong">Fig.1</emphasis> for <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:msubsup><mml:mi>k</mml:mi><mml:mn>1</mml:mn><mml:mrow><mml:mo>(</mml:mo><mml:mtable><mml:mtr><mml:mtd><mml:mn>2</mml:mn></mml:mtd></mml:mtr></mml:mtable><mml:mo>)</mml:mo></mml:mrow></mml:msubsup></mml:msub></mml:math></inlineequation>. The
-signal processing across the ANN transitions from input data <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> on the
-leftmost layer (<emphasis role="strong">Fig.1</emphasis>), to output of data labels <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> on the right end.
-Within each neuron, when the aggregated input reaches a certain threshold, the
-neuron "fires" and transmits a signal to the next layer. The signals coming
-into the neuron can be either the data directly from the input layer, or
-signals generated by activation of the neurons in the intermediate - "hidden"
-layers. The summation and thresholding computation within each neuron is
-represented with the function <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:munderover><mml:mo>&#x2211;</mml:mo><mml:mn>1</mml:mn><mml:mi>k</mml:mi></mml:munderover><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>*</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>&#x2212;</mml:mo><mml:mi>b</mml:mi></mml:math></inlineequation>, where
-the <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub></mml:math></inlineequation> is the connection weights of the preceding neurons. Each
-connection arrow on <emphasis role="strong">Fig.1</emphasis> has a different weight, such as for example
-<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mrow><mml:mi>k</mml:mi><mml:mn>0</mml:mn></mml:mrow></mml:msub></mml:math></inlineequation> which is the incoming signal from the neuron
+computational units performing signal summation and threshold activation
+[<link linkend="Renganathan2019">8</link>].  Specifically, each artificial neuron performs a
+summation of incoming signals from its connected neighbooring neurons in the
+preceeding layer on the network, shown for example as red arrows on <emphasis role="strong">Fig.1</emphasis> for
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:msubsup><mml:mi>k</mml:mi><mml:mn>1</mml:mn><mml:mrow><mml:mo>(</mml:mo><mml:mtable><mml:mtr><mml:mtd><mml:mn>2</mml:mn></mml:mtd></mml:mtr></mml:mtable><mml:mo>)</mml:mo></mml:mrow></mml:msubsup></mml:msub></mml:math></inlineequation>. The signal processing across the ANN transitions from
+input data <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> on the leftmost layer (<emphasis role="strong">Fig.1</emphasis>), to output of data labels
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> on the right end.  Within each neuron, when the aggregated input
+reaches a certain threshold, the neuron "fires" and transmits a signal to the
+next layer. The signals coming into the neuron can be either the data directly
+from the input layer, or signals generated by activation of the neurons in the
+intermediate - "hidden" layers. The summation and thresholding computation
+within each neuron is represented with the function <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:munderover><mml:mo>&#x2211;</mml:mo><mml:mn>1</mml:mn><mml:mi>k</mml:mi></mml:munderover><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>*</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>k</mml:mi></mml:msub><mml:mo>&#x2212;</mml:mo><mml:mi>b</mml:mi></mml:math></inlineequation>, where the <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub></mml:math></inlineequation> is the connection weights of the
+preceding neurons. Each connection arrow on <emphasis role="strong">Fig.1</emphasis> has a different weight,
+such as for example <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mrow><mml:mi>k</mml:mi><mml:mn>0</mml:mn></mml:mrow></mml:msub></mml:math></inlineequation> which is the incoming signal from the neuron
 <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:msubsup><mml:mi>k</mml:mi><mml:mn>0</mml:mn><mml:mrow><mml:mo>(</mml:mo><mml:mtable><mml:mtr><mml:mtd><mml:mn>1</mml:mn></mml:mtd></mml:mtr></mml:mtable><mml:mo>)</mml:mo></mml:mrow></mml:msubsup></mml:msub></mml:math></inlineequation> to neuron <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>&#x3C3;</mml:mi><mml:msubsup><mml:mi>k</mml:mi><mml:mn>1</mml:mn><mml:mrow><mml:mo>(</mml:mo><mml:mtable><mml:mtr><mml:mtd><mml:mn>2</mml:mn></mml:mtd></mml:mtr></mml:mtable><mml:mo>)</mml:mo></mml:mrow></mml:msubsup></mml:msub></mml:math></inlineequation>, multiplied by the
 weight <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>w</mml:mi><mml:mrow><mml:mi>k</mml:mi><mml:mn>0</mml:mn></mml:mrow></mml:msub></mml:math></inlineequation>, which represents the strength of the connection between
 these two artificial neurons.</simpara>
@@ -178,12 +177,12 @@ minimize the difference between the network&#8217;s predicted output and the des
 output. The weights essentially control the flow of information through the
 network, allowing it to learn and make accurate predictions. Correctly tuned
 weights are crucial for the network to effectively learn patterns and
-generalize its knowledge to new input data.</simpara>
+generalize its knowledge to new input data [<link linkend="Renganathan2019">8</link>].</simpara>
 <simpara>For the majority of applications, the weight values <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub></mml:math></inlineequation> are the only
 elements in the ANN structure that are variable, and are adjusted by the
 algorithms during training with the input data. This is similar to the
 biological brain, where learning takes place by strengthening connections among
-neurons [<link linkend="wainberg2018deep">7</link>]. However, unlike the biological brain the ANNs
+neurons [<link linkend="wainberg2018deep">9</link>]. However, unlike the biological brain the ANNs
 used in practice for data analysis have fixed connections between the neurons
 and the structure of the neural network does not change during training and
 learning to recognize and classify new data. The last term <emphasis>b</emphasis> in the
@@ -213,11 +212,11 @@ interconnected neurons in the network [<link linkend="li2019deep">5</link>].  As
 <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> can classify labels for data inputs that originate from complex
 data distributions, and this fact enables ANNs to achieve higher analytical
 power compared to typical statistical learning algorithms
-[<link linkend="tang2019recent">8</link>]. The <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:math></inlineequation> is estimated by fitting a training
+[<link linkend="tang2019recent">10</link>]. The <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:math></inlineequation> is estimated by fitting a training
 dataset, which correlates labels <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> to data points <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation>.  With
 hundreds of papers and monographs that have been written on the technical
 details of training ANNs, we will next attempt to briefly summarize the process
-and refer the reader to the citations for further details.</simpara>
+and refer the reader to the citations for further details [<link linkend="Zou2008a">11</link>].</simpara>
 <simpara>As mentioned previously, the only variable element in the ANN structure are the
 weights <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub></mml:math></inlineequation> of the neuron connections, and therefore training an ANN to
 classify data is the estimation of the weights. Furthermore, the training
@@ -226,7 +225,7 @@ the labels <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/Math
 labels <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation>. This error metric is akin to true/false positive and
 negatives (precision and recall) used in statistics, however diffent formulas
 are used for its estimation for multi-label or complex input data to the ANN
-(for more details, [<link linkend="kriegeskorte2019neural">9</link>]). The neuron connection weight
+(for more details, [<link linkend="kriegeskorte2019neural">12</link>]). The neuron connection weight
 <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>w</mml:mi><mml:mi>k</mml:mi></mml:msub></mml:math></inlineequation> estimation by the algorithm takes place by fitting the network
 function <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi></mml:math></inlineequation> on a large training dataset of <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msubsup><mml:mrow><mml:mo>{</mml:mo><mml:mrow><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>,</mml:mo><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow><mml:mo>}</mml:mo></mml:mrow><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:msubsup></mml:math></inlineequation> pairs of
 input data and labels, while the error <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>E</mml:mi></mml:math></inlineequation> is calculated by using a subset
@@ -235,10 +234,10 @@ initial value of the weights, and then performs multiple cycles (called
 "epochs") towards estimating the function <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>f</mml:mi></mml:math></inlineequation> by fitting the data
 <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation> to the network and calculating the error <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>E</mml:mi></mml:math></inlineequation> by comparing
 predicted <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:msub></mml:math></inlineequation> and the true labels <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation>. At the end of each
-cycle "backpropagation" is performed [<link linkend="tang2019recent">8</link>], which involves a
+cycle "backpropagation" is performed [<link linkend="tang2019recent">10</link>], which involves a
 gradient descent optimization algorithm, in order to fine tune the weights of
 the individual neurons and minimize <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>E</mml:mi></mml:math></inlineequation>.  The gradient descent
-[<link linkend="ruder2016overview">10</link>] searches the possible combinations of weight values,
+[<link linkend="ruder2016overview">13</link>] searches the possible combinations of weight values,
 and since it is a heuristic algorithm it minimizes <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>E</mml:mi></mml:math></inlineequation>, but cannot reach
 zero error. At the completion of multiple training cycles the training
 algorithm identifies a set of weights which best fit the data, and the ANN
@@ -279,27 +278,28 @@ having a value for the light intensity captured when the image was taken. In
 this case the data domain is a grid of integers (<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x2124;</mml:mo></mml:math></inlineequation>), represented as
 <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x3A9;</mml:mo><mml:mo>:</mml:mo><mml:msub><mml:mo>&#x2124;</mml:mo><mml:mi>n</mml:mi></mml:msub><mml:mo>&#xD7;</mml:mo><mml:msub><mml:mo>&#x2124;</mml:mo><mml:mi>n</mml:mi></mml:msub></mml:math></inlineequation>. Similarly, for color images the data domain is
 <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>:</mml:mo><mml:mo>&#x3A9;</mml:mo><mml:mo>&#x2192;</mml:mo><mml:msubsup><mml:mo>&#x2124;</mml:mo><mml:mi>n</mml:mi><mml:mn>3</mml:mn></mml:msubsup><mml:mo>&#xD7;</mml:mo><mml:msubsup><mml:mo>&#x2124;</mml:mo><mml:mi>n</mml:mi><mml:mn>3</mml:mn></mml:msubsup></mml:math></inlineequation>, with three overlayed integer grids each
-representing the green, blue and red layers composing the color image. In
-either case, the <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x3A9;</mml:mo></mml:math></inlineequation> contains all possible combinations of pixel
-intensities, while the specific pixel value combinations of the images in the
-input data <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation>  are a "signal" <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mtext>X</mml:mtext><mml:mrow><mml:mo>(</mml:mo><mml:mo>&#x3A9;</mml:mo><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> from the domain.  The
-ANN data classification and label prediction function <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mi>f</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation>
-is applied on the signal <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mtext>X</mml:mtext><mml:mrow><mml:mo>(</mml:mo><mml:mo>&#x3A9;</mml:mo><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> which is essentially a subset of
-the domain <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x3A9;</mml:mo></mml:math></inlineequation>.</simpara>
+representing the green, blue and red layers composing the color image
+[<link linkend="Chartrand2017">14</link>]. In either case, the <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x3A9;</mml:mo></mml:math></inlineequation> contains all possible
+combinations of pixel intensities, while the specific pixel value combinations
+of the images in the input data <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></inlineequation>  are a "signal" <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mtext>X</mml:mtext><mml:mrow><mml:mo>(</mml:mo><mml:mo>&#x3A9;</mml:mo><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation>
+from the domain.  The ANN data classification and label prediction function
+<inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi>y</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:msub><mml:mi>d</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:msub><mml:mo>=</mml:mo><mml:mi>f</mml:mi><mml:mrow><mml:mo>(</mml:mo><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> is applied on the signal <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mtext>X</mml:mtext><mml:mrow><mml:mo>(</mml:mo><mml:mo>&#x3A9;</mml:mo><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> which is
+essentially a subset of the domain <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x3A9;</mml:mo></mml:math></inlineequation>.</simpara>
 <simpara>A <emphasis>symmetry group</emphasis> <inlineequation><alt><![CDATA[G]]></alt><mathphrase><![CDATA[G]]></mathphrase></inlineequation> contains all possible transformations of the
-input signal <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mtext>X</mml:mtext><mml:mrow><mml:mo>(</mml:mo><mml:mo>&#x3A9;</mml:mo><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> called symmetries <inlineequation><alt><![CDATA[g]]></alt><mathphrase><![CDATA[g]]></mathphrase></inlineequation> or
-otherwise <emphasis>group actions</emphasis>. A symmetry transformation <inlineequation><alt><![CDATA[g]]></alt><mathphrase><![CDATA[g]]></mathphrase></inlineequation> preserves
-the properties of the data, such as for example not distorting the objects in
-the image during rotation. The members of the symmetry group <inlineequation><alt><![CDATA[g \in
-G]]></alt><mathphrase><![CDATA[g \in
-G]]></mathphrase></inlineequation> are the associations of two or more coordinate points <inlineequation><alt><![CDATA[u,v\in \Omega]]></alt><mathphrase><![CDATA[u,v\in \Omega]]></mathphrase></inlineequation>
-on the data domain (grid in our image example). Between these coordinates, the image can be rotated,
-shifted or otherwise transformed without any distortion. Therefore, the key aspect
-of the formal mathematical definition of the group, is that the data attributes
-are preserved during object distortions that are common during the experimental
-acquisition of bioinformatics data. The concept of symmetry groups is
-important towards modeling the performance of machine learning algorithms, for
-classifying the data patterns correctly, despite the variability found in the input data.</simpara>
+input signal <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mtext>X</mml:mtext><mml:mrow><mml:mo>(</mml:mo><mml:mo>&#x3A9;</mml:mo><mml:mo>)</mml:mo></mml:mrow></mml:math></inlineequation> called symmetries <inlineequation><alt><![CDATA[g]]></alt><mathphrase><![CDATA[g]]></mathphrase></inlineequation> or otherwise
+<emphasis>group actions</emphasis>. A symmetry transformation <inlineequation><alt><![CDATA[g]]></alt><mathphrase><![CDATA[g]]></mathphrase></inlineequation> preserves the
+properties of the data, such as for example not distorting the objects in the
+image during rotation. The members of the symmetry group <inlineequation><alt><![CDATA[g \in G]]></alt><mathphrase><![CDATA[g \in G]]></mathphrase></inlineequation>
+are the associations of two or more coordinate points <inlineequation><alt><![CDATA[u,v\in
+\Omega]]></alt><mathphrase><![CDATA[u,v\in
+\Omega]]></mathphrase></inlineequation> on the data domain (grid in our image example). Between these
+coordinates, the image can be rotated, shifted or otherwise transformed without
+any distortion. Therefore, the key aspect of the formal mathematical definition
+of the group, is that the data attributes are preserved during object
+distortions that are common during the experimental acquisition of
+bioinformatics data . The concept of symmetry groups is important towards
+modeling the performance of machine learning algorithms, for classifying the
+data patterns correctly, despite the variability found in the input data.</simpara>
 <informalfigure role="left">
 <mediaobject>
 <imageobject>
@@ -334,7 +334,7 @@ the amino acids or atoms as node entities, and the chemical bonds between each
 of these entities as edges. The edges can correspond to either the
 carbonyl-amino (C-N) peptide bonds between amino acids and molecular
 interactions across the peptide chain on the protein structure, or the chemical
-bonds between atoms in a drug molecule. Furthermore, attributes in the
+bonds between atoms in a drug molecule [<link linkend="Kriegeskorte2019">15</link>]. Furthermore, attributes in the
 molecular data such as for example polarity and amino acid weight, or drug
 binding properties can be represented as <inlineequation><alt><![CDATA[s]]></alt><mathphrase><![CDATA[s]]></mathphrase></inlineequation> - dimensional node
 attributes, where <emphasis>s</emphasis> are the attributes assigned to each node.  Similarly, the
@@ -374,7 +374,7 @@ two graphs for the same molecule have the same edges but different ordering of
 nodes, they are called <emphasis>isomorphic</emphasis>. Any machine learning algorithm performing
 pattern recognition on graphs, should not depend on the ordering of nodes so
 that classification with ANNs and artificial intelligence is not affected by
-experiment measurement variations in real-world data.  This is something that
+experiment measurement variations in real-world data [<link linkend="AgatonovicKustrin2000">16</link>].  This is something that
 is taken for granted with human intelligence, where for example we can
 recognize an object even when a photograph is rotated at an angle. Returning to
 our formal definitions, in order for ANNs algorithms to equivalently recognize
@@ -421,11 +421,11 @@ the neural network estimator function <inlineequation><mml:math xmlns:mml="http:
 identified by adjusting neuron connection weights during multiple training
 cycles with the input data.  Our goal is to leverage the mathematical
 formalisms of group symmetry and invariance, in order to establish the ANN
-resilience for classifying and assigning labels to new data points. The data
-points originate from real-world data that might contain tranformations and
-distortions. We first define that the estimator function of the ANN to be
-<emphasis>invariant</emphasis>, if the condition for the input data holds such as
-<inlineequation><alt><![CDATA[f(\mathbf{M} \times x_i) = f(x_i)]]></alt><mathphrase><![CDATA[f(\mathbf{M} \times x_i) = f(x_i)]]></mathphrase></inlineequation> for all matrices
+resilience for classifying and assigning labels to new data points
+[<link linkend="Eetemadi2019">17</link>]. The data points originate from real-world data that might
+contain tranformations and distortions. We first define that the estimator
+function of the ANN to be <emphasis>invariant</emphasis>, if the condition for the input data
+holds such as <inlineequation><alt><![CDATA[f(\mathbf{M} \times x_i) = f(x_i)]]></alt><mathphrase><![CDATA[f(\mathbf{M} \times x_i) = f(x_i)]]></mathphrase></inlineequation> for all matrices
 <inlineequation><alt><![CDATA[\mathbf{M}]]></alt><mathphrase><![CDATA[\mathbf{M}]]></mathphrase></inlineequation> representing the actions <inlineequation><alt><![CDATA[g \in G]]></alt><mathphrase><![CDATA[g \in G]]></mathphrase></inlineequation> within
 the symmetry group. This formula presents the condition required for the neural
 network function to be invariant: its output value is the same whether the
@@ -446,13 +446,13 @@ coordinates and rigid transformations of the data, such as a rotation of the
 image or the graph by a specific angle on the grid <inlineequation><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>&#x3A9;</mml:mo></mml:math></inlineequation>. However, we
 can have also also have continuous, more fine grained shifts which is common
 with real-world data. In this case, the ANNs algorithms should be able to
-recognize patterns, classify and label the data without any loss of
-performance. Mathematically, the continuous transformations follow equally with
-the invariant and equivariant functions described earlier.  If for example the
-domain <inlineequation><alt><![CDATA[\Omega]]></alt><mathphrase><![CDATA[\Omega]]></mathphrase></inlineequation> contains data that have smooth transformations and
-shifts, such as moving images (video) or shifts of molecules and graphs that
-preserve <emphasis>continuity</emphasis> in a topological definition
-[<link linkend="sutherland2009introduction">11</link>], in this case we have a <emphasis>homeomorphism</emphasis>
+recognize patterns, classify and label the data without any loss of performance
+[<link linkend="Wright2022">18</link>]. Mathematically, the continuous transformations follow
+equally with the invariant and equivariant functions described earlier.  If for
+example the domain <inlineequation><alt><![CDATA[\Omega]]></alt><mathphrase><![CDATA[\Omega]]></mathphrase></inlineequation> contains data that have smooth
+transformations and shifts, such as moving images (video) or shifts of
+molecules and graphs that preserve <emphasis>continuity</emphasis> in a topological definition
+[<link linkend="sutherland2009introduction">19</link>], in this case we have a <emphasis>homeomorphism</emphasis>
 instead of <emphasis>invariance</emphasis>.</simpara>
 <simpara>Finally, if the rate of continuous transformation of the data is quantifiable,
 meaning that the function <inlineequation><alt><![CDATA[\theta]]></alt><mathphrase><![CDATA[\theta]]></mathphrase></inlineequation> that maps the group to a matrix
@@ -474,18 +474,18 @@ transformation due to a group action from the symmetry group.</simpara>
 <simpara>Artificial Intelligence (AI) and Deep Learning have emerged as a powerful tool
 with diverse applications in the field of bioinformatics, and multiple research
 studies have been reported in the literature
-[<link linkend="pmid37446831">12</link>, <link linkend="pmid37189058">13</link>, <link linkend="pmid37043378">14</link>], which showcase the potential of
+[<link linkend="pmid37446831">20</link>, <link linkend="pmid37189058">21</link>, <link linkend="pmid37043378">22</link>], which showcase the potential of
 the technology to revolutionize healthcare and life sciences.  One of the
 significant applications is drug discovery, as AI algorithms enable the
 analysis of large datasets of chemical compounds, predicting their
-effectiveness and safety [<link linkend="pmid37479540">15</link>, <link linkend="pmid37458097">16</link>, <link linkend="pmid37454742">17</link>]. These
+effectiveness and safety [<link linkend="pmid37479540">23</link>, <link linkend="pmid37458097">24</link>, <link linkend="pmid37454742">25</link>]. These
 studies have ddemonstrated that AI can accelerate the drug discovery process by
 screening potential candidates and optimizing their properties, leading to
 significant cost and time savings.</simpara>
 <simpara>In the field of genomics AI algorithms have been applied to the analysis of DNA
 sequencing and gene expression data, facilitating the identification of
 disease-causing mutations and understanding genetic variations
-[<link linkend="pmid37453366">18</link>, <link linkend="pmid37446311">19</link>, <link linkend="pmid37386009">20</link>, <link linkend="pmid37370847">21</link>]. Furthermore, in
+[<link linkend="pmid37453366">26</link>, <link linkend="pmid37446311">27</link>, <link linkend="pmid37386009">28</link>, <link linkend="pmid37370847">29</link>]. Furthermore, in
 these studies, genomic data analysis with AI algorithms has resulted into
 insights which can aid towards the development of personalized medicine
 approaches and as result to tailor treatments to individual patients.
@@ -498,25 +498,25 @@ side effects, and suggest optimal treatment options for individual patients.</si
 treatment outcomes, through disease diagnosis enhanced by machine learning
 analysis of medical images, including MRI scans, X-rays, and histopathology
 images, of diseases like cancer
-[<link linkend="pmid37488621">22</link>, <link linkend="pmid37478073">23</link>, <link linkend="pmid37474003">24</link>, <link linkend="pmid37449611">25</link>]. The AI algorithms
+[<link linkend="pmid37488621">30</link>, <link linkend="pmid37478073">31</link>, <link linkend="pmid37474003">32</link>, <link linkend="pmid37449611">33</link>]. The AI algorithms
 can assist pathologists and radiologists in making accurate diagnoses, for
 early detection and diagnosis and to overall improve patient outcomes.</simpara>
 <simpara>AI can also play a significant role in aiding the development of bioinformatics
 tools and software through acceleration of code delopment for the analysis and
 interpretation of biological data, such as sequence alignment, protein
 structure prediction, and functional annotation
-[<link linkend="pmid37329982">26</link>, <link linkend="pmid37463768">27</link>, <link linkend="pmid37460991">28</link>].  Moreover, AI-powered natural
+[<link linkend="pmid37329982">34</link>, <link linkend="pmid37463768">35</link>, <link linkend="pmid37460991">36</link>].  Moreover, AI-powered natural
 language processing techniques have been used to analyze scientific literature,
 patents, and clinical trial reports. This enables researchers to stay updated
 with the latest discoveries and facilitates knowledge discovery in the field.</simpara>
 <simpara>Finally, in the area of clinical trials machine learning algorithms have been
 appplied to mining vast amounts of data from clinical trials , and as result
 improving the rates of success for new drugs and treatment strategies for
-patients partipating in the trials [<link linkend="pmid37486997">29</link>, <link linkend="pmid37483175">30</link>]. Additional
+patients partipating in the trials [<link linkend="pmid37486997">37</link>, <link linkend="pmid37483175">38</link>]. Additional
 studies have also demonstated that machine learning algorithms can result in
 better optimization of the clinical trial designs, reduction costs and overall
 acceleration of the drug development pipelines
-[<link linkend="pmid37479540">15</link>, <link linkend="pmid37458097">16</link>].</simpara>
+[<link linkend="pmid37479540">23</link>, <link linkend="pmid37458097">24</link>].</simpara>
 <section xml:id="_conclusion">
 <title>CONCLUSION</title>
 <simpara>The accelerated developments in the fields of Machine Learning and Artificial
@@ -547,31 +547,39 @@ institutions for supporting their scholarly work.</simpara>
 <simpara><anchor xml:id="bronstein2021geometric" xreflabel="[bronstein2021geometric]"/>[3] M. M. Bronstein, J. Bruna, T. Cohen, and P. Veličković, “Geometric deep learning: Grids, groups, graphs, geodesics, and gauges,” <emphasis>arXiv preprint arXiv:2104.13478</emphasis>, 2021.</simpara>
 <simpara><anchor xml:id="noether1918invariante" xreflabel="[noether1918invariante]"/>[4] E. Noether, “Invariante variationsprobleme, math-phys,” <emphasis>Klasse, pp235-257</emphasis>, 1918.</simpara>
 <simpara><anchor xml:id="li2019deep" xreflabel="[li2019deep]"/>[5] Y. Li, C. Huang, L. Ding, Z. Li, Y. Pan, and X. Gao, “Deep learning in bioinformatics: Introduction, application, and perspective in the big data era,” <emphasis>Methods</emphasis>, vol. 166, pp. 4–21, 2019.</simpara>
-<simpara><anchor xml:id="uzair2020effects" xreflabel="[uzair2020effects]"/>[6] M. Uzair and N. Jamil, “Effects of hidden layers on the efficiency of neural networks,” in <emphasis>2020 IEEE 23rd international multitopic conference (INMIC)</emphasis>, 2020, pp. 1–6.</simpara>
-<simpara><anchor xml:id="wainberg2018deep" xreflabel="[wainberg2018deep]"/>[7] M. Wainberg, D. Merico, A. Delong, and B. J. Frey, “Deep learning in biomedicine,” <emphasis>Nature biotechnology</emphasis>, vol. 36, no. 9, pp. 829–838, 2018.</simpara>
-<simpara><anchor xml:id="tang2019recent" xreflabel="[tang2019recent]"/>[8] B. Tang, Z. Pan, K. Yin, and A. Khateeb, “Recent advances of deep learning in bioinformatics and computational biology,” <emphasis>Frontiers in genetics</emphasis>, vol. 10, p. 214, 2019.</simpara>
-<simpara><anchor xml:id="kriegeskorte2019neural" xreflabel="[kriegeskorte2019neural]"/>[9] N. Kriegeskorte and T. Golan, “Neural network models and deep learning,” <emphasis>Current Biology</emphasis>, vol. 29, no. 7, pp. R231–R236, 2019.</simpara>
-<simpara><anchor xml:id="ruder2016overview" xreflabel="[ruder2016overview]"/>[10] S. Ruder, “An overview of gradient descent optimization algorithms,” <emphasis>arXiv preprint arXiv:1609.04747</emphasis>, 2016.</simpara>
-<simpara><anchor xml:id="sutherland2009introduction" xreflabel="[sutherland2009introduction]"/>[11] W. A. Sutherland, <emphasis>Introduction to metric and topological spaces</emphasis>. Oxford University Press, 2009.</simpara>
-<simpara><anchor xml:id="pmid37446831" xreflabel="[pmid37446831]"/>[12] M. Lee, “Recent Advances in Deep Learning for Protein-Protein Interaction Analysis: A Comprehensive Review,” <emphasis>Molecules</emphasis>, vol. 28, no. 13, Jul. 2023.</simpara>
-<simpara><anchor xml:id="pmid37189058" xreflabel="[pmid37189058]"/>[13] M. Wysocka, O. Wysocki, M. Zufferey, D. Landers, and A. Freitas, “A systematic review of biologically-informed deep learning models for cancer: fundamental trends for encoding and interpreting oncology data,” <emphasis>BMC Bioinformatics</emphasis>, vol. 24, no. 1, p. 198, May 2023.</simpara>
-<simpara><anchor xml:id="pmid37043378" xreflabel="[pmid37043378]"/>[14] B. Jahanyar, H. Tabatabaee, and A. Rowhanimanesh, “Harnessing Deep Learning for Omics in an Era of COVID-19,” <emphasis>OMICS</emphasis>, vol. 27, no. 4, pp. 141–152, Apr. 2023.</simpara>
-<simpara><anchor xml:id="pmid37479540" xreflabel="[pmid37479540]"/>[15] F. W. Pun, I. V. Ozerov, and A. Zhavoronkov, “AI-powered therapeutic target discovery,” <emphasis>Trends Pharmacol Sci</emphasis>, Jul. 2023.</simpara>
-<simpara><anchor xml:id="pmid37458097" xreflabel="[pmid37458097]"/>[16] G. Floresta, C. Zagni, V. Patamia, and A. Rescifina, “How can artificial intelligence be utilized for de novo drug design against COVID-19 (SARS-CoV-2)?,” <emphasis>Expert Opin Drug Discov</emphasis>, pp. 1–4, Jul. 2023.</simpara>
-<simpara><anchor xml:id="pmid37454742" xreflabel="[pmid37454742]"/>[17] Y. Zhou <emphasis>et al.</emphasis>, “Deep learning in preclinical antibody drug discovery and development,” <emphasis>Methods</emphasis>, Jul. 2023.</simpara>
-<simpara><anchor xml:id="pmid37453366" xreflabel="[pmid37453366]"/>[18] A. rez-Mena, E. n, M. J. Alvarez-Cubero, A. Anguita-Ruiz, L. J. Martinez-Gonzalez, and J. Alcala-Fdez, “Explainable artificial intelligence to predict and identify prostate cancer tissue by gene expression,” <emphasis>Comput Methods Programs Biomed</emphasis>, vol. 240, p. 107719, Jul. 2023.</simpara>
-<simpara><anchor xml:id="pmid37446311" xreflabel="[pmid37446311]"/>[19] W. Wei, Y. Li, and T. Huang, “Using Machine Learning Methods to Study Colorectal Cancer Tumor Micro-Environment and Its Biomarkers,” <emphasis>Int J Mol Sci</emphasis>, vol. 24, no. 13, Jul. 2023.</simpara>
-<simpara><anchor xml:id="pmid37386009" xreflabel="[pmid37386009]"/>[20] D. Shigemizu <emphasis>et al.</emphasis>, “Classification and deep-learning-based prediction of Alzheimer disease subtypes by using genomic data,” <emphasis>Transl Psychiatry</emphasis>, vol. 13, no. 1, p. 232, Jun. 2023.</simpara>
-<simpara><anchor xml:id="pmid37370847" xreflabel="[pmid37370847]"/>[21] Z. Mirza <emphasis>et al.</emphasis>, “Identification of Novel Diagnostic and Prognostic Gene Signature Biomarkers for Breast Cancer Using Artificial Intelligence and Machine Learning Assisted Transcriptomics Analysis,” <emphasis>Cancers (Basel)</emphasis>, vol. 15, no. 12, Jun. 2023.</simpara>
-<simpara><anchor xml:id="pmid37488621" xreflabel="[pmid37488621]"/>[22] R. Adam, K. Dell’Aquila, L. Hodges, T. Maldjian, and T. Q. Duong, “Deep learning applications to breast cancer detection by magnetic resonance imaging: a literature review,” <emphasis>Breast Cancer Res</emphasis>, vol. 25, no. 1, p. 87, Jul. 2023.</simpara>
-<simpara><anchor xml:id="pmid37478073" xreflabel="[pmid37478073]"/>[23] Y. Tong <emphasis>et al.</emphasis>, “Prediction of lymphoma response to CAR T cells by deep learning-based image analysis,” <emphasis>PLoS One</emphasis>, vol. 18, no. 7, p. e0282573, 2023.</simpara>
-<simpara><anchor xml:id="pmid37474003" xreflabel="[pmid37474003]"/>[24] L. R. Archila <emphasis>et al.</emphasis>, “Performance of an Artificial Intelligence Model for Recognition and Quantitation of Histologic Features of Eosinophilic Esophagitis on Biopsy Samples,” <emphasis>Mod Pathol</emphasis>, p. 100285, Jul. 2023.</simpara>
-<simpara><anchor xml:id="pmid37449611" xreflabel="[pmid37449611]"/>[25] Q. Li, A. Sandoval, and B. Chen, “Advancing spinal cord injury research with optical clearing, light sheet microscopy, and artificial intelligence-based image analysis,” <emphasis>Neural Regen Res</emphasis>, vol. 18, no. 12, pp. 2661–2662, Dec. 2023.</simpara>
-<simpara><anchor xml:id="pmid37329982" xreflabel="[pmid37329982]"/>[26] M. Santorsola and F. Lescai, “The promise of explainable deep learning for omics data analysis: Adding new discovery tools to AI,” <emphasis>N Biotechnol</emphasis>, vol. 77, pp. 1–11, Jun. 2023.</simpara>
-<simpara><anchor xml:id="pmid37463768" xreflabel="[pmid37463768]"/>[27] B. Waissengrin <emphasis>et al.</emphasis>, “Artificial intelligence (AI) molecular analysis tool assists in rapid treatment decision in lung cancer: a case report,” <emphasis>J Clin Pathol</emphasis>, Jul. 2023.</simpara>
-<simpara><anchor xml:id="pmid37460991" xreflabel="[pmid37460991]"/>[28] F. Hosseini, F. Asadi, H. Emami, and M. Ebnali, “Machine learning applications for early detection of esophageal cancer: a systematic review,” <emphasis>BMC Med Inform Decis Mak</emphasis>, vol. 23, no. 1, p. 124, Jul. 2023.</simpara>
-<simpara><anchor xml:id="pmid37486997" xreflabel="[pmid37486997]"/>[29] S. M. Ahmed, R. V. Shivnaraine, and J. C. Wu, “FDA Modernization Act 2.0 Paves the Way to Computational Biology and Clinical Trials in a Dish,” <emphasis>Circulation</emphasis>, vol. 148, no. 4, pp. 309–311, Jul. 2023.</simpara>
-<simpara><anchor xml:id="pmid37483175" xreflabel="[pmid37483175]"/>[30] A. Aliper <emphasis>et al.</emphasis>, “Prediction of clinical trials outcomes based on target choice and clinical trial design with multi-modal artificial intelligence,” <emphasis>Clin Pharmacol Ther</emphasis>, Jul. 2023.</simpara>
+<simpara><anchor xml:id="Nair2021" xreflabel="[Nair2021]"/>[6] T. M. Nair, “Building and Interpreting Artificial Neural Network Models for Biological Systems.,” <emphasis>Methods in molecular biology (Clifton, N.J.)</emphasis>, vol. 2190, pp. 185–194, 2021, doi: 10.1007/978-1-0716-0826-5_8.</simpara>
+<simpara><anchor xml:id="uzair2020effects" xreflabel="[uzair2020effects]"/>[7] M. Uzair and N. Jamil, “Effects of hidden layers on the efficiency of neural networks,” in <emphasis>2020 IEEE 23rd international multitopic conference (INMIC)</emphasis>, 2020, pp. 1–6.</simpara>
+<simpara><anchor xml:id="Renganathan2019" xreflabel="[Renganathan2019]"/>[8] V. Renganathan, “Overview of artificial neural network models in the biomedical domain.,” <emphasis>Bratislavske lekarske listy</emphasis>, vol. 120, no. 7, pp. 536–540, 2019, doi: 10.4149/BLL_2019_087.</simpara>
+<simpara><anchor xml:id="wainberg2018deep" xreflabel="[wainberg2018deep]"/>[9] M. Wainberg, D. Merico, A. Delong, and B. J. Frey, “Deep learning in biomedicine,” <emphasis>Nature biotechnology</emphasis>, vol. 36, no. 9, pp. 829–838, 2018.</simpara>
+<simpara><anchor xml:id="tang2019recent" xreflabel="[tang2019recent]"/>[10] B. Tang, Z. Pan, K. Yin, and A. Khateeb, “Recent advances of deep learning in bioinformatics and computational biology,” <emphasis>Frontiers in genetics</emphasis>, vol. 10, p. 214, 2019.</simpara>
+<simpara><anchor xml:id="Zou2008a" xreflabel="[Zou2008a]"/>[11] J. Zou, Y. Han, and S.-S. So, “Overview of artificial neural networks.,” <emphasis>Methods in molecular biology (Clifton, N.J.)</emphasis>, vol. 458, pp. 15–23, 2008, doi: 10.1007/978-1-60327-101-1_2.</simpara>
+<simpara><anchor xml:id="kriegeskorte2019neural" xreflabel="[kriegeskorte2019neural]"/>[12] N. Kriegeskorte and T. Golan, “Neural network models and deep learning,” <emphasis>Current Biology</emphasis>, vol. 29, no. 7, pp. R231–R236, 2019.</simpara>
+<simpara><anchor xml:id="ruder2016overview" xreflabel="[ruder2016overview]"/>[13] S. Ruder, “An overview of gradient descent optimization algorithms,” <emphasis>arXiv preprint arXiv:1609.04747</emphasis>, 2016.</simpara>
+<simpara><anchor xml:id="Chartrand2017" xreflabel="[Chartrand2017]"/>[14] G. Chartrand <emphasis>et al.</emphasis>, “Deep Learning: A Primer for Radiologists.,” <emphasis>Radiographics : a review publication of the Radiological Society of North America, Inc</emphasis>, vol. 37, no. 7, pp. 2113–2131, 2017, doi: 10.1148/rg.2017170077.</simpara>
+<simpara><anchor xml:id="Kriegeskorte2019" xreflabel="[Kriegeskorte2019]"/>[15] N. Kriegeskorte and T. Golan, “Neural network models and deep learning.,” <emphasis>Current biology : CB</emphasis>, vol. 29, no. 7, pp. R231–R236, Apr. 2019, doi: 10.1016/j.cub.2019.02.034.</simpara>
+<simpara><anchor xml:id="AgatonovicKustrin2000" xreflabel="[AgatonovicKustrin2000]"/>[16] S. Agatonovic-Kustrin and R. Beresford, “Basic concepts of artificial neural network (ANN) modeling and its application in pharmaceutical research.,” <emphasis>Journal of pharmaceutical and biomedical analysis</emphasis>, vol. 22, no. 5, pp. 717–727, Jun. 2000, doi: 10.1016/s0731-7085(99)00272-1.</simpara>
+<simpara><anchor xml:id="Eetemadi2019" xreflabel="[Eetemadi2019]"/>[17] A. Eetemadi and I. Tagkopoulos, “Genetic Neural Networks: an artificial neural network architecture for capturing gene expression relationships.,” <emphasis>Bioinformatics (Oxford, England)</emphasis>, vol. 35, no. 13, pp. 2226–2234, Jul. 2019, doi: 10.1093/bioinformatics/bty945.</simpara>
+<simpara><anchor xml:id="Wright2022" xreflabel="[Wright2022]"/>[18] L. G. Wright <emphasis>et al.</emphasis>, “Deep physical neural networks trained with backpropagation.,” <emphasis>Nature</emphasis>, vol. 601, no. 7894, pp. 549–555, Jan. 2022, doi: 10.1038/s41586-021-04223-6.</simpara>
+<simpara><anchor xml:id="sutherland2009introduction" xreflabel="[sutherland2009introduction]"/>[19] W. A. Sutherland, <emphasis>Introduction to metric and topological spaces</emphasis>. Oxford University Press, 2009.</simpara>
+<simpara><anchor xml:id="pmid37446831" xreflabel="[pmid37446831]"/>[20] M. Lee, “Recent Advances in Deep Learning for Protein-Protein Interaction Analysis: A Comprehensive Review,” <emphasis>Molecules</emphasis>, vol. 28, no. 13, Jul. 2023.</simpara>
+<simpara><anchor xml:id="pmid37189058" xreflabel="[pmid37189058]"/>[21] M. Wysocka, O. Wysocki, M. Zufferey, D. Landers, and A. Freitas, “A systematic review of biologically-informed deep learning models for cancer: fundamental trends for encoding and interpreting oncology data,” <emphasis>BMC Bioinformatics</emphasis>, vol. 24, no. 1, p. 198, May 2023.</simpara>
+<simpara><anchor xml:id="pmid37043378" xreflabel="[pmid37043378]"/>[22] B. Jahanyar, H. Tabatabaee, and A. Rowhanimanesh, “Harnessing Deep Learning for Omics in an Era of COVID-19,” <emphasis>OMICS</emphasis>, vol. 27, no. 4, pp. 141–152, Apr. 2023.</simpara>
+<simpara><anchor xml:id="pmid37479540" xreflabel="[pmid37479540]"/>[23] F. W. Pun, I. V. Ozerov, and A. Zhavoronkov, “AI-powered therapeutic target discovery,” <emphasis>Trends Pharmacol Sci</emphasis>, Jul. 2023.</simpara>
+<simpara><anchor xml:id="pmid37458097" xreflabel="[pmid37458097]"/>[24] G. Floresta, C. Zagni, V. Patamia, and A. Rescifina, “How can artificial intelligence be utilized for de novo drug design against COVID-19 (SARS-CoV-2)?,” <emphasis>Expert Opin Drug Discov</emphasis>, pp. 1–4, Jul. 2023.</simpara>
+<simpara><anchor xml:id="pmid37454742" xreflabel="[pmid37454742]"/>[25] Y. Zhou <emphasis>et al.</emphasis>, “Deep learning in preclinical antibody drug discovery and development,” <emphasis>Methods</emphasis>, Jul. 2023.</simpara>
+<simpara><anchor xml:id="pmid37453366" xreflabel="[pmid37453366]"/>[26] A. rez-Mena, E. n, M. J. Alvarez-Cubero, A. Anguita-Ruiz, L. J. Martinez-Gonzalez, and J. Alcala-Fdez, “Explainable artificial intelligence to predict and identify prostate cancer tissue by gene expression,” <emphasis>Comput Methods Programs Biomed</emphasis>, vol. 240, p. 107719, Jul. 2023.</simpara>
+<simpara><anchor xml:id="pmid37446311" xreflabel="[pmid37446311]"/>[27] W. Wei, Y. Li, and T. Huang, “Using Machine Learning Methods to Study Colorectal Cancer Tumor Micro-Environment and Its Biomarkers,” <emphasis>Int J Mol Sci</emphasis>, vol. 24, no. 13, Jul. 2023.</simpara>
+<simpara><anchor xml:id="pmid37386009" xreflabel="[pmid37386009]"/>[28] D. Shigemizu <emphasis>et al.</emphasis>, “Classification and deep-learning-based prediction of Alzheimer disease subtypes by using genomic data,” <emphasis>Transl Psychiatry</emphasis>, vol. 13, no. 1, p. 232, Jun. 2023.</simpara>
+<simpara><anchor xml:id="pmid37370847" xreflabel="[pmid37370847]"/>[29] Z. Mirza <emphasis>et al.</emphasis>, “Identification of Novel Diagnostic and Prognostic Gene Signature Biomarkers for Breast Cancer Using Artificial Intelligence and Machine Learning Assisted Transcriptomics Analysis,” <emphasis>Cancers (Basel)</emphasis>, vol. 15, no. 12, Jun. 2023.</simpara>
+<simpara><anchor xml:id="pmid37488621" xreflabel="[pmid37488621]"/>[30] R. Adam, K. Dell’Aquila, L. Hodges, T. Maldjian, and T. Q. Duong, “Deep learning applications to breast cancer detection by magnetic resonance imaging: a literature review,” <emphasis>Breast Cancer Res</emphasis>, vol. 25, no. 1, p. 87, Jul. 2023.</simpara>
+<simpara><anchor xml:id="pmid37478073" xreflabel="[pmid37478073]"/>[31] Y. Tong <emphasis>et al.</emphasis>, “Prediction of lymphoma response to CAR T cells by deep learning-based image analysis,” <emphasis>PLoS One</emphasis>, vol. 18, no. 7, p. e0282573, 2023.</simpara>
+<simpara><anchor xml:id="pmid37474003" xreflabel="[pmid37474003]"/>[32] L. R. Archila <emphasis>et al.</emphasis>, “Performance of an Artificial Intelligence Model for Recognition and Quantitation of Histologic Features of Eosinophilic Esophagitis on Biopsy Samples,” <emphasis>Mod Pathol</emphasis>, p. 100285, Jul. 2023.</simpara>
+<simpara><anchor xml:id="pmid37449611" xreflabel="[pmid37449611]"/>[33] Q. Li, A. Sandoval, and B. Chen, “Advancing spinal cord injury research with optical clearing, light sheet microscopy, and artificial intelligence-based image analysis,” <emphasis>Neural Regen Res</emphasis>, vol. 18, no. 12, pp. 2661–2662, Dec. 2023.</simpara>
+<simpara><anchor xml:id="pmid37329982" xreflabel="[pmid37329982]"/>[34] M. Santorsola and F. Lescai, “The promise of explainable deep learning for omics data analysis: Adding new discovery tools to AI,” <emphasis>N Biotechnol</emphasis>, vol. 77, pp. 1–11, Jun. 2023.</simpara>
+<simpara><anchor xml:id="pmid37463768" xreflabel="[pmid37463768]"/>[35] B. Waissengrin <emphasis>et al.</emphasis>, “Artificial intelligence (AI) molecular analysis tool assists in rapid treatment decision in lung cancer: a case report,” <emphasis>J Clin Pathol</emphasis>, Jul. 2023.</simpara>
+<simpara><anchor xml:id="pmid37460991" xreflabel="[pmid37460991]"/>[36] F. Hosseini, F. Asadi, H. Emami, and M. Ebnali, “Machine learning applications for early detection of esophageal cancer: a systematic review,” <emphasis>BMC Med Inform Decis Mak</emphasis>, vol. 23, no. 1, p. 124, Jul. 2023.</simpara>
+<simpara><anchor xml:id="pmid37486997" xreflabel="[pmid37486997]"/>[37] S. M. Ahmed, R. V. Shivnaraine, and J. C. Wu, “FDA Modernization Act 2.0 Paves the Way to Computational Biology and Clinical Trials in a Dish,” <emphasis>Circulation</emphasis>, vol. 148, no. 4, pp. 309–311, Jul. 2023.</simpara>
+<simpara><anchor xml:id="pmid37483175" xreflabel="[pmid37483175]"/>[38] A. Aliper <emphasis>et al.</emphasis>, “Prediction of clinical trials outcomes based on target choice and clinical trial design with multi-modal artificial intelligence,” <emphasis>Clin Pharmacol Ther</emphasis>, Jul. 2023.</simpara>
 </section>
 </section>
 </section>
