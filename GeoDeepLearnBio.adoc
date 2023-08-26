@@ -19,19 +19,18 @@ Neural Network (ANNs) in recent years, there is great opportunity to leverage
 this approach and accelarate biological discoveries through applications on the
 analysis of high-throughput data.  Various types of datasets including for
 example protein or gene interaction networks, molecular structures and cellular
-signalling pathways, have already been used for machine learning by training
+signalling pathways, have already been utilized for machine learning by training
 ANNs for inference and pattern classification.  However, unlike regular data
 structures that are commonly used in the computer science and engineering
 fields, bioinformatics datasets present challenges that require unique
 algorithmic approaches.  The recent development of the geometric and deep
 learning approach within the machine learning field, is very promising towards
-accelerating analysis complex bioinformatics datasets.  The principles of ANNs
-and their importance for bioinformatics machine learning is demonstrated
-herein, through presentation of the undelying mathematical and statistical
+accelerating analysis of complex bioinformatics datasets.  Here we present the
+ principles of ANNs and their significance for bioinformatics machine learning, through the undelying mathematical and statistical
 foundations from group theory, symmetry, linear algebra.  Furthermore, the
-structure and functions of ANN algorithms that form the core principles of
+structure and functions of ANN algorithms which constitute the core principles of
 artificial intelligence are explained, in relation to the bioinformatics data
-domain.  Overall, the manuscript provides guidance for researchers to
+domain.  In summary, the manuscript provides guidance for researchers to
 understand the principles required for practicing machine learning and
 artificial intelligence, with the special considerations towards bioinformatics
 applications.

@@ -69,7 +69,7 @@ associated with bioinformatics dataset.
 
 The authors fully agree with the reviewer on this comment. Under the light of
 this feedback - comments, and while re-assessing the manuscript, the authors
-concluded that majority (largest sections 2-3) are focused on the structure,
+would like to state that majority (largest sections 2-3) are focused on the structure,
 function and mathematical - theoretical principles of Artificial Neural
 Networks. We have therefore adjusted the shorter sections where the
 bioinformatics applications are mostly mentioned in the Title / Summary /
@@ -77,7 +77,7 @@ Abstract / Introduction (section 1) and conclusion (section 4), to reflect this
 fact. 
 
 
-The value of the manuscript is in explaining the underlying structures of
+Furthermore, the value of the manuscript is in explaining the underlying structures of
 Artificial Intelligence in its implementation as Artificial Neural Networks
 (ANNs) - Deep Learning Algorithms. The authors believe that this provides value
 both for bioinformaticians (who in many aspects are algorithmically /
@@ -107,7 +107,7 @@ a small bioinformatics case study with publicly available real datasets.
 As mentioned in response to comment no.6 above, since the majority of the
 manuscript is focused on the structure, function and mathematical - theoretical
 principles of Artificial Neural Networks. Therefore, rather than providing a
-case study some bioinformatics commercial applications were included (see
+case study some bioinformatics applications were included (see
 comment no. 8 below).
 
 
@@ -116,8 +116,8 @@ using AI in the field of genomics, epigenomics, 3D structure modeling or
 drug-development.
 
 
-Two sentences have been added at the “Conclusion” section of the manuscript
-regarding commercial applications, along with the relevant additional citations
+A few paragraphs have been added before the “Conclusion” section of the manuscript
+regarding applications, along with the relevant additional citations
 at the end of the article. We wrote this addition to be brief, in order to keep
 the focus of our manuscript to the mathematical - theoretical principles of
 Artificial Neural Networks that was our intention with the writing, and not to
@@ -141,7 +141,7 @@ In regards to the reviewer comment “First, why are they conducting this review
 That should solve a problem in the field of inquiry. The difficulties of the
 future of bioinformatics applications need to be addressed. It is essential to
 emphasize the contributions made by this review to the proposed field of
-application.
+application."
 
 
 The value of the manuscript is in explaining the underlying structures of
@@ -175,6 +175,10 @@ value for a bioinformaticians / technically oriented biologists, who are
 interested to understand the theoretical and algorithmic underpinnings of
 Artificial Neural Networks (ANNs) and Deep Learning algorithms.
 
+Nonetheless, following the recomendation of the reviewer, in additions to our
+technical synopsis of ANN and ML techniques, we have included a new section before
+the conclusion of the manuscript, where multiple examples of their application are
+ included. 
 
 
 
