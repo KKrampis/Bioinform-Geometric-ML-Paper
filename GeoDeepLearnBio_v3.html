@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.20">
+<title>Principles of Artificial Neural Networks and Machine Learning for Bioinformatics Applications</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment the following line when using as a custom stylesheet */
+/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
+html{font-family:sans-serif;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+b,strong{font-weight:bold}
+abbr{font-size:.9em}
+abbr[title]{cursor:help;border-bottom:1px dotted #dddddf;text-decoration:none}
+dfn{font-style:italic}
+hr{height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type=checkbox],input[type=radio]{padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,::before,::after{box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;line-height:1;position:relative;cursor:auto;-moz-tab-size:4;-o-tab-size:4;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:1px solid #dedede;word-wrap:normal}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.2),inset 0 0 0 .1em #fff;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border:1px solid #e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:hsla(0,0%,100%,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details{margin-left:1.25rem}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
+details[open]>summary::before{border:solid transparent;border-top:solid;border-width:.5em .3em 0;transform:translateY(15%)}
+details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top:.3em;left:-1.25rem}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class=paragraph]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class=highlight],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans-serif;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;font-size:.85rem;text-align:left;margin-right:0}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
+table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
+table.frame-sides{border-width:0 1px}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+li>p:empty:only-child::before{content:"";display:inline-block}
+ul.checklist>li>p:first-child{margin-left:-1em}
+ul.checklist>li>p:first-child>.fa-square-o:first-child,ul.checklist>li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist>li>p:first-child>input[type=checkbox]:first-child{margin-right:.25em}
+ul.inline{display:flex;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:4px solid #fff;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]{border-bottom:1px dotted}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media amzn-kf8,print{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_principles_of_artificial_neural_networks_and_machine_learning_for_bioinformatics_applications">Principles of Artificial Neural Networks and Machine Learning for Bioinformatics Applications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Konstantinos Krampis*<sup>1</sup>, Eric Ross<sup>2</sup>, Olorunseun O. Ogunwobi<sup>1</sup>, Grace Ma,<sup>3</sup> Raja Mazumder,<sup>4</sup> Claudia Wultsch<sup>1</sup></p>
+</div>
+<div class="paragraph">
+<p><sup>1</sup>Belfer Research Facility, Biological Sciences, Hunter College, City University of New York, NY, USA
+<sup>2</sup>Fox Chase Cancer Center, Philadephia, PA, USA
+<sup>3</sup>Center for Asian Health, Lewis Katz School of Medicine, Temple University, Philadelphia, PA, USA
+<sup>4</sup>Biochemistry and Molecular Biology, George Washington University, Washington D.C., USA</p>
+</div>
+<div class="paragraph">
+<p><sup>*</sup>Corresponding Author, <em>kk104@hunter.cuny.edu</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Author Contributions:</strong> K. Krampis wrote the manuscript and performed the
+research. C. Wultsch provided overview during the development of the research
+and the manuscript. E. Ross, O. Ogunwobi, G. Ma and R. Mazumder contributed to
+the development of the research and provided feedback during the development of
+the manuscript.</p>
+</div>
+<div class="paragraph">
+<p><strong>Conflict of Interest:</strong> The authors declare no conflicts of interest.</p>
+</div>
+<div class="sect2">
+<h3 id="_abstract">ABSTRACT</h3>
+<div class="paragraph">
+<p>With the exponential growth of machine learning and development of Artificial
+Neural Network (ANNs) in recent years, there is great opportunity to leverage
+this approach and accelarate biological discoveries through applications in the
+analysis of high-throughput data. Various types of datasets, including protein
+or gene interaction networks, molecular structures, and cellular signalling
+pathways, have already been utilized for machine learning by training ANNs for
+inference and pattern classification. However, unlike regular data structures
+commonly used in the fields of computer science and engineering, bioinformatics
+datasets present challenges that require unique algorithmic approaches. The
+recent development of geometric and deep learning approaches within the machine
+learning field holds great promise for accelerating the analysis of complex
+bioinformatics datasets. Here, we demonstrate the principles of ANNs and their
+significance for bioinformatics machine learning by presenting the underlying
+mathematical and statistical foundations from group theory, symmetry, and
+linear algebra. Furthermore, the structure and functions of ANN algorithms,
+which constitute the core principles of artificial intelligence, are explained
+in relation to the bioinformatics data domain. In summary, this manuscript
+provides guidance for researchers to understand the principles necessary for
+practicing machine learning and artificial intelligence, with special
+considerations for bioinformatics applications.</p>
+</div>
+<div class="paragraph">
+<p>*Keywords:*<em>machine learning, artificial intelligence, bioinformatics, cancer biology, neural networks, symmetry, group theory, algorithms</em>
+biology, neural networks, symmetry, group theory, algorithms_</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_simple_summary">SIMPLE SUMMARY</h3>
+<div class="paragraph">
+<p>Here, we provide an overview of the foundational formalisms of Artificial
+Neural Networks (ANNs), which serve as the basis for Artificial Intelligence
+within the broader field of of Machine Learning.  The review is from the
+perspective of bioinformatics data, and multiple examples showcasing the
+applications of these formalisms to experimental scenarios are presented
+herein. The mathematical formalisms are explained in detail, offering
+biologists who are not Machine Learning experts the opportunity to understand
+the algorithmic basis of Artificial Intelligence as it relates to
+bioinformatics applications.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_introduction">INTRODUCTION</h3>
+<div class="paragraph">
+<p>In summary, Artificial Intelligence (AI), Machine Learning (ML), and Deep
+Learning (DL) are interconnected concepts with distinct differences: AI is
+centered around developing machines capable of performing tasks that require
+human intelligence, ML empowers computers to learn from data and make
+predictions without explicit programming, and DL employs deep neural networks
+to discern patterns from complex datasets. AI encompasses both ML and DL, which
+function as subsets of AI. ML algorithms learn patterns from data to facilitate
+accurate predictions or decisions and can be categorized into supervised,
+unsupervised, and reinforcement learning. DL algorithms, drawing inspiration
+from the human brain, utilize deep neural networks to learn and extract
+patterns from large-scale datasets. DL has shown success in domains such as
+image and speech recognition, natural language processing (NLP), and autonomous
+driving.</p>
+</div>
+<div class="paragraph">
+<p>In the last decade, technologies such as genomic sequencing have led to an
+exponential increase <span class="citation">[<a href="#katz2022sequence">1</a>]</span> in the data describing the
+molecular elements, structure, and function of biological systems.
+Additionally, data digitization and generation across varied fields such as
+physics, software development, and social media <span class="citation">[<a href="#clissa2022survey">2</a>]</span>,
+has yielded complex datasets of scales previously unavailable to scientists. AI
+also provides many opportunities for healthcare, ranging from clinical
+decision-support systems to deep-learning based health information management
+systems. This abundance of data has played a pivotal role in the rapid progress of
+machine learning, deep learning, and artificial intelligence. As a result, we
+now have algorithms that can be trained to extract insights from data with a
+level of sophistication that closely resembles human intuition.</p>
+</div>
+<div class="paragraph">
+<p>While researchers have developed hundreds of successful algorithms, there are
+currently a few overarching principles to systematically organize machine
+learning algorithms. In a seminal <code>proto-book</code> by Bronstein et al.
+<span class="citation">[<a href="#bronstein2021geometric">3</a>]</span>, various systematization principles for different
+Artificial Neural Network (ANN) architectures and deep learning algorithms were
+presented. These principles are founded on the concepts of symmetry and
+mathematical group theory. Symmetry and invariance are central concepts in
+physics, mathematics, and biological systems. Since the early 20<sup>th</sup> century,
+it has been established that fundamental principles of nature are rooted in
+symmetry <span class="citation">[<a href="#noether1918invariante">4</a>]</span>. The authors also introduced the concept
+of geometric deep learning and demonstrated how group theory, along with
+function invariance and equivariance principles, can serve as foundation for
+composing and describing different deep learning algorithms. Along these lines,
+the present manuscript explains the structure of ANNs and the core principles
+of machine learning algorithms. Additionally, it offers a review of the
+mathematical and statistical foundations pertinent to the development of
+artificial intelligence applications using bioinformatics data.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_structure_of_artificial_intelligence_and_neural_networks">THE STRUCTURE OF ARTIFICIAL INTELLIGENCE AND NEURAL NETWORKS</h3>
+<div class="paragraph">
+<p>We will begin by describing the structures and functions of deep learning and
+Artificial Neural Networks (ANNs,<strong>Fig.1</strong>), which form the foundation of artificial
+intelligence <span class="citation">[<a href="#li2019deep">5</a>]</span>. We use a dataset consisting of <em>n</em> pairs of
+\(\left( x_{i},y_{i} \right)_{n}\), where \(x_{i}\)
+represents <em>n</em> data points and \(y_{i}\) their corresponding labels.
+Each \(x_{i}\) data point can take the form of a number, a vector (an
+array of numbers), or a matrix (a grid of numbers), storing various types of
+bioinformatics data. The labels can assume different formats, such as binary
+(two-options), like \(y_{i} = 1\) "inhibits cancer growth", or
+\(y_{i} = 0\) "does not inhibit cancer". The labels can also be
+continuous numbers, for instance, \(y_{i} = 0.3\) indicating 30%
+inhibition, or a composite label such as \(y_{i} = \left( 0,1,0
+\right),\) which signifies drug attributes like '0 - no inhibition', '1 - yes
+for toxicity', '0 - not metabolized', respectively. Similarly, the input data
+points can also be composite, for example, \(x_{i} = \left( 50,100
+\right)\) representing two measuments for a single biological entity.</p>
+</div>
+<div class="paragraph">
+<p>The primary objective deep learning is to train an Artificial
+Neural Network (ANN) using this labeled data. This training phase is the
+foundation of deep learning algorithms, where the model learns to identify
+patterns and relationships between the data points (\(x_{i}\)) and
+their corresponding labels (\(y_{i}\)). This learning process allows
+the model to adjust its internal parameters, often referred to as weights and
+biases, to minimize the difference between its predicted labels and the actual
+labels. Once the model is adequately trained, it can then be used to predict the
+labels of new, unseen data points. This capability to generalize from learned
+patterns to new data is a critical aspect of deep learning.</p>
+</div>
+<div class="paragraph">
+<p>Bioinformatics deals with large and complex biological datasets, often
+high-dimensional and non-linear. The ability of deep learning algorithms to
+handle such complexity makes them particularly suitable for bioinformatics
+applications. For instance, a trained ANN can be used to predict the function of
+a newly sequenced gene, the potential toxicity of a new drug compound, or the
+likelihood of a patient responding to a specific treatment. Therefore, the
+overarching goal of artificial intelligence applications in bioinformatics is
+not just to classify or predict labels for new data, but to derive meaningful
+biological insights from vast and complex data, thus aiding in the advancement
+of biological and medical research <span class="citation">[<a href="#Nair2021">6</a>]</span>."</p>
+</div>
+<div class="paragraph">
+<p>The structure of an artificial neural network (ANN) can be visualized as a
+system of interconnected layers, each comprised of multiple nodes or 'neurons'.
+The simplest form of such a network is known as a "fully connected" or "dense"
+network, as illustrated in <strong>Fig.1</strong>. In this configuration, each neuron within the
+network is connected to every neuron in the adjacent layers, resulting in a
+dense web of interactions <span class="citation">[<a href="#Nair2021">6</a>]</span>.</p>
+</div>
+<div class="paragraph">
+<p>Each neuron in the network, denoted as k, has a specific number of incoming and
+outgoing connections. These connections, often referred to as 'synapses',
+correspond to the neurons present in the preceding and successive layers within
+the network. Each connection carries a 'weight', which is a numerical value that
+the network adjusts during the learning process to improve its predictions.</p>
+</div>
+<div class="paragraph">
+<p>Taking the example of the neuron \(k_{1}^{(1)}\) in the First Layer
+(1) depicted in <strong>Fig.1</strong>, it has \(n = 2\) incoming connections and
+\(n = 3\) outgoing connections. The incoming connections are from the
+"input layer", which consists of two neurons. These neurons represent the input
+data points that are fed into the network. The outgoing connections, on the
+other hand, extend to the neurons of the subsequent layer, often referred to as
+the "hidden layer".</p>
+</div>
+<div class="paragraph">
+<p>The term "hidden" is used to describe the layers that are sandwiched between the
+input and output layers. They are termed so because they do not directly
+interact with the external environment, i.e., they neither receive the input
+data nor produce the final output. Instead, they perform complex transformations
+on the data received from the input layer, passing on the transformed data to
+the next layer. This hidden layer, denoted as Second Layer (2) in the figure, is
+made up of three neurons, each receiving a connection from the neuron
+\(k_{1}^{(1)}\).  In summary, the structure of an ANN is a complex,
+interconnected system of neurons, each receiving data from the previous layer,
+processing it, and passing it on to the next. This intricate structure allows
+the network to learn complex patterns in the data, making it a powerful tool for
+tasks such as classification, regression, and clustering.</p>
+</div>
+<div class="paragraph">
+<p>The architecture of an artificial neural network (ANN), particularly the number
+of neurons in the hidden layers, is closely tied to the complexity of the
+classification problem it aims to solve. This concept is somewhat analogous to
+the functioning of neurons in animal brains, where different types of neurons
+play different roles in processing sensory information and cognitive tasks.
+In an ANN, the hidden layers are the workhorses of the network, responsible for
+transforming the input data into a format that can be used for the final
+classification or prediction task. The number of neurons in these hidden layers
+can vary widely and is often determined based on the complexity of the label
+classification problem that the ANN is designed to tackle
+<span class="citation">[<a href="#uzair2020effects">7</a>]</span>.</p>
+</div>
+<div class="paragraph">
+<p>For example, if the ANN is being used to classify simple binary data (such as
+whether a given email is spam or not), a single hidden layer with a small number
+of neurons might be sufficient. However, for more complex problems (like image
+recognition or natural language processing), multiple hidden layers with a
+larger number of neurons might be required. This is because complex tasks often
+involve identifying higher-level features or patterns in the data, which
+requires the network to perform more transformations on the input data.
+The input layer of the ANN, on the other hand, must have a specific number of
+neurons that align with the structure of the input data. For instance, in Fig.
+1, there are two input neurons, suggesting that each input data point is a
+two-dimensional vector, like \(x_{i} = \left( 50,100 \right)\).
+Finally, the output layer of the ANN consists of a number of neurons that
+corresponds to the count of labels associated with each input data point in the
+dataset. In Fig. 1, there is a single neuron in the output layer, indicating
+that each input data point is associated with a single label.</p>
+</div>
+<div class="imageblock middle">
+<div class="content">
+<img src="Fig1.svg" alt="Fig1" width="647" height="444">
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Figure 1.</strong> An example <strong>Artificial Neural Network (ANN)</strong>. The signal
+aggregation taking place on the second neuron
+\(\sigma_{k_{2}^{(2)}}\) of the second hidden layer, can be expressed
+with the formula \(\sigma_{k_{2}^{(2)}} =
+\sum_{k_{1,2,3}}^{(\begin{matrix} 1 \\ \end{matrix})}w_{k1}*x_{k1} +
+w_{k2}*x_{k2} + w_{k3}*x_{k3} - b\), which is the aggregation of neuron signals
+from the first layer, shown as red arrows in the figure. <em>b</em> represents the
+threshold that needs to be overcome by the aggregation sum in order for the
+neuron to fire, and then the neuron will transmit a signal along the line shown
+towards the output on the final layer of the figure. The reader should refer to
+the text for more details.
+'''</p>
+</div>
+<div class="paragraph">
+<p>Similar to neural networks in animal brains, the computational abstractions
+used in machine learning and artificial intelligence model neurons as
+computational units that execute signal summation and threshold activation
+<span class="citation">[<a href="#Renganathan2019">8</a>]</span>. Specifically, each artificial neuron performs a
+summation of incoming signals from its connected neighbooring neurons in the
+preceding layer on the network, shown for example as red arrows on <strong>Fig.1</strong> for
+\(\sigma_{k_{2}^{(2)}}\) . The signal processing throughout the ANN
+transitions from the input data \(x_{i}\) on the leftmost layer
+(<strong>Fig.1</strong>) to the output of data labels \(y_{i}\) on the rightmost
+end.  Within each neuron, when the aggregated input reaches a certain
+threshold, the neuron "fires" and transmits a signal to the subsequent layer.</p>
+</div>
+<div class="paragraph">
+<p>The signals entering the neuron can either be the data directly from the input
+layer or signals generated by the activation of neurons in the intermediate
+"hidden" layers. The summation and thresholding computation within each neuron
+is represented with the function \(\sigma_{k} =
+\sum_{1}^{k}w_{k}*x_{k} - b\), where \(w_{k}\) represents the
+connection weights of the preceding neurons.  Each connection arrow in <strong>Fig.1</strong>
+has a distinct weight, such as, for example, \(x_{k1}\) which is the
+incoming signal from the neuron \(\sigma_{k_{1}^{(1)}}\)  to neuron
+\(\sigma_{k_{2}^{(2)}}\) , multiplied by the weight
+\(w_{k1}\), which symbolizes the strength of the connection between
+these two artificial neurons.</p>
+</div>
+<div class="paragraph">
+<p>The weights in artificial neural networks embody the strength of connections
+between neurons. They determine the impact of input signals on the final output
+of the network. Throughout the training process, these weights are adjusted to
+minimize the difference between the network’s predicted and intended output.
+The weights govern the information flow within the network, enabling it to
+learn and generate precise predictions. Accurately calibrated weights are
+crucial for the network to effectively learn patterns and extrapolate its
+knowledge to novel input data <span class="citation">[<a href="#Renganathan2019">8</a>]</span>.</p>
+</div>
+<div class="paragraph">
+<p>For the majority of applications, the weight values \(w_{k}\)
+constitute the only elements in the ANN structure that are variable and
+adjusted by the algorithms during training using the input data. This process
+is similar to the biological brain, where learning takes place by strengthening
+connections among neurons <span class="citation">[<a href="#wainberg2018deep">9</a>]</span>.  However, unlike the
+biological brain, the ANNs used for practical data analysis have fixed
+connections between neurons and the structure of the neural network remains
+unaltered during the process of training and learning to recognize and classify
+new data. The last term <em>b</em> in the summation signifies a threshold that must be
+surpassed, as in \(\sum_{1}^{k}w_{k}*x_{k} &gt; b\), to trigger the
+activation of a neuron.</p>
+</div>
+<div class="paragraph">
+<p>A final step prior to transmitting the neuron’s output value involves the
+application of a "logit" function to the summation value that is represented as
+\(\varphi\left( \sigma_{k} \right)\).  \(\varphi\) can be
+selected from a range of non-linear functions contingent on the type of input
+data and the specific analysis and data classification domain for which the ANN
+will be used <span class="citation">[<a href="#li2019deep">5</a>]</span>. The value of the logit function is the output
+of the neuron, which is transmitted to its interconnected neurons in the
+subsequent layer through outgoing connections, illustrated as an arrow in
+<strong>Fig.1</strong> and corresponding to the brain cell axons in the biological analogy.
+Multiple layers of interconnected neurons (<strong>Fig.1</strong>), along with multiple
+connections per layer, each having its own weight \(w_{k}\), together
+form the framework of the Artificial Neural Network (ANN).</p>
+</div>
+<div class="paragraph">
+<p>From a mathematical formalism perspective, a trained ANN is a function
+\(f\) that predicts labels \(y_{\text{pre}d_{i}}\), which
+can include categories such as 'no inhibition', 'yes for toxicity' etc., for
+different types of input data \(x_{i}\), ranging from histology
+images to drug molecules represented as graph data structures. Therefore, the
+ANN undertakes data classification by operating as a mapping function
+\(f\left( x_{i} \right) = y_{\text{pre}d_{i}}\), that connects the
+input data to the respective labels. Furthermore, the \(f\left( x_{i}
+\right)\) is a non-linear function, since it is an aggregate composition of the
+non-linear functions \(\varphi\left( \sigma_{k} \right)\) of the
+individual interconnected neurons within the network <span class="citation">[<a href="#li2019deep">5</a>]</span>. As
+a result, the \(f\left( x_{i} \right)\) can successfully classify
+labels for data inputs originating from complex data distributions. This fact
+enables ANNs to attain heightened analytical capability compared to
+conventional statistical learning algorithms <span class="citation">[<a href="#tang2019recent">10</a>]</span>. The
+\(f\left( x_{i} \right)\) estimation is carried out by fitting a training
+dataset, which establishes correlations between labels \(y_{i}\) and
+data points \(x_{i}\). With hundreds of papers and monographs that
+were written on the technical details of training ANNs, we will next attempt to
+briefly summarize the process and direct the reader to provided citations for
+further details <span class="citation">[<a href="#Zou2008a">11</a>]</span>.</p>
+</div>
+<div class="paragraph">
+<p>As mentioned earlier, the only variable elements in the ANN structure are the
+weights \(w_{k}\) of neuron connections. Therefore, training an ANN
+to classify data involves the estimation of these weights. Furthermore, the
+training process entails minimizing the error \(E\), which is the
+difference between the labels \(y_{\text{pre}d_{i}}\) predicted by
+the function \(f\) and the true labels \(y_{i}\). This
+error metric is akin to true/false positive and negatives (precision and
+recall) used in statistics, however, different formulas are used for its
+estimation when dealing with multi-label or complex input data for the ANN (for
+further details, refer to <span class="citation">[<a href="#kriegeskorte2019neural">12</a>]</span>).  The estimation of
+neuron connection weights \(w_{k}\) is executed by the algorithm
+through fitting the network function \(f\) to a large training
+dataset of \(\left\{ x_{i},y_{i} \right\}_{i}^{n}\) pairs of input
+data and labels, while the error \(E\) is calculated by using a
+subset of the data for testing and validation purposes. The training algorithm
+starts with an initial value of the weights, and then performs multiple cycles,
+referred to as "epochs", to estimate the function \(f.\) This is
+achieved by fitting the data \(x_{i}\) to the network and calculating
+the error \(E\) by comparison between the predicted
+\(y_{\text{pre}d_{i}}\) and the true labels \(y_{i}\). At
+the end of each cycle, a process called "backpropagation" is performed
+<span class="citation">[<a href="#tang2019recent">10</a>]</span>, which involves a gradient descent optimization
+algorithm, which fine-tunes the weights of individual neurons to minimize
+\(E\).</p>
+</div>
+<div class="paragraph">
+<p>The gradient descent <span class="citation">[<a href="#ruder2016overview">13</a>]</span> optimization examines a large
+subset of all possible combinations of weight values, yet as a heuristic
+algorithm, it minimizes \(E\), but cannot reach zero error. Upon the
+completion of multiple training cycles, the training algorithm identifies a set
+of weights that best fit the data with minimal error. The ANN settles on the
+optimal values that estimate each \(\varphi\left( \sigma_{k} \right)\)
+function for \(\sigma_{k} = \sum_{1}^{k}w_{k}*x_{k} - b\), where
+\(w_{k}\) is the weight in each interconnected neuron.  Consequently,
+the overall function \(f\) represented by the network is also
+estimated, as it comprises the composition of the individual
+\(\varphi\left( \sigma_{k} \right)\) neuron functions, as mentioned
+earlier. Following the completion of the artificial neural network training,
+where the most optimal set of weights is determined, the network is ready to be
+used for label prediction with new, unknown \(x_{i}\) data.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_artificial_intelligence_group_theory_symmetry_and_invariance">ARTIFICIAL INTELLIGENCE, GROUP THEORY, SYMMETRY AND INVARIANCE</h3>
+<div class="sect3">
+<h4 id="_data_domains_in_relation_to_group_theory_and_symmetry">Data domains in relation to group theory and symmetry</h4>
+<div class="paragraph">
+<p>Graph deep learning is a branch of machine learning that uses graph theory and
+deep learning techniques to analyze and interpret data structured as graphs
+<span class="citation">[<a href="#bronstein2021geometric">3</a>]</span>.  Graphs are mathematical structures that
+represent pairwise relationships between objects. They are composed of vertices
+(or nodes) and edges, where vertices represent entities and edges represent
+relationships between entities.  In the remaining sections, we will examine how
+the principles of group theory, symmetry, and invariance provide a foundational
+framework for comprehending the function of machine learning algorwthms.
+Furthermore, the classifying power of ANNs, particularly in relation to
+statistical variance, transformations, and non-homogeneity in the input data. In
+broad terms, symmetry entails the analysis of geometric and algebraic
+mathematical structures and finds applications across different research fields,
+including physics, molecular biology, and machine learning. A core concept in
+symmetry is invariance, which, in our context, is changing data coordinates,
+such as relocating a drug molecule in space or shifting the position of a cancer
+histology tissue sample, while maintaining the shape of the object unchanged
+<span class="citation">[<a href="#wu2020comprehensive">14</a>]</span>. Following such an alteration, which will be formally
+defined later in this text as an <em>invariant transformation</em>, it becomes
+imperative for the machine learning algorithms and ANNs to be capable of
+identifying a drug molecule even after rotation or recognizing cancerous tissue
+from a shifted histology image.</p>
+</div>
+<div class="paragraph">
+<p>Symmetry in the context of graph deep learning refers to the invariance of a
+graph under permutations of its nodes. This means that the properties and
+characteristics of the graph remain unchanged even if the nodes are rearranged.
+This is a crucial aspect to consider when designing graph neural networks (GNNs,
+<span class="citation">[<a href="#velickovic2017graph">15</a>]</span>), the deep learning models used to process graph
+data. GNNs need to be invariant or equivariant to different node permutations to
+ensure consistent and reliable performance. This is because the same graph can
+be represented in many different ways depending on the ordering of the nodes,
+and the model should give the same output regardless of this ordering.</p>
+</div>
+<div class="paragraph">
+<p>Variance, on the other hand, is a measure of how much the values in a dataset
+differ from the mean. In the context of graph deep learning, variance can refer
+to the diversity in the structure and attributes of the graphs in the dataset.
+High variance in the graph data can pose challenges for GNNs, as the model needs
+to be able to capture and learn from these variations to make accurate
+predictions (<span class="citation">[<a href="#battaglia2018relational">16</a>]</span>, <span class="citation">[<a href="#hamilton2017inductive">17</a>]</span>).
+However, if handled correctly, this variance can also be a powerful source of
+information, allowing the model to capture a wide range of patterns and
+relationships in the data.</p>
+</div>
+<div class="paragraph">
+<p>In order to link the abstract symmetry concepts with data classification in
+machine learning, as per the terminology of Bronstein et al., we consider the
+input data \(x_{i}\) to originate from a symmetry domain denoted as
+\(\Omega\). This \(\Omega\) serves as the foundational
+structure upon which the data are based, and it is upon this domain structure
+that we train artificial neural networks to undertake classification, employing
+the label prediction function \(f\) as mentioned in the earlier
+section. For example, microscopy images are essentially 2-dimensional numerical
+grids of <em>n x n</em> pixels (<strong>Fig.2a</strong>), with each pixel having an assigned value
+corresponding to the light intensity captured when the image was taken.</p>
+</div>
+<div class="paragraph">
+<p>In this scenario, the data domain is a grid of integers
+(\(\mathbb{Z}\)), represented as \(\Omega:\mathbb{Z}_{n}
+\times \mathbb{Z}_{n}\). Similarly, for color images, the data domain is
+\(\left. \ x_{i}:\Omega \rightarrow \mathbb{Z}_{n}^{3} \times
+\mathbb{Z}_{n}^{3} \right.\ \), encompassing three overlaid integer grids that
+individually represent the green, bluem and red layers composing the color
+text in the section to explain the concept further and adde
+text in the section to explain the concept further and adde
+all possible combinations of pixel intensities, while the specific pixel value
+combinations of the images in the input data \(x_{i}\) are a "signal"
+\(\text{X}\left( \Omega \right)\) from the domain. The ANN’s data
+classification and label prediction function \(y_{\text{pre}d_{i}} =
+f\left( x_{i} \right)\) is applied upon the signal \(\text{X}\left(
+\Omega \right),\) which fundamentally constitutes a subset of the domain
+\(\Omega\).</p>
+</div>
+<div class="paragraph">
+<p>A <em>symmetry group</em> \(G\) contains all possible transformations of the
+input signal \(\text{X}\left( \Omega \right),\) referred to as
+symmetries \(g\) or <em>group actions</em>. A symmetry transformation
+\(g\) preserves the properties of the data; for instance, it ensures
+that objects within an image remain undistorted during rotation. The
+constituents of the symmetry group, denoted as \(g \in G,\) are the
+associations of two or more coordinate points \(u,v \in \Omega\) on
+the data domain (grid in our image example). Between these coordinates, the
+image can undergo rotation, shifting or other transformations without any
+distortion.</p>
+</div>
+<div class="paragraph">
+<p>Consequently, the key aspect of the formal mathematical definition
+of the group lies in its capacity to safeguard data attributes during object
+distortions that frequently occur during the experimental acquisition of
+bioinformatics data. The concept of symmetry groups is important for modeling
+the performance of machine learning algorithms, particularly for classifying
+the data patterns despite the variability inherently present within the input
+data.</p>
+</div>
+<div class="imageblock left">
+<div class="content">
+<img src="Fig2a.svg" alt="Fig2a" width="293" height="215">
+</div>
+</div>
+<div class="imageblock right">
+<div class="content">
+<img src="Fig2b.svg" alt="Fig2b" width="3439" height="875">
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Figure 2. (a).</strong> A <em>grid</em> data structure representing image pixels, is
+formally a <em>graph</em> <strong>(b).</strong> A <em>graph</em> \(G = (V, E)\), is composed of
+<em>nodes</em> \(V\) shown as circles, and <em>edges</em>  connecting the nodes and
+shown as arrows. It can represent a protein, where the amino acids are the
+nodes and the peptide bonds between amino acids are the edges.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>Another important data structure within bioinformatics is a <em>graph</em> denoted as
+\(G = (V,E)\), composed of <em>nodes</em> \(V\) that signify
+biological entities, and <em>edges</em> representing connections between pairs of
+nodes (<strong>Fig.</strong> <strong>2b</strong>). In a specific instance of a graph corresponding to a
+real-world object, the edges are a subset of all possible links between nodes.
+An example graph data structure for a biological molecule such a protein or a
+drug would portray the amino acids or atoms as node entities, while the
+chemical bonds between each of these entities are captured as edges. These
+edges could signify the carbonyl-amino (C-N) peptide bonds between amino acids
+and molecular interactions across the peptide chain on the protein structure,
+or the chemical bonds between atoms in a drug molecule
+<span class="citation">[<a href="#Kriegeskorte2019">18</a>]</span>.</p>
+</div>
+<div class="paragraph">
+<p>Furthermore, attributes in the molecular data such as, for example, polarity,
+amino acid weight, or drug binding properties can be depicted as
+\(s\) - dimensional node attributes, where <em>s</em> represents the
+attributes assigned to each node.  Similarly, edges or even entire graphs can
+have attributes, for experimental data measured on the molecular interactions
+represented by the edges, and measurements of the properties of the complete
+protein or drug. Finally, from an algorithmic perspective, images can be viewed
+as a special case of graphs in which the pixels serve as nodes, interconnected
+by edges following a structured pattern that generates a grid formation
+(<strong>Fig.2a</strong>) representing the adjacent positions of the pixels.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_group_theory_and_symmetry_principles_applied_to_machine_learning">Group theory and symmetry principles applied to machine learning</h4>
+<div class="paragraph">
+<p>Having established the mathematical and algorithmic parallels between graphs
+and images, we will now utilize the principles of the <em>symmetry group</em>
+\(G\) to examine the analytical and classification power of machine
+learning ANNs, with respect to data variability and transformations. Whether it
+involves data types like input images or molecules represented as graphs, which
+may undergo shifts or rotations, we introduce the concept of invariance guided
+by the principles of group theory and symmetry. These foundational mathematical
+and algorithmic formalisms serve as the basis for modeling the performance and
+output of machine learning algorithms, specifically ANNs, with regard to the
+diversity present in the dataset.</p>
+</div>
+<div class="paragraph">
+<p>Consecutively, these principles can be extrapolated and generalized to
+encompass other types of data beyond graphs and images, for which ANNs are
+trained to predict and categorize.  While we present the group and symmetry
+definitions following a data-centric approach, we will remain consistent with
+the mathematical framework, while describing how the group operations can
+effect transformations on the input data. Furthermore, different types of data
+may have the same symmetry group, and different transformations could be
+performed through identical group operations. For example, an image featuring a
+triangle, which essentially is a graph with three nodes, might possess the same
+rotational symmetry group as a graph with three nodes or a numerical sequence
+of three elements.</p>
+</div>
+<div class="paragraph">
+<p>When chemical and biological molecules are represented as graphs as described
+earlier, the nodes \(V\) can be in any order depending on how the
+data were measured during the experiment. However, this variation does not
+change the underlying information contained in the data. As long as the edges
+<strong>E,</strong> which represent the connections between molecules, remain unchanged, we
+maintain an accurate representation of the molecular entity, irrespective of
+the sequence of nodes in <strong>V</strong>. In cases where two graphs portraying the same
+molecule have identical edges but differ in node arrangement, they are called
+<em>isomorphic</em>. It is crucial that any machine learning algorithm designed for
+pattern recognition on graphs, should not depend on the ordering of nodes. This
+ensures that classification using ANNs and artificial intelligence remain
+robust against variations in experiment measurement encountered in real-world
+data <span class="citation">[<a href="#AgatonovicKustrin2000">19</a>]</span>. This is something that is taken for
+granted with human intelligence, where, for example, we can recognize an object
+even when a photograph is rotated at an angle.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_invariance_and_the_classification_power_of_artificial_neural_networks">Invariance and the classification power of artificial neural networks</h4>
+<div class="paragraph">
+<p>Returning to our earlier formal definitions of ANNs as function estimators
+fitted to the data, in order for ANNs algorithms to equivalently recognize
+<em>isomorphic</em> graphs, the functions \(\varphi\left( \sigma_{k}
+\right)\) and overall \(f\left( x_{i} \right)\) of the ANN acting on
+graph data should be <em>permutation invariant</em>. This implies that for any
+permutation of the input dataset, the output values of these functions remain
+unchanged, regardless of the ordering of the nodes <strong>V</strong>. This concept can be
+similarly applied to images, which, as previously mentioned, are specialized
+instances of fully connected graphs.  Furthermore, these principles can also be
+generalized for other data types beyond images or graphs.</p>
+</div>
+<div class="paragraph">
+<p>To further formalize the concept of invariance, and considering that both image
+and graph examples are essentially points on a grids on a two-dimemensional
+plane, we can use linear algebra. Specifically, by using a matrix we can
+represent the data transformations as group actions, denoted by
+\(g\), within the symmetry group \(G\). The use of matrices
+enables us to connect the group symmetries with the actual data by performing
+matrix multiplications that modify the coordinates of the object and
+consecutively represent the data transformations through the multiplication.
+The dimensions of the matrix, \(n \times n,\) typically are similar
+to these of the signal space \(\text{X}\left( \Omega \right)\) for
+the data (e.g., \(\mathbb{Z}_{n} \times \mathbb{Z}_{n}\) images).
+The matrix dimensions not depend on the size of the group (i.e. the number of
+possible symmetries) or the dimensionality of the underlying data domain
+\(\Omega\). With this definition in place, we can formalize
+symmetries and group actions for modifying data objects, employing matrix and
+linear transformations as the foundation for connecting invariance in relation
+to variability in the data.</p>
+</div>
+<div class="paragraph">
+<p>We will now conclude by establishing the mathematical and linear algebra
+formalisms that underlie the resilience of ANNs and machine learning algorithms
+in pattern recognition, considering transformations in the data. While our
+framework is based on a two-dimensional grid data domain \(\Omega\),
+the formalisms developed here can also be extrapolated to any number of
+dimensions or data formats without loss of generality. First, we will connect
+matrices to group actions \(g\) (such as rotations, shifts) within
+the symmetry group \(g \in G\) by defining a function
+\(\theta\) that maps the group to a matrix as \(\theta:G
+\rightarrow \mathbf{M}\). As mentioned earlier, a matrix \(\mathbf{M}
+\in R^{n \times n}\) consisting of numerical values (integers, fractions,
+positive and negative), when multiplied by the coordinate values of an object
+on the plane \(\Omega\), results in rotation or shifts of the
+object’s coordinates for the exact amount corresponding to the group action
+within the symmetry group.</p>
+</div>
+<div class="paragraph">
+<p>With these definitions in place, we will now connect the matrix formalisms with
+the neural network estimator function \(y_{\text{pre}d_{i}} = f\left(
+x_{i} \right)\), which is identified by adjusting neuron connection weights
+during multiple training cycles with the input data. Our goal is to leverage
+the mathematical formalisms of group symmetry and invariance to establish the
+resilience of ANNs in classifying and assigning labels to new data points
+<span class="citation">[<a href="#Eetemadi2019">20</a>]</span>. These data points originate from real-world data that
+might contain tranformations and distortions.  First, we define the estimator
+function of the ANN to be <em>invariant</em> if the condition for the input data
+holds, i.e.  \(f(\mathbf{M} \times x_{i}) = f(x_{i})\) for all
+matrices \(\mathbf{M}\) representing the actions \(g \in
+G\) within the symmetry group.</p>
+</div>
+<div class="paragraph">
+<p>This formula encapsulates the requirement for the neural network function to be
+invariant: its output value remains the same whether the input data
+\(x_{i}\) are transformed or not (e.g., an image or graph is not
+rotated on the plane), as represented by the matrix multiplication
+\(\mathbf{M} \times x_{i}\). Therefore, the output values
+\(y_{\text{pre}d_{i}} = f\left( x_{i} \right)\) produced by the ANN,
+which essentially represent predicted output labels (e.g.,
+\(y_{\text{pre}d_{i}}\) = potent drug / not potent), based on the
+input data, exhibit resilience to noisy and deformed real-world data when the
+network estimator function is invariant. In a different case, the estimator
+function approximated by the ANN can be <em>equivariant</em> and defined as
+\(f(\mathbf{M} \times x_{i}) = \mathbf{M} \times f(x_{i})\).  This
+signifies that the output of the ANN will be modified, but the label prediction
+result will shift equally alongside the shift in the input data.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_neural_networks_and_group_theory_in_relation_to_continuous_data_transformations">Neural networks and group theory in relation to continuous data transformations</h4>
+<div class="paragraph">
+<p>Up to this point, we have exclusively discussed discrete tranformations in
+linear algebra terms, utilizing matrix multiplications that lead to coordinate
+shifts and rigid transformations of the data, like rotating an image or graph
+by a specific angle on the grid \(\Omega\).  However, in real-world
+data scenarios, we often also encounter continuous, more fine-grained shifts.
+In such cases, ANNs algorithms should be able to recognize patterns, classify,
+and label the data without any loss of performance <span class="citation">[<a href="#Wright2022">21</a>]</span>.
+Mathematically, the continuous transformations follow equally with the
+invariant and equivariant functions described earlier. For instance, if the
+domain \(\Omega\) contains data with smooth transformations and
+shifts, such as moving images (videos) or shifts of molecules and graphs that
+maintain <em>continuity</em> in a topological definition
+<span class="citation">[<a href="#sutherland2009introduction">22</a>]</span>, in this case we deal with a concept
+known as <em>homeomorphism</em> instead of <em>invariance</em>.</p>
+</div>
+<div class="paragraph">
+<p>Finally, if the rate of continuous transformation of the data is quantifiable,
+meaning that the function \(\theta,\) which maps the group to a
+matrix, is <em>differentiable</em>, then the members of the symmetry groups will be
+part of a <em>diffeomorphism</em>. As it follows from the principles of calculus, in
+this case, infinitely multiple matrices \(f(\mathbf{(}M)\) will be
+needed to be produced by \(\theta\) for the continuous change of the
+data coordinates at every point. These differentiable data structures are
+common with manifolds, which, for example, could be used to represent proteins
+in fine detail. In this case, the molecule would be represented as a cloud with
+all atomic forces surrounding the structure, as opposed to the discrete data
+structure of nodes and edges in a graph. Finally, if the manifold structure
+also includes a metric of <em>distance</em> between its points to further quantify the
+data transformations, in this case, we will have an <em>isometry</em> during the
+transformation due to a group action from the symmetry group.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_applications_of_artificial_intelligence_and_neural_networks_in_bioinformatics">APPLICATIONS OF ARTIFICIAL INTELLIGENCE AND NEURAL NETWORKS IN BIOINFORMATICS</h3>
+<div class="paragraph">
+<p>Artificial Intelligence (AI) and Deep Learning have emerged as powerful tools
+with diverse applications in the field of bioinformatics, and multiple research
+studies have been reported in the literature <span class="citation">[<a href="#pmid37446831">23</a>]</span>,
+<span class="citation">[<a href="#pmid37189058">24</a>]</span>, <span class="citation">[<a href="#pmid37043378">25</a>]</span>, highlighting the potential of
+the technology to revolutionize healthcare and life sciences. One of the
+significant applications is drug discovery, as AI algorithms facilitate the
+analysis of large datasets of chemical compounds, predicting their
+effectiveness and safety <span class="citation">[<a href="#pmid37479540">26</a>]</span>, <span class="citation">[<a href="#pmid37458097">27</a>]</span>,
+<span class="citation">[<a href="#pmid37454742">28</a>]</span>. These studies have demonstrated that AI can accelerate
+the drug discovery process by screening potential candidates and optimizing
+their properties, resulting in substantial cost and time savings.</p>
+</div>
+<div class="paragraph">
+<p>In the field of genomics, AI algorithms have been applied to the analysis of
+DNA sequencing and gene expression data, facilitating, for example, the
+identification of disease-causing mutations and enhancing our understanding of
+genetic variations <span class="citation">[<a href="#pmid37453366">29</a>]</span>, <span class="citation">[<a href="#pmid37446311">30</a>]</span>,
+<span class="citation">[<a href="#pmid37386009">31</a>]</span>, <span class="citation">[<a href="#pmid37370847">32</a>]</span>.  Moreover, in these studies, genomic
+data analysis with AI algorithms has provided critical insights, which can
+assist in the development of personalized medicine approaches and as result
+tailor treatments to individual patients. Consecutively, the use of AI
+algorithms in bioinformatics can contribute to the advancement of precision
+medicine.  By integratively analyzing also other omics data (e.g.,
+transcriptomics, proteomics, metabolomics), patient data, encompassing genetic
+information, medical history, and lifestyle factors, AI-driven insights can
+lead to improved predictions of drug responses, identification of potential
+side effects, and the recommendation of optimal treatment options for
+individual patients.</p>
+</div>
+<div class="paragraph">
+<p>This personalized medicine approach can also involve enhancing patient care and
+treatment outcomes, through disease diagnosis improved by machine learning
+analysis of medical images, including computed tomography (CT) and magnetic
+resonance imaging (MRI) scans, X-rays, and histopathology images, of diseases
+like cancer <span class="citation">[<a href="#pmid37488621">33</a>]</span>, <span class="citation">[<a href="#pmid37478073">34</a>]</span>, <span class="citation">[<a href="#pmid37474003">35</a>]</span>,
+<span class="citation">[<a href="#pmid37449611">36</a>]</span>.  The AI algorithms can assist pathologists and
+radiologists in rendering precise diagnoses, enabling early detection and
+diagnosis, and ultimately contributing to overall improvements in patient
+outcomes.</p>
+</div>
+<div class="paragraph">
+<p>AI can also play a significant role in assisting the development of
+bioinformatics tools and software accelerating the process of code development
+for the analysis and interpretation of biological data, such as sequence
+alignment, protein structure prediction, and functional annotation
+<span class="citation">[<a href="#pmid37329982">37</a>]</span>, <span class="citation">[<a href="#pmid37463768">38</a>]</span>, <span class="citation">[<a href="#pmid37460991">39</a>]</span>.  Furthermore,
+AI-powered natural language processing techniques have been
+employed to analyze scientific literature, patents, and clinical trial reports.
+This capability enables researchers to stay updated about the latest
+discoveries and facilitates knowledge discovery in the field.</p>
+</div>
+<div class="paragraph">
+<p>Finally, in the area of clinical trials, machine learning algorithms have been
+appplied to mine vast amounts of data from clinical trials. As a result, the
+rates of success for new drugs and treatment strategies have improved for
+patients partipating in the trials <span class="citation">[<a href="#pmid37486997">40</a>]</span>,
+<span class="citation">[<a href="#pmid37483175">41</a>]</span>. Additional studies have also demonstrated that machine
+learning algorithms can result in enhanced optimization of clinical trial
+designs, reduction in costs, and an overall acceleration of the drug
+development pipelines <span class="citation">[<a href="#pmid37479540">26</a>]</span>, <span class="citation">[<a href="#pmid37458097">27</a>]</span>.</p>
+</div>
+<div class="sect3">
+<h4 id="_conclusion">CONCLUSION</h4>
+<div class="paragraph">
+<p>The rapid advancements in the fields of Machine Learning and Artificial
+Intelligence in recent years have exerted a substantial influence in the field
+of Bioinformatics. With these accelerated developements, the chance to
+systematically categorize algorithms and their corresponding applications,
+along with their perfomance across various types of bioinformatics data, has
+diminished. By harnessing the mathematical formalisms of symmetry and group
+theory, we can establish the operational principles of Artificial Intelligence
+algorithms concerning bioinformatics data. This not only paves the way for a
+deeper understanding of their functionality but also provides insights into the
+directions for future development in the field.</p>
+</div>
+<div class="paragraph">
+<p><strong>Funding Information:</strong> This work has been supported by Award Number U54
+CA221704(5) from The National Cancer Institute.</p>
+</div>
+<div class="paragraph">
+<p><strong>Institutional Review Board Statement:</strong> Not Applicable.</p>
+</div>
+<div class="paragraph">
+<p><strong>Informed Consent Statement:</strong> Not Applicable.</p>
+</div>
+<div class="paragraph">
+<p><strong>Data Availability Statement:</strong> No data were generated as part of the present
+review paper.</p>
+</div>
+<div class="paragraph">
+<p><strong>Acknowledgments:</strong> The authors would like to thank their respective
+institutions for supporting their scholarly work.</p>
+</div>
+<div class="paragraph">
+<p><a id="katz2022sequence"></a>[1] K. Katz, O. Shutov, R. Lapoint, M. Kimelman, J. R. Brister, and C. O’Sullivan, “The sequence read archive: a decade more of explosive growth,” <em>Nucleic acids research</em>, vol. 50, no. D1, pp. D387–D390, 2022.</p>
+</div>
+<div class="paragraph">
+<p><a id="clissa2022survey"></a>[2] L. Clissa, “Survey of Big Data sizes in 2021.” 2022.</p>
+</div>
+<div class="paragraph">
+<p><a id="bronstein2021geometric"></a>[3] M. M. Bronstein, J. Bruna, T. Cohen, and P. Veličković, “Geometric deep learning: Grids, groups, graphs, geodesics, and gauges,” <em>arXiv preprint arXiv:2104.13478</em>, 2021.</p>
+</div>
+<div class="paragraph">
+<p><a id="noether1918invariante"></a>[4] E. Noether, “Invariante variationsprobleme, math-phys,” <em>Klasse, pp235-257</em>, 1918.</p>
+</div>
+<div class="paragraph">
+<p><a id="li2019deep"></a>[5] Y. Li, C. Huang, L. Ding, Z. Li, Y. Pan, and X. Gao, “Deep learning in bioinformatics: Introduction, application, and perspective in the big data era,” <em>Methods</em>, vol. 166, pp. 4–21, 2019.</p>
+</div>
+<div class="paragraph">
+<p><a id="Nair2021"></a>[6] T. M. Nair, “Building and Interpreting Artificial Neural Network Models for Biological Systems.,” <em>Methods in molecular biology (Clifton, N.J.)</em>, vol. 2190, pp. 185–194, 2021, doi: 10.1007/978-1-0716-0826-5_8.</p>
+</div>
+<div class="paragraph">
+<p><a id="uzair2020effects"></a>[7] M. Uzair and N. Jamil, “Effects of hidden layers on the efficiency of neural networks,” in <em>2020 IEEE 23rd international multitopic conference (INMIC)</em>, 2020, pp. 1–6.</p>
+</div>
+<div class="paragraph">
+<p><a id="Renganathan2019"></a>[8] V. Renganathan, “Overview of artificial neural network models in the biomedical domain.,” <em>Bratislavske lekarske listy</em>, vol. 120, no. 7, pp. 536–540, 2019, doi: 10.4149/BLL_2019_087.</p>
+</div>
+<div class="paragraph">
+<p><a id="wainberg2018deep"></a>[9] M. Wainberg, D. Merico, A. Delong, and B. J. Frey, “Deep learning in biomedicine,” <em>Nature biotechnology</em>, vol. 36, no. 9, pp. 829–838, 2018.</p>
+</div>
+<div class="paragraph">
+<p><a id="tang2019recent"></a>[10] B. Tang, Z. Pan, K. Yin, and A. Khateeb, “Recent advances of deep learning in bioinformatics and computational biology,” <em>Frontiers in genetics</em>, vol. 10, p. 214, 2019.</p>
+</div>
+<div class="paragraph">
+<p><a id="Zou2008a"></a>[11] J. Zou, Y. Han, and S.-S. So, “Overview of artificial neural networks.,” <em>Methods in molecular biology (Clifton, N.J.)</em>, vol. 458, pp. 15–23, 2008, doi: 10.1007/978-1-60327-101-1_2.</p>
+</div>
+<div class="paragraph">
+<p><a id="kriegeskorte2019neural"></a>[12] N. Kriegeskorte and T. Golan, “Neural network models and deep learning,” <em>Current Biology</em>, vol. 29, no. 7, pp. R231–R236, 2019.</p>
+</div>
+<div class="paragraph">
+<p><a id="ruder2016overview"></a>[13] S. Ruder, “An overview of gradient descent optimization algorithms,” <em>arXiv preprint arXiv:1609.04747</em>, 2016.</p>
+</div>
+<div class="paragraph">
+<p><a id="wu2020comprehensive"></a>[14] Z. Wu, S. Pan, F. Chen, G. Long, C. Zhang, and P. S. Yu, “A Comprehensive Survey on Graph Neural Networks,” <em>IEEE Transactions on Neural Networks and Learning Systems</em>, 2020.</p>
+</div>
+<div class="paragraph">
+<p><a id="velickovic2017graph"></a>[15] P. Veličković, G. Cucurull, A. Casanova, A. Romero, P. Lio, and Y. Bengio, “Graph Attention Networks,” 2018.</p>
+</div>
+<div class="paragraph">
+<p><a id="battaglia2018relational"></a>[16] P. W. Battaglia <em>et al.</em>, “Relational inductive biases, deep learning, and graph networks,” <em>arXiv preprint arXiv:1806.01261</em>, 2018.</p>
+</div>
+<div class="paragraph">
+<p><a id="hamilton2017inductive"></a>[17] W. Hamilton, Z. Ying, and J. Leskovec, “Inductive representation learning on large graphs,” in <em>Advances in neural information processing systems</em>, 2017, pp. 1024–1034.</p>
+</div>
+<div class="paragraph">
+<p><a id="Kriegeskorte2019"></a>[18] N. Kriegeskorte and T. Golan, “Neural network models and deep learning.,” <em>Current biology : CB</em>, vol. 29, no. 7, pp. R231–R236, Apr. 2019, doi: 10.1016/j.cub.2019.02.034.</p>
+</div>
+<div class="paragraph">
+<p><a id="AgatonovicKustrin2000"></a>[19] S. Agatonovic-Kustrin and R. Beresford, “Basic concepts of artificial neural network (ANN) modeling and its application in pharmaceutical research.,” <em>Journal of pharmaceutical and biomedical analysis</em>, vol. 22, no. 5, pp. 717–727, Jun. 2000, doi: 10.1016/s0731-7085(99)00272-1.</p>
+</div>
+<div class="paragraph">
+<p><a id="Eetemadi2019"></a>[20] A. Eetemadi and I. Tagkopoulos, “Genetic Neural Networks: an artificial neural network architecture for capturing gene expression relationships.,” <em>Bioinformatics (Oxford, England)</em>, vol. 35, no. 13, pp. 2226–2234, Jul. 2019, doi: 10.1093/bioinformatics/bty945.</p>
+</div>
+<div class="paragraph">
+<p><a id="Wright2022"></a>[21] L. G. Wright <em>et al.</em>, “Deep physical neural networks trained with backpropagation.,” <em>Nature</em>, vol. 601, no. 7894, pp. 549–555, Jan. 2022, doi: 10.1038/s41586-021-04223-6.</p>
+</div>
+<div class="paragraph">
+<p><a id="sutherland2009introduction"></a>[22] W. A. Sutherland, <em>Introduction to metric and topological spaces</em>. Oxford University Press, 2009.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37446831"></a>[23] M. Lee, “Recent Advances in Deep Learning for Protein-Protein Interaction Analysis: A Comprehensive Review,” <em>Molecules</em>, vol. 28, no. 13, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37189058"></a>[24] M. Wysocka, O. Wysocki, M. Zufferey, D. Landers, and A. Freitas, “A systematic review of biologically-informed deep learning models for cancer: fundamental trends for encoding and interpreting oncology data,” <em>BMC Bioinformatics</em>, vol. 24, no. 1, p. 198, May 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37043378"></a>[25] B. Jahanyar, H. Tabatabaee, and A. Rowhanimanesh, “Harnessing Deep Learning for Omics in an Era of COVID-19,” <em>OMICS</em>, vol. 27, no. 4, pp. 141–152, Apr. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37479540"></a>[26] F. W. Pun, I. V. Ozerov, and A. Zhavoronkov, “AI-powered therapeutic target discovery,” <em>Trends Pharmacol Sci</em>, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37458097"></a>[27] G. Floresta, C. Zagni, V. Patamia, and A. Rescifina, “How can artificial intelligence be utilized for de novo drug design against COVID-19 (SARS-CoV-2)?,” <em>Expert Opin Drug Discov</em>, pp. 1–4, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37454742"></a>[28] Y. Zhou <em>et al.</em>, “Deep learning in preclinical antibody drug discovery and development,” <em>Methods</em>, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37453366"></a>[29] A. rez-Mena, E. n, M. J. Alvarez-Cubero, A. Anguita-Ruiz, L. J. Martinez-Gonzalez, and J. Alcala-Fdez, “Explainable artificial intelligence to predict and identify prostate cancer tissue by gene expression,” <em>Comput Methods Programs Biomed</em>, vol. 240, p. 107719, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37446311"></a>[30] W. Wei, Y. Li, and T. Huang, “Using Machine Learning Methods to Study Colorectal Cancer Tumor Micro-Environment and Its Biomarkers,” <em>Int J Mol Sci</em>, vol. 24, no. 13, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37386009"></a>[31] D. Shigemizu <em>et al.</em>, “Classification and deep-learning-based prediction of Alzheimer disease subtypes by using genomic data,” <em>Transl Psychiatry</em>, vol. 13, no. 1, p. 232, Jun. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37370847"></a>[32] Z. Mirza <em>et al.</em>, “Identification of Novel Diagnostic and Prognostic Gene Signature Biomarkers for Breast Cancer Using Artificial Intelligence and Machine Learning Assisted Transcriptomics Analysis,” <em>Cancers (Basel)</em>, vol. 15, no. 12, Jun. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37488621"></a>[33] R. Adam, K. Dell’Aquila, L. Hodges, T. Maldjian, and T. Q. Duong, “Deep learning applications to breast cancer detection by magnetic resonance imaging: a literature review,” <em>Breast Cancer Res</em>, vol. 25, no. 1, p. 87, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37478073"></a>[34] Y. Tong <em>et al.</em>, “Prediction of lymphoma response to CAR T cells by deep learning-based image analysis,” <em>PLoS One</em>, vol. 18, no. 7, p. e0282573, 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37474003"></a>[35] L. R. Archila <em>et al.</em>, “Performance of an Artificial Intelligence Model for Recognition and Quantitation of Histologic Features of Eosinophilic Esophagitis on Biopsy Samples,” <em>Mod Pathol</em>, p. 100285, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37449611"></a>[36] Q. Li, A. Sandoval, and B. Chen, “Advancing spinal cord injury research with optical clearing, light sheet microscopy, and artificial intelligence-based image analysis,” <em>Neural Regen Res</em>, vol. 18, no. 12, pp. 2661–2662, Dec. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37329982"></a>[37] M. Santorsola and F. Lescai, “The promise of explainable deep learning for omics data analysis: Adding new discovery tools to AI,” <em>N Biotechnol</em>, vol. 77, pp. 1–11, Jun. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37463768"></a>[38] B. Waissengrin <em>et al.</em>, “Artificial intelligence (AI) molecular analysis tool assists in rapid treatment decision in lung cancer: a case report,” <em>J Clin Pathol</em>, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37460991"></a>[39] F. Hosseini, F. Asadi, H. Emami, and M. Ebnali, “Machine learning applications for early detection of esophageal cancer: a systematic review,” <em>BMC Med Inform Decis Mak</em>, vol. 23, no. 1, p. 124, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37486997"></a>[40] S. M. Ahmed, R. V. Shivnaraine, and J. C. Wu, “FDA Modernization Act 2.0 Paves the Way to Computational Biology and Clinical Trials in a Dish,” <em>Circulation</em>, vol. 148, no. 4, pp. 309–311, Jul. 2023.</p>
+</div>
+<div class="paragraph">
+<p><a id="pmid37483175"></a>[41] A. Aliper <em>et al.</em>, “Prediction of clinical trials outcomes based on target choice and clinical trial design with multi-modal artificial intelligence,” <em>Clin Pharmacol Ther</em>, Jul. 2023.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2024-02-22 18:35:31 -0500
+</div>
+</div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+</body>
+</html>
