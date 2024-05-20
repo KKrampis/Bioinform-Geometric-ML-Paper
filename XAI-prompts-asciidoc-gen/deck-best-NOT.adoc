@@ -1,0 +1,77 @@
+= Explaining AI: The Quest for Understanding
+
+
+== Slide 1: Understanding Explainable AI
+
+* When a model makes a prediction, Explainable AI methods generate an explanation that provides insight into the model's behavior.
+* Seeking explanations helps us understand "why did X happen?" to comprehend model influence and performance.
+* Pure explanations might be unsatisfactory; we also seek counterfactual explanations, providing an opposing plausible scenario.
+* Causal explanations, such as "X was predicted because of Y," offer insights into what altering factors may affect the prediction.
+
+[.notes]
+Speaker Notes:
+In this slide, we introduce the concept of Explainable AI, which generates explanations to understand why a model made a certain prediction. It helps us gain insights into the model's decision-making process.
+Explanations allow us to answer questions like "why did the model make this prediction?" and help us understand what factors influence the model's decisions and its overall performance.
+Sometimes, a simple explanation might not be enough. We also explore counterfactual explanations, which provide plausible alternative scenarios to understand why the prediction did not happen differently.
+Causal explanations help us understand the cause-and-effect relationship between input features and model predictions. They provide valuable insights into how altering certain factors can change the model's output.
+
+
+== Slide 2: Explainability Consumers
+
+* Different users receive explanations differently. Understanding their needs is essential.
+* Anyone can be a consumer of explanation, trying to perceive the uniqueness of predictions and comprehend ML system behavior.
+* Most explainable AI techniques are one-way descriptions, lacking the ability to respond to user queries.
+* Grouping explainability into three categories: practitioners, observers, and end-users based on their needs.
+
+[.notes]
+Speaker Notes:
+In this slide, we discuss that different individuals have varied requirements for explanations. Understanding their perspectives is crucial for delivering effective explanations.
+We emphasize that anyone interacting with the ML system can be an explanation consumer. Explanations help users understand why a prediction is unique and gain insights into the ML system's behavior.
+Currently, most explainability techniques are one-way, providing explanations without engaging in two-way conversations with users. This limits their adaptability to user queries.
+We categorize explanation consumers into practitioners (data scientists, ML engineers), observers (business stakeholders, regulators), and end-users (domain experts, affected users) based on their distinct needs.
+
+
+== Slide 3: Practitioners: Data Scientists and ML Engineers
+
+* ML practitioners use explainability during model building and tuning for actionable insights.
+* Improve model performance by changing architecture, training data, or dataset structure.
+* Monitoring deployed models for drift and skew in predictions using explainability techniques.
+* Address concerns about data artifacts, bias, or unexpected model outcomes in practice.
+
+[.notes]
+Speaker Notes:
+In this slide, we discuss how ML practitioners, such as data scientists and ML engineers, leverage explainability techniques during the model building and tuning process. Explanations provide actionable insights to improve model performance.
+Practitioners use explanations to identify areas for improvement in the model's architecture, training data, or dataset structure to enhance overall performance.
+Explanations help practitioners monitor deployed models for changes in predictions (drift) or biases in predictions (skew) over time, which can trigger model retraining.
+Practitioners also utilize explanations to address concerns related to data artifacts, bias, or unexpected model outcomes that may arise during the model's practical application.
+
+
+== Slide 4: Observers: Business Stakeholders & Regulators
+
+* Observers include stakeholders within the organization and external regulators.
+* Stakeholders often prefer a non-technical explanation, instead seeking information that will allow them to build trust that the model is behaving as is expected, and in the situation it was designed for.
+* Regulators validate and verify that a model adheres to a specific set of criteria and will continue to do so in the future.
+* Explanations must comply with regulation requirements, including fairness and bias considerations.
+
+[.notes]
+Speaker Notes:
+In this slide, we discuss the role of observers as consumers of explanations, including stakeholders within the organization and external regulators.
+Stakeholders typically prefer non-technical explanations that build trust in the model's behavior and its alignment with business expectations.
+Regulators play a crucial role in validating and verifying that the model complies with specific criteria, and they may regularly audit the model for compliance.
+Explanations should meet regulatory requirements, especially with regard to fairness and bias considerations.
+
+
+== Slide 5: End-Users: Domain Experts & Affected Users
+
+* Domain experts use explanations as decision support tools for their expertise domain.
+* Affected users may have little understanding of the model but experience tangible impacts.
+* Affected users seek fairness and understanding of the prediction's basis for meaningful future changes.
+* Providing explanations that empower affected users to alter factors within their control.
+
+[.notes]
+Speaker Notes:
+In this slide, we discuss the role of domain experts as end-users of explanations. Domain experts use explanations as decision support tools within their area of expertise.
+Affected users might lack understanding of the underlying model but directly experience the real-world impacts of model predictions.
+Affected users primarily seek explanations to understand the fairness of the model's predictions and how they can meaningfully influence future predictions.
+Explanations should empower affected users to make meaningful changes to factors within their control to influence future predictions.
+

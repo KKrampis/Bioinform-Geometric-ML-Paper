@@ -1,0 +1,54 @@
+
+= Explainable AI
+
+== Introduction to Explainable AI
+
+**In just a few years, Explainable AI (XAI) has become a field of intense interest and investigation.**
+
+1. Powerful explainability techniques have emerged from different fields.
+2. Rapid transition from theory to practice has led to confusion about methods.
+3. Fundamental terms are used interchangeably, creating misunderstandings.
+4. The purpose of this chapter is to provide a background and common language for future discussions.
+
+[.notes] In this slide, we introduce the significance of XAI, its rapid development, and the need for a common language to address the confusion around explainability terms.
+
+== Understanding Explanations 
+
+**Explainable AI generates insights into model behavior and provides "why" explanations.**
+
+1. Seek to understand "why did X happen?" for model predictions.
+2. Pure explanations may be unsatisfactory, requiring counterfactuals.
+3. Causal explanations (X was predicted because of Y) can be attractive.
+4. Establishing causality with data-focused explanations is challenging.
+
+[.notes] In this slide, we delve into the core of XAI, explaining its purpose in providing insights into model predictions. 
+
+== Explainability Consumers - Practitioners
+
+**Practitioners: Data Scientists and ML Engineers**
+
+1. Use explainability during model building and tuning.
+2. Map explanations to actionable steps for model improvement.
+3. Concerned with removing biases and improving overall system performance.
+4. Employ explainability to monitor deployed models for drift and skew.
+
+== Explainability Consumers - Observers
+
+**Observers: Business Stakeholders & Regulators**
+
+1. Seek non-technical explanations to build trust in the model's behavior.
+2. Stakeholders focus on business questions tied to the model's performance.
+3. Regulators verify the model adheres to specific criteria and regulations.
+4. Explanations requiring less human effort are valuable for regulatory audits.
+
+== Explainability Consumers - Users
+
+**End-Users: Domain Experts & Affected Users**
+
+1. Domain experts use explanations in decision support tools.
+2. Affected users want to assess fairness and correctness of predictions.
+3. Seek explanations to understand factors that influence predictions.
+4. End-users may not have expertise in ML but need actionable insights.
+
+[.notes] In this slide, we explore the three types of consumers in detail and discuss their specific needs and expectations when using XAI. The presentation highlights the role of explanations in enhancing model understanding and decision-making for each consumer group.
+

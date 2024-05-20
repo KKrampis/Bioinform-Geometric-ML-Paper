@@ -1,0 +1,45 @@
+= Explainable AI: Understanding Model Explanations
+
+
+== Introduction
+
+* When a model makes a prediction, Explainable AI methods generate an explanation that gives insight into the model's behavior as it arrived at that prediction.
+* We seek explanations to understand "why did X happen?"
+* Figuring out the "Why" can help us comprehend what influences a model, how that influence occurs, and where the model performs (or fails).
+* Pure explanations may be unsatisfactory; we are interested in explanations with counterfactuals to the original situation.
+
+[.notes]
+Welcome to the presentation on Explainable AI. In this first slide, we introduce the concept of Explainable AI and why we seek explanations for model predictions. We'll also discuss the importance of counterfactual explanations.
+
+
+== Types of Explanations
+
+* Counterfactual Explanations: Scenarios providing opposing, plausible reasons for why X did not happen.
+* Causal Explanations: In the form of "X was predicted because of Y," but establishing causality with data-focused explanations is difficult.
+* Limitations of Explainable AI: Most techniques are one-way descriptions without interactive capabilities.
+* Future Advancements: Smart explainability techniques could adapt to user queries and provide more interactive explanations.
+
+[.notes]
+In this second slide, we delve into different types of explanations, including counterfactual and causal explanations. We also highlight the limitations of current Explainable AI techniques and discuss future advancements.
+
+
+== Explainability Consumers
+
+* Practitioners: Data Scientists and ML Engineers use explainability for model building and tuning, seeking actionable steps to improve performance.
+* Observers: Business Stakeholders & Regulators prefer non-technical explanations for trust and validation of criteria.
+* End-Users: Domain Experts & Affected Users use explanations for decision support and understanding fair predictions.
+
+[.notes]
+The third slide focuses on the different consumers of explanations, such as practitioners, observers, and end-users. Each group has specific needs and expectations from Explainable AI.
+
+
+== Limitations and Conclusion
+
+* Limitations: Current techniques lack interaction and are one-way descriptions.
+* Future Advancements: Smart explainability techniques could enable more interactive dialogues.
+* Importance: Explainable AI provides insights into model behavior and aids decision-making.
+* Conclusion: Understanding different audience needs is vital for effective use of Explainable AI techniques.
+
+[.notes]
+In the final slide, we discuss the limitations of current Explainable AI methods and emphasize the importance of understanding audience needs. We conclude by highlighting the significance of Explainable AI in providing insights and aiding decision-making.
+
